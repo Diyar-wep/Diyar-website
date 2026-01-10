@@ -1,16 +1,28 @@
-# React + Vite
+# Diyar — Hackathon Project (Web App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Diyar** is our hackathon project.  
+This repository contains the **React (Vite)** web application for the Diyar platform.
 
-Currently, two official plugins are available:
+## Team
+- **Alwaleed Khalid Tair** — Team Lead / Maintainer (merges to `main`)
+- **Badriah Mohammed Alzraiq** — UI / Components
+- **Nada Mohammed Alharbi** — Pages / Content / UX
+- **Mohammed Abdulqawi Alasad** — Logic / Integration / Deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project
+**Diyar** is a platform built during the hackathon to deliver our solution in a fast and user-friendly web experience.
+> Add a 1–2 line description of the idea here.
 
-## React Compiler
+## Tech Stack
+- React (Vite)
+- JavaScript
+- Node.js
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started (Local)
+```bash
+npm install
+npm run dev
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Last update: 2026-01-10
