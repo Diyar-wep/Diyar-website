@@ -40,7 +40,7 @@ const Najran = ({ darkMode, language, t }) => {
 
             <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
                 {/* ضع هنا صورة بانورامية لنجران (مثل القصور الطينية أو نخيل نجران) */}
-                <img src="NajranPics/NajranPic.png" alt="Najran" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src="NajranPics/NajranBanner.png" alt="Najran" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <h1 style={{ color: "white", fontSize: "3rem", fontWeight: "bold" }}>
                         {language === "ar" ? "منطقة نجران" : "Najran Region"}

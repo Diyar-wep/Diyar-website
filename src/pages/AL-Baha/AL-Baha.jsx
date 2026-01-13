@@ -41,7 +41,7 @@ const AlBaha = ({ darkMode, language, t }) => {
 
             <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
                 {/* ضع في src أدناه رابط صورة بانورامية لجبال الباحة أو ضباب الباحة */}
-                <img src="AL-BahaPics/AL-BahaPic.png" alt="Al-Baha" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src="AL-BahaPics/AlbahaBanner.png" alt="Al-Baha" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <h1 style={{ color: "white", fontSize: "3.5rem", fontWeight: "bold", textShadow: "2px 2px 10px rgba(0,0,0,0.5)" }}>
                         {language === "ar" ? "منطقة الباحة" : "Al-Baha Region"}

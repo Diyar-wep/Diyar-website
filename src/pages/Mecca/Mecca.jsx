@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 
-const AlJouf = ({ darkMode, language, t }) => {
+const Makkah = ({ darkMode, language, t }) => {
     const [selectedItem, setSelectedItem] = useState(null);
 
     const landmarksData = {
-        maridCastle: { 
-            title: language === "ar" ? "قلعة مارد" : "Marid Castle", 
+        haram: { 
+            title: language === "ar" ? "المسجد الحرام والكعبة" : "The Grand Mosque & Kaaba", 
             desc: language === "ar"
-            ? "قلعة حربية شامخة في دومة الجندل يعود تاريخها لأكثر من 2000 عام، وتُعد من أهم القلاع الأثرية في المملكة."
-            : "A majestic military fortress in Dumat al-Jandal dating back over 2000 years, one of the Kingdom's key sites.", 
-            img: "AL-JawfPics/The historic Mard Castle.jpg" // ضع هنا صورة لقلعة مارد التاريخية
+            ? "أقدم بيت وُضع للناس، وهو قبلة المسلمين ومركز عبادتهم، رفع قواعده النبي إبراهيم وابنه إسماعيل عليهما السلام."
+            : "The oldest house established for mankind, the Qibla of Muslims, built by Prophet Abraham and his son Ishmael.", 
+            img: "MeccaPics/برج الساعه.jpg" // ضع هنا صورة للمسجد الحرام والكعبة المشرفة
         },
-        omarMosque: { 
-            title: language === "ar" ? "مسجد عمر بن الخطاب" : "Omar bin Al-Khattab Mosque", 
+        hira: { 
+            title: language === "ar" ? "غار حراء" : "Hira Cave", 
             desc: language === "ar"
-            ? "يتميز بمئذنته التي تُعد أول مئذنة في الإسلام، بُني أثناء توجه الخليفة عمر بن الخطاب لفتح بيت المقدس."
-            : "Famous for its minaret, the first in Islam, built during Caliph Omar's journey to Jerusalem.", 
-            img: "AL-JawfPics/Omar Mosque and its minaret.jpg" // ضع هنا صورة لمسجد عمر ومئذنته الشهيرة
+            ? "يقع في جبل النور، وهو المكان الذي نزل فيه الوحي لأول مرة على النبي محمد صلى الله عليه وسلم."
+            : "Located in Jabal al-Nour, the place where the first revelation descended upon Prophet Muhammad (PBUH).", 
+            img: "MeccaPics/غار حراء.png" // ضع هنا صورة لغار حراء أو جبل النور
         },
-        rajajil: { 
-            title: language === "ar" ? "أعمدة الرجاجيل" : "Rajajil Columns", 
+        zubaydah: { 
+            title: language === "ar" ? "عين زبيدة" : "Zubaydah Spring", 
             desc: language === "ar"
-            ? "مجموعة من الأعمدة الحجرية الغامضة التي تعود للعصر النحاسي (حوالي 6500 عام)، تقع جنوب سكاكا."
-            : "Mysterious stone columns dating back to the Chalcolithic era (approx. 6500 years ago).", 
-            img: "AL-JawfPics/The ancient Rajajil Columns.jpg" // ضع هنا صورة لأعمدة الرجاجيل الأثرية
+            ? "معجزة هندسية مائية أنشأتها السيدة زبيدة زوجة هارون الرشيد لسقيا الحجاج لعدة قرون عبر قنوات ممتدة."
+            : "An engineering miracle created by Lady Zubaydah to provide water for pilgrims through extended channels.", 
+            img: "MeccaPics/عين زبيده.webp" // ضع هنا صورة لبقايا قنوات عين زبيدة التاريخية
         },
-        shwaihitiya: { 
-            title: language === "ar" ? "موقع الشويحطية" : "Al-Shwaihitiya Site", 
+        bayah: { 
+            title: language === "ar" ? "مسجد البيعة" : "Al-Bay'ah Mosque", 
             desc: language === "ar"
-            ? "أقدم موقع استيطان بشري في الجزيرة العربية، حيث يعود تاريخه إلى أكثر من 1.3 مليون سنة."
-            : "The oldest human settlement site in the Arabian Peninsula, dating back over 1.3 million years.", 
-            img: "AL-JawfPics/The archaeological site of Al-Shuwayhitiyah.jpg" // ضع هنا صورة لموقع الشويحطية الأثري
+            ? "يقع في منى، وهو الموقع الذي تمت فيه بيعة العقبة التاريخية بين النبي صلى الله عليه وسلم والأنصار."
+            : "Located in Mina, the site of the historic Bay'ah al-Aqaba between the Prophet (PBUH) and the Ansar.", 
+            img: "MeccaPics/مسجد البيعة.jpg" // ضع هنا صورة لمسجد البيعة في منى
         }
     };
 
@@ -46,11 +46,11 @@ const AlJouf = ({ darkMode, language, t }) => {
         }}>
 
             <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
-                {/* ضع هنا صورة بانورامية لمزارع الزيتون في الجوف أو قلعة مارد */}
-                <img src="AL-JawfPics/AljoufBanner.png" alt="Al-Jouf" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                {/* ضع هنا صورة بانورامية لمكة المكرمة أو المسجد الحرام */}
+                <img src="MeccaPics/Makkahbanner.png" alt="Makkah" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <h1 style={{ color: "white", fontSize: "3rem", fontWeight: "bold" }}>
-                        {language === "ar" ? "منطقة الجوف" : "Al-Jouf Region"}
+                        {language === "ar" ? "مكة المكرمة" : "Makkah Al-Mukarramah"}
                     </h1>
                 </div>
             </header>
@@ -61,8 +61,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• نشأة المنطقة" : "• Region Origin"}</h2>
                     <p style={pStyle}>
                         {language === "ar" 
-                        ? "تُعد الجوف من أقدم البقاع المأهولة في الجزيرة العربية (1.3 مليون سنة). عُرفت تاريخياً باسم 'أدوماتو' وكانت عاصمة لمملكة قيدار العريقة، كما عُرفت بـ 'جوف آل عمرو' و 'جوف السرحان'."
-                        : "Al-Jouf is one of the oldest inhabited areas (1.3 million years). Historically known as 'Adumatu', it was the capital of the ancient Kingdom of Qedar."}
+                        ? "يعود تاريخ مكة لأكثر من 2000 سنة قبل الميلاد. بدأت كقرية في وادٍ جاف، ثم ازدهرت بعد تفجر بئر زمزم، ورفع النبي إبراهيم وابنه إسماعيل قواعد الكعبة، لتصبح مركزاً للتوحيد ومحطة تجارية عالمية."
+                        : "Dating back over 2000 BC, Makkah began as a small valley settlement. It flourished after Zamzam flowed and the Kaaba was built, becoming the center of Monotheism."}
                     </p>
                 </section>
 
@@ -70,8 +70,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• أهم الحضارات" : "• Key Civilizations"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "شهدت الجوف تعاقب حضارات كبرى؛ من العصر الحجري ومملكة قيدار، إلى الأنباط والرومان، وصولاً إلى العصر الإسلامي حيث فتحها خالد بن الوليد وبُني فيها أحد أقدم مساجد الإسلام."
-                        : "Al-Jouf hosted major civilizations: from the Stone Age and Qedar to the Nabataeans, Romans, and the Islamic era."}
+                        ? "سكنها العماليق وجرهم، ثم خزاعة وقريش التي سادت قبل الإسلام. ومع بعثة النبي محمد صلى الله عليه وسلم، أصبحت مكة قلب العالم الإسلامي وشهدت أعظم تطور حضاري وعمراني عبر العصور."
+                        : "Inhabited by Amalekites and Jurhum, then Quraysh. Since the advent of Islam, it became the heart of the Islamic world, witnessing continuous development."}
                     </p>
                 </section>
 
@@ -87,11 +87,11 @@ const AlJouf = ({ darkMode, language, t }) => {
                 </section>
 
                 <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• عادات وتقاليد أصيلة" : "• Authentic Traditions"}</h2>
+                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• عادات وتقاليد مكية" : "• Makkah Traditions"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "تشتهر الجوف برقصة 'الدحة' (أنفاس الأسد) وفن السامري. ويُعرف أهلها بكرم الضيافة وتقديم 'حلوة الجوف'، ومن تقاليدهم وليمة 'عشاء الخروف' في اليوم الرابع من الزواج."
-                        : "Famous for the 'Dahha' dance and Samri art. Known for hospitality, 'Helwat Al-Jouf' dates, and unique wedding feasts."}
+                        ? "تتميز مكة بعادات 'الغمرة' وفن 'المجس الحجازي' الفلكلوري. ويُعرف أهلها بحفاوة استقبال 'ضيوف الرحمن' وتقديم القهوة والتمور، وعادة 'القيس' الشعبية في أيام الحج."
+                        : "Famous for the 'Ghamra' wedding night and 'Hijazi Majass' folk art. Known for their legendary hospitality for pilgrims."}
                     </p>
                 </section>
 
@@ -99,12 +99,12 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• المأكولات الشعبية" : "• Traditional Cuisine"}</h2>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                         <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "البكيلة:" : "Al-Bakeela:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "حلوى من تمر حلوة الجوف المكنوز مع دقيق السمح والسمن البري." : "A dessert made of dates, Samh flour, and local ghee."}</p>
+                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "السليق المكاوي:" : "Makkah Saleeg:"}</strong>
+                            <p style={pStyle}>{language === "ar" ? "ملك المائدة المكية؛ أرز مطبوخ بالمرق والحليب، ويُقدم مع اللحم المحمر." : "The king of Makkah table; rice cooked with broth and milk, served with roasted meat."}</p>
                         </div>
                         <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "التطماج (المثقلة):" : "Al-Tatmaj:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "طبق شتوي من الجريش المطبوخ مع السمح والبصل والسمن." : "A winter dish of crushed wheat cooked with Samh, onions, and ghee."}</p>
+                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "الدبيازة:" : "Debyazah:"}</strong>
+                            <p style={pStyle}>{language === "ar" ? "حلوى العيد الرئيسية المكونة من قمر الدين والمكسرات والفواكه المجففة." : "The main Eid dessert made from apricot paste, nuts, and dried fruits."}</p>
                         </div>
                     </div>
                 </section>
@@ -113,8 +113,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• تأثير رؤية 2030" : "• Vision 2030 Impact"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "حولت الرؤية الجوف إلى عاصمة للطاقة المتجددة (رياح دومة الجندل وشمس سكاكا)، وعاصمة للزيتون بأكثر من 23 مليون شجرة، مع تطوير مواقعها الأثرية كوجهات سياحية عالمية."
-                        : "Vision 2030 turned Al-Jouf into a renewable energy hub and the olive capital with over 23 million trees."}
+                        ? "تهدف الرؤية لاستيعاب 30 مليون معتمر سنوياً عبر تطوير البنية التحتية، ومشروع مسار، وقطار الحرمين السريع، مع تحويل مكة لمدينة ذكية بالكامل لتسهيل تجربة ضيوف الرحمن."
+                        : "Vision 2030 aims to host 30 million pilgrims annually through the Masar project, Haramain High-Speed Rail, and digital transformation."}
                     </p>
                 </section>
 
@@ -122,13 +122,13 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• الموقع الجغرافي" : "• Geographical Location"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "تقع منطقة الجوف في شمال غرب المملكة العربية السعودية، وتُعد بوابة الشمال العريقة، وتتميز بخصوبة أرضها ووفرة مياهها الجوفية."
-                        : "Located in northwestern Saudi Arabia, Al-Jouf is the ancient gateway to the north, known for its fertile land."}
+                        ? "تقع مكة المكرمة في غرب المملكة العربية السعودية، في وادٍ تحده جبال السروات، وتعتبر قبلة المسلمين التي يتجهون إليها في صلاتهم من كل مكان."
+                        : "Located in western Saudi Arabia, set in a valley of the Sarawat Mountains, it is the Qibla for Muslims worldwide."}
                     </p>
                     <div style={{ height: "400px", borderRadius: "15px", overflow: "hidden", marginTop: "20px", border: "1px solid #ddd" }}>
                         <iframe 
                             title="Map" width="100%" height="100%" frameBorder="0" 
-                            src="http://googleusercontent.com/maps.google.com/4"
+                            src="http://googleusercontent.com/maps.google.com/5"
                             allowFullScreen>
                         </iframe>
                     </div>
@@ -197,4 +197,4 @@ const closeBtnStyle = {
     borderRadius: "50%", border: "none", background: "#00000080", color: "#fff", cursor: "pointer"
 };
 
-export default AlJouf;
+export default Makkah;
