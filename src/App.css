@@ -18,6 +18,7 @@ body {
   padding: 0;
   background: #c5a98a;
   overflow-x: hidden;
+  transition: background 0.3s ease;
 }
 
 html {

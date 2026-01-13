@@ -1,144 +1,153 @@
-export default function Footer() {
-    return (
+export default function Footer({ darkMode }) {
+  return (
     <footer
-    style={{
+      style={{
         width: "100%",
-        borderTop: "2px solid rgba(0, 0, 0, 0.3)",
+        borderTop: darkMode ? "2px solid rgba(255, 255, 255, 0.2)" : "2px solid rgba(0, 0, 0, 0.3)",
         marginTop: 80,
-        background: "rgba(111, 69, 26, 0.66)",
+        background: darkMode ? "rgba(40, 30, 20, 0.95)" : "rgba(111, 69, 26, 0.66)",
         padding: "30px 0",
-        }}
+        transition: "all 0.3s ease",
+      }}
     >
-        <div style={{ 
+      <div style={{ 
         maxWidth: 1100, 
         margin: "0 auto", 
         padding: "0 24px", 
         textAlign: "center",
         direction: "rtl" 
-        }}>
+      }}>
         <div style={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            gap: 24, 
-            flexWrap: "wrap",
-            marginBottom: 20
+          display: "flex", 
+          justifyContent: "center", 
+          gap: 24, 
+          flexWrap: "wrap",
+          marginBottom: 20
         }}>
-            <a 
+          <a 
             href="#home"
             style={{
-                textDecoration: "none",
-                color: "#000000",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "6px 18px",
-                borderRadius: 25,
-                transition: "all 0.3s ease",
+              textDecoration: "none",
+              color: darkMode ? "#ffffff" : "#000000",
+              fontSize: 15,
+              fontWeight: 500,
+              padding: "6px 18px",
+              borderRadius: 25,
+              transition: "all 0.3s ease",
             }}
             onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.1)";
-                e.target.style.background = "rgba(255, 255, 255, 0.3)";
+              e.currentTarget.style.transform = "scale(1.1)";
+              e.currentTarget.style.background = darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.3)";
             }}
             onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.background = "transparent";
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "transparent";
             }}
-            >
+          >
             الرئيسية
-            </a>
-            
-            <a 
-            href="#founders"
+          </a>
+          
+          <a 
+            href="#about"
             style={{
-                textDecoration: "none",
-                color: "#000000",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "6px 18px",
-                borderRadius: 25,
-                transition: "all 0.3s ease",
+              textDecoration: "none",
+              color: darkMode ? "#ffffff" : "#000000",
+              fontSize: 15,
+              fontWeight: 500,
+              padding: "6px 18px",
+              borderRadius: 25,
+              transition: "all 0.3s ease",
             }}
             onClick={(e) => {
-                e.preventDefault();
-                const section = document.getElementById('about');
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
+              e.preventDefault();
+              const section = document.getElementById('about');
+              if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+              }
             }}
             onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.1)";
-                e.target.style.background = "rgba(255, 255, 255, 0.3)";
+              e.currentTarget.style.transform = "scale(1.1)";
+              e.currentTarget.style.background = darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.3)";
             }}
             onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.background = "transparent";
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "transparent";
             }}
-            >
+          >
             الخط الزمني
-            </a>
+          </a>
 
-            <a 
-            href="#regions"
+          <a 
+            href="#features"
             style={{
-                textDecoration: "none",
-                color: "#000000",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "6px 18px",
-                borderRadius: 25,
-                transition: "all 0.3s ease",
+              textDecoration: "none",
+              color: darkMode ? "#ffffff" : "#000000",
+              fontSize: 15,
+              fontWeight: 500,
+              padding: "6px 18px",
+              borderRadius: 25,
+              transition: "all 0.3s ease",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              const section = document.getElementById('features');
+              if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+              }
             }}
             onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.1)";
-                e.target.style.background = "rgba(255, 255, 255, 0.3)";
+              e.currentTarget.style.transform = "scale(1.1)";
+              e.currentTarget.style.background = darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.3)";
             }}
             onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.background = "transparent";
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "transparent";
             }}
-            >
+          >
             الخريطة
-            </a>
-            
-            <a 
+          </a>
+          
+          <a 
             href="#contact"
             style={{
-                textDecoration: "none",
-                color: "#000000",
-                fontSize: 15,
-                fontWeight: 500,
-                padding: "6px 18px",
-                borderRadius: 25,
-                transition: "all 0.3s ease",
+              textDecoration: "none",
+              color: darkMode ? "#ffffff" : "#000000",
+              fontSize: 15,
+              fontWeight: 500,
+              padding: "6px 18px",
+              borderRadius: 25,
+              transition: "all 0.3s ease",
             }}
             onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+              e.preventDefault();
+              window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }}
             onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.1)";
-                e.target.style.background = "rgba(255, 255, 255, 0.3)";
+              e.currentTarget.style.transform = "scale(1.1)";
+              e.currentTarget.style.background = darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.3)";
             }}
             onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.background = "transparent";
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "transparent";
             }}
-            >
+          >
             تواصل معنا
-            </a>
+          </a>
         </div>
 
         <p style={{ 
-            marginTop: 16, 
-            fontSize: 14, 
-            color: "#000000",
+          marginTop: 16, 
+          fontSize: 14, 
+          color: darkMode ? "#d4a574" : "#000000",
+          transition: "color 0.3s ease",
         }}>
-            © {new Date().getFullYear()} ديار — مشروع هاكاثون
+          © {new Date().getFullYear()} ديار — مشروع هاكاثون
         </p>
-        </div>
+      </div>
     </footer>
-    );
+  );
 }
