@@ -1,0 +1,469 @@
+    <!DOCTYPE html>
+    <html dir="rtl">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9L1LQXQZNQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-9L1LQXQZNQ');
+        </script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="/Content/ClientTheme/ar/js/html5.js"></script>
+        
+        <script type="text/javascript" src="/Content/ClientTheme/en/js/html5.js"></script>
+        <!-- ALL CSS -->
+        <link rel="stylesheet" type="text/css" href="/Content/ClientTheme/ar/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/Content/ClientTheme/ar/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/Content/ClientTheme/ar/css/media.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- ALL SCRIPT -->
+        <script type="text/javascript" src="/Content/ClientTheme/ar/js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="/Content/ClientTheme/ar/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="/Content/ClientTheme/ar/js/slick.js"></script>
+        <script type="text/javascript" src="/Content/ClientTheme/ar/js/owl.carousel.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        
+                    <title>متحف جرش الاثري</title>
+
+        <script src="/Content/ClientTheme/ar/js/owl.carousel.js"></script>
+<script src="/Content/ClientTheme/ar/js/slick.js"></script>
+<script src="/Content/ClientTheme/ar/js/all-style.js"></script>
+
+    </head>
+    <body>
+        
+
+        <header>
+        <div class="topheader">
+            <div class="d-md-flex justify-content-between">
+                <div class="msgcol">
+                    <p>الموقع الرسمي لمتاحف الأردن</p>
+                </div>
+                <form class="d-lg-flex">
+                    <div class="fieldscol">
+                        <div class="d-lg-flex justify-content-center align-items-center">
+                            <div class="fieldcol fieldcol1">
+                                <label>أنت تبحث عن</label>
+                                <button class="btn custfield dropdown-toggle " type="button" id="dropopt1" data-bs-toggle="dropdown" aria-expanded="false">المتاحف</button>
+                                <ul class="dropdown-menu" aria-labelledby="dropopt1">
+                                    <li><a class="dropdown-item" href="https://visitjordan.com/">visitjordan.com</a></li>
+                                </ul>
+                            </div>
+                            <div class="fieldcol fieldcol2">
+                                <label>اللغة</label>
+                                <button class="btn custfield dropdown-toggle " type="button" id="dropopt2" data-bs-toggle="dropdown" aria-expanded="false">English</button>
+                                <ul class="dropdown-menu" aria-labelledby="dropopt2">
+                                    <li><a class="dropdown-item" href="/en">English</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="headerpart">
+            <div class="logo">
+                <a href="/ar"><img src="/Content/ClientTheme/en/images/logo.png" alt="" /></a>
+            </div>
+            <div class="rheader">
+                <nav class="custnav">
+                    <ul class="menus">
+                        <li><a href="/ar/Museum">اكتشف</a></li>
+                        <li><a href="/ar/Events">الأحداث</a></li>
+                        <li><a href="/ar/MediaCenter">معرض الصور</a></li>
+                        <li><a href="/ar/Contact">الإتصال</a></li>
+                    </ul>
+                </nav>
+                <div id="mobilemenu"></div>
+                <div class="searchbar">
+                    <form>
+                        <button class="search" type="button"></button>
+                        <div class="searchpopup">
+                            <div class="closebtn"></div>
+                            <div class="serachfield">
+                                <h3>عن ماذا تبحث ?</h3>
+                                <input type="text" class="form-control custfield" placeholder="أدخل الكلمة المفتاحية..." id="txtKeyword" required />
+                                <button class="search2" id="btnSearch" type="button" value="" onclick="doNavigate();"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script type="text/javascript">
+       
+    var defaultURL = '/en';
+    var myUrl = '/ar/SearchResults?keyword=_start_';
+    var selectS = "";
+
+
+    function doNavigate() {
+        selectS = $("#txtKeyword").val();
+        if (selectS == "" || selectS == null) {
+            alert("Enter a keyword");
+            document.getElementById(txtKeyword).focus();
+        }
+        else {
+            var url = myUrl.replace('_start_', selectS);
+            window.location.href = url;
+        }
+
+    }
+
+    // Get the input field
+var input = document.getElementById("txtKeyword");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("btnSearch").click();
+  }
+});
+</script>
+
+
+        
+
+
+<section class="innerbanner pmuseuminner" style="background-image: url(/uploads/museums/27a0bab6-ad23-413a-814a-757dff3a558d.jpg) ">
+    <div class="textinfo">
+        <div class="container">
+            <ul class="breadcrumbbox">
+                <li><a href="/ar">الرئيسية</a></li>
+                <li><a href="/ar/Museum">المتاحف</a></li>
+                    <li>متحف آثار جرش</li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="museuminfo">
+    <div class="container">
+        <div class="ctextinfo">
+                <h4>متحف آثار جرش</h4>
+<p><span style="text-align: right;">تأسس عام ١٩٨٥ ويشمل قطعًا متنوعة من مختلف العصور التي مرت على المنطقة بدءًا من العصر الحجري القديم وحتى أواخر العصر الإسلامي، وتتنوع القطع الأثرية بين الأواني والحُلي والمسكوكات والتماثيل ولوحات الفسيفساء. أما الساحة الخارجية للمتحف ففيها توابيت حجرية مزينة بزخارف متعددة ولوحات فسيفسائية ونُصب تذكارية.</span><br></p>        </div>
+    </div>
+</section>
+    <section class="photogallery">
+        <div class="container">
+            <div class="ctextinfo">
+                <h4>معرض الصور</h4>
+            </div>
+            <div class="commonslider">
+                <div id="photogallery1" class="owl-carousel">
+
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/087f6621-44b1-4eeb-92ba-47382c38878d.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/727ad0e1-8d39-4336-a5a3-df984a8d4d69.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/47a5f9bb-1276-4ba5-b27a-3cbeecedc2ee.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/5c432a56-d3ad-4911-bdf0-cd1f49fcd9c6.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/866d0634-42b9-4564-b0f6-168d839c4c93.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/7e8e29e4-a0d6-4878-b3c1-73304d803035.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/9b30949b-c30d-41ec-a02e-fdc62b81340f.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/c7b77097-f984-4177-825a-76b6c2133a7b.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/16e1497c-b496-49e6-8e23-35d3e1dd5e01.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/210121dc-ba71-497a-a529-f96687d056b9.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/d89faa4d-aade-42ce-8901-dfdc5e8efaa9.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/aee5199e-2b43-49e6-8f1a-891609333800.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/37f28d60-0838-4456-8608-8bbbb98fa827.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/5180839c-3b56-4075-aa3d-575326c8923c.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/15a5eebc-33a6-4822-8c43-29b84d033ed2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/ce8eefc1-30c2-4cb8-a370-a8561a39f9c2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/fd88b173-581d-410f-b440-db65c1ca50e5.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/61f5540a-b2af-4e88-a109-3d5b05c1964a.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/7d2617c5-1661-46b9-9d13-4086caa50827.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/8562dc94-badd-4cdf-a9cc-bc0653435237.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgbox">
+                            <img src="/uploads/museums/images/9f4b7c5d-d454-44e0-a336-6761c6e8cb7b.jpg" alt="">
+                        </div>
+                    </div>
+
+                        
+                    </div>
+            </div>
+        </div>
+    </section>
+<section class="governorateinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 governoratetext">
+<ul><li><h4 style="text-align: right;">محافظة<span>جرش</span></h4></li><li><h4 class="htitle" style="text-align: right;">ساعات العمل</h4><h4 style="text-align: right;">صيف<span>8:00&nbsp; صباحاً - 7:00 مساءً</span></h4><h4></h4><h4 style="text-align: right;"></h4><h4 style="font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(0, 0, 0);"></h4><h4 style="text-align: right;">شتاء<span>8:00&nbsp; صباحاً - 4:00 مساءً</span></h4><h4 style="text-align: right;"><span>02-6352267 / 0775429352</span></h4></li><li><h4 class="htitle" style="text-align: right;">غيرمهيأ لذوي الأحتياجات الخاصة</h4></li></ul>
+            </div>
+            <div class="col-12 col-lg-6 governorateimg map" id="divmap">
+               
+            </div>
+        </div>
+    </div>
+</section>
+<section class="youmaylike">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 ctitle">
+                <h3>قد يعجبك أيضًا</h3>
+            </div>
+            <div class="col-12 cslider">
+                <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4 cpbox">
+                            <div class="clocationbox">
+                                <a href="/ar/Museum/85" class="imgbox">
+                                    <img src="/uploads/museums/2a4d7040-8337-472b-bad0-b2b001334bca.jpg" alt="" />
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/ar/Museum/85">مقر الملك المؤسس (محطة قطار معان)</a></h4>
+                                    
+                                </div>
+                                <div class="location"><p>معان</p></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 cpbox">
+                            <div class="clocationbox">
+                                <a href="/ar/Museum/82" class="imgbox">
+                                    <img src="/uploads/museums/a4419559-50ca-4cc7-b8c1-e1940df44389.jpg" alt="" />
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/ar/Museum/82">متحف الطفيلة</a></h4>
+                                    <p style="direction: rtl;">يعتبر متحف الطفيلة الأثري هو إضافة جديدة ومميزة إلى المنتجات السياحية في محافظة الطفيلة ويضم المتحف مجموعة من أهم القطع الأثرية التي تمثل المواقع التاريخية الشهيرة في المحافظة، مثل خربة الذريح، خربة التنور، كنيسة الرشادية، وآثار بصيرا.</p><div><br></div>
+                                </div>
+                                <div class="location"><p>الطفيلة</p></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 cpbox">
+                            <div class="clocationbox">
+                                <a href="/ar/Museum/79" class="imgbox">
+                                    <img src="/uploads/museums/37f77158-6d3f-422b-9d96-81d51ef39c2d.JPG" alt="" />
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/ar/Museum/79">بيت الشريف الحسين بن علي</a></h4>
+                                    <p>أُنشئ بيت الشريف الحسين بن علي في العقبة عام 1917 على طراز البيوت الحجازية، وهو يقع بجانب قلعة العقبة التاريخية، وقد بناه أهل العقبة وسكنه الشريف الحسين بن علي، ومنه نُفي جلالته إلى قبرص يوم 17 حزيران 1925.</p><p><br></p>
+                                </div>
+                                <div class="location"><p>العقبة</p></div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+        
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 topfooter">
+                        <div class="footerboxs fbox1">
+                            <div class="flogo">
+                                <a href="/">
+                                    <img src="/Content/ClientTheme/en/images/flogo.png" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footerboxs fbox2">
+                            <h4>متاحف الأردن</h4>
+                            <ul>
+                                <li><a href="/ar/Museum">اكتشف</a></li>
+                                <li><a href="/ar/Events">الأحداث</a></li>
+                                <li><a href="/ar/MediaCenter">المعرض</a></li>
+                            </ul>
+                        </div>
+                        <div class="footerboxs fbox3">
+                            <h4>الإتصال</h4>
+                            <ul>
+                                <li><a class="email" href="mailto:info@visitjordan.com">info@visitjordan.com</a></li>
+                                <li><a class="call" href="tel:0096265678444">00962 6 5678 444</a></li>
+                            </ul>
+                        </div>
+                        <div class="footerboxs fbox4">
+                            <div class="social float-end">
+                                <a class="instagram" href="https://www.instagram.com/visitjordan/?hl=en" target="_blank"></a>
+                                <a class="facebook" href="https://www.facebook.com/VisitJordan" target="_blank"></a>
+                                <a class="twitter" href="https://twitter.com/VisitJordan" target="_blank"></a>
+                                <a class="youtube" href="https://www.youtube.com/user/visitjordan" target="_blank"></a>
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <p>© 2022 هيئة تنشيط السياحة الاردنية. جميع الحقوق محفوظة.</p>
+                            <p class="right">تصميم وتطوير <a href="http://imagine.com.jo/" target="_blank">الخيال لكنولوجيا المعلومات</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        
+    <script src="/Content/ClientTheme/en/js/owl.carousel.min.js"></script>
+    <script src="/Content/ClientTheme/en/js/main.js"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClh00ya5aqPVTWUrj4Uw0PFZAw7fJNUIQ"></script>
+    
+
+    <script type="text/javascript">
+        var map; var infowindow;
+        var bounds = new google.maps.LatLngBounds();
+        var Zoom = 0;
+        function InitializeMap() {
+            
+            lat = ;
+            lng = ;
+            Zoom = ;
+            var model = '32.277946,35.8916259';
+            var latlng = new google.maps.LatLng(lat, lng);
+            var value = model.split(',').map(Number);
+            
+            var myOptions =
+            {
+                zoom: Zoom,
+                center: new google.maps.LatLng(value[0], value[1]),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("divmap"), myOptions);
+        }
+
+        function markicons() {
+            debugger;
+            InitializeMap();
+            var ltlng = [];
+            var Name = [];
+            var Longitude = [];
+            var Lattitude = [];
+            var URLs = [];
+
+            ltlng.push(new google.maps.LatLng(32.277946,35.8916259));
+            Name.push('متحف آثار جرش');
+            
+            //Longitude.push('<%=item.longt%>');
+             //Lattitude.push('<%=item.latt%>');
+
+            for (var i = 0; i <= ltlng.length; i++) {
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: ltlng[i],
+                    icon:"/Content/ClientTheme/en/images/location2.png"
+                });
+
+                //bounds.extend(marker.position);
+
+            }
+
+            //map.setCenter(marker);
+            //map.fitBounds(bounds);
+
+        }
+
+        window.onload = markicons();
+
+
+    </script>
+
+
+
+
+
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c289ebc18efef12"></script>
+    </body>
+</html>
+
+
