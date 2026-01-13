@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 // تأكد من صحة مسار الصورة في مشروعك
 import qassimBanner from "./QasPics/ChatGPT Image 13 يناير 2026، 01_10_43 ص.png";
+import AlshnanhTower from "./QasPics/برج الشنانةPNG.png"
+import Binaqeel from "./QasPics/قصر بن عقيّلPNG.png"
 
 const Qassim = ({ darkMode, language, t }) => {
     const [selectedItem, setSelectedItem] = useState(null);
 
-    // بيانات المعالم 
+    // بيانات الآثار التاريخية (تظهر في النافذة المنبثقة)
     const landmarksData = {
         shananah: { 
             title: language === "ar" ? "برج الشنانة" : "Al-Shananah Tower", 
             desc: language === "ar"
-            ? "يعتبر برج الشنانة من أبرز المعالم التاريخية في منطقة القصيم، ويقع في محافظة الرس. شُيد كبرج للمراقبة في القرن الثاني عشر الهجري ويبلغ ارتفاعه حوالي 27 متراً."
-            : "Al-Shananah Tower is one of the most prominent historical landmarks in Qassim, located in Ar Rass. It was built as an observation tower in the 12th century AH and stands about 27 meters tall.", 
-            img: qassimBanner 
+            ? "شُيد في القرن الثاني عشر الهجري في محافظة الرس، ويعد شاهداً تاريخياً على الصمود والبراعة المعمارية الطينية."
+            : "Built in the 12th century AH in Ar Rass, it stands as a historical witness to resilience and mud-brick architectural ingenuity.", 
+            img: AlshnanhTower 
         },
-        musawkaf: { 
-            title: language === "ar" ? "سوق المسوكف" : "Al-Musawkaf Market", 
+        fayda: { 
+            title: language === "ar" ? "قصر بن عقيّل" : "Bin Aqeel Palace", 
             desc: language === "ar"
-            ? "سوق شعبي تراثي يقع في قلب عنيزة، يضم العديد من المحلات التي تبيع المنتجات التقليدية والحرف اليدوية، ويعد مركزاً للفعاليات السياحية."
-            : "A traditional heritage market located in the heart of Unaizah, featuring shops for traditional products and handicrafts, and serves as a center for tourism events.", 
-            img: qassimBanner 
+            ? "من القصور التاريخية البارزة التي تعكس النمط العمراني القديم في المنطقة وأهميتها السياسية والاجتماعية."
+            : "One of the prominent historical palaces reflecting the ancient architectural style and the region's political and social importance.", 
+            img: Binaqeel 
         }
     };
 
@@ -58,74 +60,78 @@ const Qassim = ({ darkMode, language, t }) => {
 
             <main style={{ maxWidth: 1000, margin: "0 auto", padding: "60px 20px" }}>
 
-                {/* قسم النشأة والتاريخ */}
+                {/* 1. نشأة المنطقة */}
                 <section style={sectionBoxStyle(darkMode)}>
                     <h2 style={h2Style(t.dir)}>
-                        {language === "ar" ? "النشأة والأهمية التاريخية" : "Origin and Historical Significance"}
+                        • {language === "ar" ? "نشأة المنطقة" : "Region Origin"}
                     </h2>
                     <p style={pStyle}>
                         {language === "ar"
-                            ? "يعود تاريخ الاستيطان في القصيم إلى عصور ما قبل التاريخ، وتعتبر قلب نجد النابض. برزت كمركز تجاري وزراعي هام على مر العصور."
-                            : "Settlement in Qassim dates back to prehistoric times, and it is considered the heart of Najd. It emerged as an important commercial and agricultural center through the ages."}
-                    </p>
-                    <p style={pStyle}>
-                        <strong>{language === "ar" ? "سبب التسمية:" : "Origin of Name:"}</strong>{" "}
-                        {language === "ar"
-                            ? "سُميت القصيم بهذا الاسم نسبة إلى 'القصيمة' وهي الأرض الرملية التي تنبت شجر الغضا والارطى."
-                            : "Qassim was named after 'Al-Qassimah', which refers to sandy lands that grow Ghadha and Arta trees."}
+                            ? "تقع القصيم في قلب المملكة العربية السعودية، وتشتهر بخصوبة أراضيها ووفرة مياهها الجوفية. نشأت كواحة زراعية وتجارية هامة وسط نجد، واكتسبت اسمها من 'القصيمة' وهي الأرض التي تنبت شجر الغضا."
+                            : "Located in the heart of Saudi Arabia, Qassim is famous for its fertile land and abundant groundwater. It emerged as an important agricultural and commercial oasis in Najd."}
                     </p>
                 </section>
 
-                {/* قسم المعالم التاريخية */}
+                {/* 2. أهم الحضارات التي استوطنت المنطقة */}
+                <section style={sectionBoxStyle(darkMode)}>
+                    <h2 style={h2Style(t.dir)}>
+                        • {language === "ar" ? "أهم الحضارات" : "Major Civilizations"}
+                    </h2>
+                    <p style={pStyle}>
+                        {language === "ar"
+                            ? "شهدت المنطقة استيطاناً بشرياً منذ عصور ما قبل التاريخ، وتعاقبت عليها قبائل العرب الكبرى. كما برزت في العصر الإسلامي كمحطة رئيسية على طريق الحج البصري الشهير."
+                            : "The region has seen human settlement since prehistoric times, inhabited by major Arabian tribes. It flourished in the Islamic era as a key stop on the famous Basra pilgrimage route."}
+                    </p>
+                </section>
+
+                {/* 3. أهم الآثار التاريخية وأقدمها */}
                 <section style={{ marginBottom: "50px" }}>
                     <h2 style={h2Style(t.dir)}>
-                        {language === "ar" ? "أهم المعالم" : "Top Landmarks"}
+                        • {language === "ar" ? "أهم الآثار التاريخية" : "Ancient Landmarks"}
                     </h2>
                     <div style={gridStyle}>
-                        <button
-                            onClick={() => setSelectedItem(landmarksData.shananah)}
-                            style={itemBtnStyle(darkMode, 0)}
-                        >
+                        <button onClick={() => setSelectedItem(landmarksData.shananah)} style={itemBtnStyle(darkMode, 0)}>
                             {language === "ar" ? "برج الشنانة" : "Al-Shananah Tower"}
                         </button>
-
-                        <button
-                            onClick={() => setSelectedItem(landmarksData.musawkaf)}
-                            style={itemBtnStyle(darkMode, 1)}
-                        >
-                            {language === "ar" ? "سوق المسوكف" : "Al-Musawkaf Market"}
+                        <button onClick={() => setSelectedItem(landmarksData.fayda)} style={itemBtnStyle(darkMode, 1)}>
+                            {language === "ar" ? "قصر بن عقيّل" : "Bin Aqeel Palace"}
                         </button>
                     </div>
                 </section>
 
-                {/* قسم أكلات المنطقة */}
+                {/* 4. عادات وتقاليد توارثتها أجيال المنطقة */}
                 <section style={sectionBoxStyle(darkMode)}>
                     <h2 style={h2Style(t.dir)}>
-                        {language === "ar" ? "أكلات أهل المنطقة" : "Traditional Food"}
+                        • {language === "ar" ? "عادات وتقاليد المنطقة" : "Customs and Traditions"}
                     </h2>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                        <div>
-                            <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>
-                                {language === "ar" ? "١. الكليجا" : "1. Kleja"}
-                            </h3>
-                            <p style={pStyle}>
-                                {language === "ar"
-                                    ? "تعد الكليجا الرمز الغذائي الأول للقصيم، وهي عبارة عن قرص محشو بالدبس والهيل واللومي، وتشتهر مدينة بريدة بمهرجان الكليجا السنوي."
-                                    : "Kleja is the primary food symbol of Qassim, a biscuit stuffed with molasses and cardamom. Buraidah is famous for its annual Kleja festival."}
-                            </p>
-                        </div>
-                        <hr style={{ opacity: 0.1 }} />
-                        <div>
-                            <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>
-                                {language === "ar" ? "٢. المرقوق والمطازيز" : "2. Margoog & Matazeez"}
-                            </h3>
-                            <p style={pStyle}>
-                                {language === "ar"
-                                    ? "من الأطباق الشعبية الدسمة التي تعتمد على العجين واللحم والخضروات، وتعتبر من الوجبات الأساسية في المائدة القصيمية خصوصاً في الشتاء."
-                                    : "Traditional hearty dishes based on dough, meat, and vegetables, considered essential meals in the Qassimi kitchen, especially during winter."}
-                            </p>
-                        </div>
+                    <div style={{ marginBottom: "20px" }}>
+                        <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>- {language === "ar" ? "عادات" : "Customs"}</h3>
+                        <p style={pStyle}>
+                            {language === "ar"
+                                ? "يُعرف أهل القصيم بالكرم والاشتغال بالتجارة والفلاحة. ومن أبرز عاداتهم 'المجالس المفتوحة' والاحتفاء بمواسم الحصاد مثل مهرجانات التمور الكبرى."
+                                : "The people of Qassim are known for hospitality, trade, and farming. Notable traditions include 'Open Councils' and celebrating harvest seasons like the major date festivals."}
+                        </p>
                     </div>
+                    <div>
+                        <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>- {language === "ar" ? "مأكولات" : "Mäkulat (Food)"}</h3>
+                        <p style={pStyle}>
+                            {language === "ar"
+                                ? "تشتهر المنطقة بـ 'الكليجا' القصيمية، و'المطازيز'، و'المرقوق'، بالإضافة إلى أفخر أنواع التمور مثل 'السكري' الذي يعد سفيراً للمنطقة عالمياً."
+                                : "The region is famous for 'Kleja', 'Matazeez', and 'Margoog', in addition to the finest dates like 'Sukkari', the region's global ambassador."}
+                        </p>
+                    </div>
+                </section>
+
+                {/* 5. تأثير رؤية 2030 على المنطقة */}
+                <section style={sectionBoxStyle(darkMode)}>
+                    <h2 style={h2Style(t.dir)}>
+                        • {language === "ar" ? "تأثير رؤية 2030 على المنطقة" : "Vision 2030 Impact"}
+                    </h2>
+                    <p style={pStyle}>
+                        {language === "ar"
+                            ? "ساهمت الرؤية في تحويل القصيم إلى وجهة للسياحة الزراعية والريفية، ودعم الصناعات الغذائية التحويلية، بالإضافة إلى تطوير المواقع التراثية لتصبح مراكز ثقافية واقتصادية مستدامة."
+                            : "Vision 2030 has helped transform Qassim into a destination for agritourism and rural tourism, supporting food industries and developing heritage sites into sustainable cultural centers."}
+                    </p>
                 </section>
             </main>
 
@@ -133,42 +139,25 @@ const Qassim = ({ darkMode, language, t }) => {
             {selectedItem && (
                 <div style={modalOverlayStyle} onClick={() => setSelectedItem(null)}>
                     <div style={modalCardStyle(darkMode)} onClick={e => e.stopPropagation()}>
-                        <button
-                            style={closeBtnStyle}
-                            onClick={() => setSelectedItem(null)}
-                            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-                            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
-                        >
-                            ✕
-                        </button>
-
+                        <button style={closeBtnStyle} onClick={() => setSelectedItem(null)}>✕</button>
                         <img src={selectedItem.img} alt={selectedItem.title} style={cardImgStyle} />
                         <div style={{ padding: "25px" }}>
                             <h2 style={{ color: "#8a9b3a", marginBottom: "10px" }}>{selectedItem.title}</h2>
-                            <p style={{ color: darkMode ? "#ccc" : "#444", lineHeight: "1.7" }}>
-                                {selectedItem.desc}
-                            </p>
+                            <p style={{ color: darkMode ? "#ccc" : "#444", lineHeight: "1.7" }}>{selectedItem.desc}</p>
                         </div>
                     </div>
                 </div>
             )}
 
             <style>{`
-                @keyframes slideUp {
-                    from { opacity: 0; transform: translateY(60px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-
-                @keyframes fadeUp {
-                    from { opacity: 0; transform: translateY(15px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
+                @keyframes slideUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
             `}</style>
         </div>
     );
 };
 
-// الستايلات
+// الستايلات المساعدة
 const sectionBoxStyle = (darkMode) => ({
     background: darkMode ? "rgba(255,255,255,0.05)" : "#fff",
     padding: "35px",
@@ -252,7 +241,6 @@ const closeBtnStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "transform 0.2s ease, background 0.2s ease",
     zIndex: 10
 };
 
