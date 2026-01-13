@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 
-const AlJouf = ({ darkMode, language, t }) => {
+const EasternProvince = ({ darkMode, language, t }) => {
     const [selectedItem, setSelectedItem] = useState(null);
 
     const landmarksData = {
-        maridCastle: { 
-            title: language === "ar" ? "قلعة مارد" : "Marid Castle", 
+        jawatha: { 
+            title: language === "ar" ? "مسجد جواثا" : "Jawatha Mosque", 
             desc: language === "ar"
-            ? "قلعة حربية شامخة في دومة الجندل يعود تاريخها لأكثر من 2000 عام، وتُعد من أهم القلاع الأثرية في المملكة."
-            : "A majestic military fortress in Dumat al-Jandal dating back over 2000 years, one of the Kingdom's key sites.", 
-            img: "AL-JawfPics/The historic Mard Castle.jpg" // ضع هنا صورة لقلعة مارد التاريخية
+            ? "يُعد ثاني مسجد صُليت فيه صلاة الجمعة في الإسلام بعد المسجد النبوي، ويعود تاريخه إلى السنة السابعة للهجرة في الأحساء."
+            : "The second mosque to hold Friday prayers in Islam after the Prophet's Mosque, dating back to 7 AH in Al-Ahsa.", 
+            img: "EasternPics/مسجد جواثا.jpg" // ضع هنا صورة لمسجد جواثا التاريخي
         },
-        omarMosque: { 
-            title: language === "ar" ? "مسجد عمر بن الخطاب" : "Omar bin Al-Khattab Mosque", 
+        tarout: { 
+            title: language === "ar" ? "قلعة تاروت" : "Tarout Castle", 
             desc: language === "ar"
-            ? "يتميز بمئذنته التي تُعد أول مئذنة في الإسلام، بُني أثناء توجه الخليفة عمر بن الخطاب لفتح بيت المقدس."
-            : "Famous for its minaret, the first in Islam, built during Caliph Omar's journey to Jerusalem.", 
-            img: "AL-JawfPics/Omar Mosque and its minaret.jpg" // ضع هنا صورة لمسجد عمر ومئذنته الشهيرة
+            ? "بُنيت فوق تل أثري يعود لآلاف السنين في القطيف، وتضم آثاراً فينيقية ودلمونية عريقة."
+            : "Built on an archaeological mound dating back thousands of years in Qatif, featuring Phoenician and Dilmunite remains.", 
+            img: "EasternPics/قلعة تاروj.webp" // ضع هنا صورة لقلعة تاروت
         },
-        rajajil: { 
-            title: language === "ar" ? "أعمدة الرجاجيل" : "Rajajil Columns", 
+        qaraMount: { 
+            title: language === "ar" ? "جبل القارة" : "Al-Qarah Mountain", 
             desc: language === "ar"
-            ? "مجموعة من الأعمدة الحجرية الغامضة التي تعود للعصر النحاسي (حوالي 6500 عام)، تقع جنوب سكاكا."
-            : "Mysterious stone columns dating back to the Chalcolithic era (approx. 6500 years ago).", 
-            img: "AL-JawfPics/The ancient Rajajil Columns.jpg" // ضع هنا صورة لأعمدة الرجاجيل الأثرية
+            ? "يتميز بتشكيلاته الصخرية الفريدة وكهوفه الباردة صيفاً، وهو موقع مسجل في قائمة اليونسكو للتراث العالمي."
+            : "Known for its unique rock formations and cool caves in summer, it's a UNESCO World Heritage site.", 
+            img: "EasternPics/جبل القارة.jpg" // ضع هنا صورة لجبل القارة من الداخل أو الخارج
         },
-        shwaihitiya: { 
-            title: language === "ar" ? "موقع الشويحطية" : "Al-Shwaihitiya Site", 
+        uquir: { 
+            title: language === "ar" ? "ميناء العقير التاريخي" : "Uqair Historic Port", 
             desc: language === "ar"
-            ? "أقدم موقع استيطان بشري في الجزيرة العربية، حيث يعود تاريخه إلى أكثر من 1.3 مليون سنة."
-            : "The oldest human settlement site in the Arabian Peninsula, dating back over 1.3 million years.", 
-            img: "AL-JawfPics/The archaeological site of Al-Shuwayhitiyah.jpg" // ضع هنا صورة لموقع الشويحطية الأثري
+            ? "أقدم ميناء بحري على الخليج العربي، شهد اتفاقيات تاريخية مهمة في مسيرة تأسيس المملكة العربية السعودية."
+            : "The oldest seaport on the Arabian Gulf, witness to key historical treaties in the Kingdom's foundation.", 
+            img: "EasternPics/مبنى ميناء العقير الأثري.jpg" // ضع هنا صورة لمبنى ميناء العقير الأثري
         }
     };
 
@@ -46,11 +46,11 @@ const AlJouf = ({ darkMode, language, t }) => {
         }}>
 
             <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
-                {/* ضع هنا صورة بانورامية لمزارع الزيتون في الجوف أو قلعة مارد */}
-                <img src="AL-JawfPics/AljoufBanner.png" alt="Al-Jouf" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                {/* ضع هنا صورة بانورامية لواحة الأحساء أو واجهة الخبر البحرية */}
+                <img src="EasternPics/EastBanner.png" alt="Eastern Province" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <h1 style={{ color: "white", fontSize: "3rem", fontWeight: "bold" }}>
-                        {language === "ar" ? "منطقة الجوف" : "Al-Jouf Region"}
+                        {language === "ar" ? "المنطقة الشرقية" : "Eastern Province"}
                     </h1>
                 </div>
             </header>
@@ -61,8 +61,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• نشأة المنطقة" : "• Region Origin"}</h2>
                     <p style={pStyle}>
                         {language === "ar" 
-                        ? "تُعد الجوف من أقدم البقاع المأهولة في الجزيرة العربية (1.3 مليون سنة). عُرفت تاريخياً باسم 'أدوماتو' وكانت عاصمة لمملكة قيدار العريقة، كما عُرفت بـ 'جوف آل عمرو' و 'جوف السرحان'."
-                        : "Al-Jouf is one of the oldest inhabited areas (1.3 million years). Historically known as 'Adumatu', it was the capital of the ancient Kingdom of Qedar."}
+                        ? "تُعد من أقدم المناطق المأهولة (5000 عام). عُرفت قديماً بإقليم 'البحرين'، وكانت مركزاً تجارياً يربط حضارات العالم. وفي العصر الحديث، أصبحت عاصمة النفط العالمية بعد اكتشاف 'بئر الخير' عام 1938م."
+                        : "One of the oldest inhabited regions (5000 years). Known historically as 'Bahrain' region, it was a global trade hub. In modern times, it became the world's oil capital after discovering 'Prosperity Well' in 1938."}
                     </p>
                 </section>
 
@@ -70,8 +70,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• أهم الحضارات" : "• Key Civilizations"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "شهدت الجوف تعاقب حضارات كبرى؛ من العصر الحجري ومملكة قيدار، إلى الأنباط والرومان، وصولاً إلى العصر الإسلامي حيث فتحها خالد بن الوليد وبُني فيها أحد أقدم مساجد الإسلام."
-                        : "Al-Jouf hosted major civilizations: from the Stone Age and Qedar to the Nabataeans, Romans, and the Islamic era."}
+                        ? "احتضنت حضارات العبيد ودلمون والجرهاء الأسطورية. ودخل أهلها الإسلام طواعية عبر وفد عبد القيس، مما جعلها من أوائل المناطق التي اعتنقت الإسلام وبنت مساجده التاريخية."
+                        : "Home to Ubaid, Dilmun, and the legendary Gerrha civilizations. Its people embraced Islam early through the Abdul Qays delegation."}
                     </p>
                 </section>
 
@@ -87,11 +87,11 @@ const AlJouf = ({ darkMode, language, t }) => {
                 </section>
 
                 <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• عادات وتقاليد أصيلة" : "• Authentic Traditions"}</h2>
+                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• عادات وتقاليد المنطقة" : "• Eastern Traditions"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "تشتهر الجوف برقصة 'الدحة' (أنفاس الأسد) وفن السامري. ويُعرف أهلها بكرم الضيافة وتقديم 'حلوة الجوف'، ومن تقاليدهم وليمة 'عشاء الخروف' في اليوم الرابع من الزواج."
-                        : "Famous for the 'Dahha' dance and Samri art. Known for hospitality, 'Helwat Al-Jouf' dates, and unique wedding feasts."}
+                        ? "تتميز المنطقة بـ 'القرقيعان' وأهازيج 'النهام' البحرية، وعادة 'الغبقة' الرمضانية. كما يبرز 'دق الهريس' كعادة تعاونية اجتماعية أصيلة تعكس تلاحم أهل المنطقة."
+                        : "Known for 'Gerga'oon', 'Nahham' sea chants, and 'Ghabga' gatherings. 'Dag Al-Harees' is a traditional communal activity reflecting social solidarity."}
                     </p>
                 </section>
 
@@ -99,12 +99,12 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• المأكولات الشعبية" : "• Traditional Cuisine"}</h2>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                         <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "البكيلة:" : "Al-Bakeela:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "حلوى من تمر حلوة الجوف المكنوز مع دقيق السمح والسمن البري." : "A dessert made of dates, Samh flour, and local ghee."}</p>
+                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "العيش الحساوي:" : "Hasawi Rice:"}</strong>
+                            <p style={pStyle}>{language === "ar" ? "أرز أحمر فريد يُزرع في الأحساء، يتميز بقيمته الغذائية العالية وطعمه الغني." : "A unique red rice grown in Al-Ahsa, known for its high nutritional value and rich taste."}</p>
                         </div>
                         <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "التطماج (المثقلة):" : "Al-Tatmaj:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "طبق شتوي من الجريش المطبوخ مع السمح والبصل والسمن." : "A winter dish of crushed wheat cooked with Samh, onions, and ghee."}</p>
+                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "المفلق:" : "Mufallaq:"}</strong>
+                            <p style={pStyle}>{language === "ar" ? "طبق من حبوب القمح المجروشة يُطبخ عادة مع اللحم أو الروبيان." : "A dish made of crushed wheat grains, typically cooked with meat or shrimp."}</p>
                         </div>
                     </div>
                 </section>
@@ -113,8 +113,8 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• تأثير رؤية 2030" : "• Vision 2030 Impact"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "حولت الرؤية الجوف إلى عاصمة للطاقة المتجددة (رياح دومة الجندل وشمس سكاكا)، وعاصمة للزيتون بأكثر من 23 مليون شجرة، مع تطوير مواقعها الأثرية كوجهات سياحية عالمية."
-                        : "Vision 2030 turned Al-Jouf into a renewable energy hub and the olive capital with over 23 million trees."}
+                        ? "تركز الرؤية على تطوير واحة الأحساء ومدينة العقير السياحية، وإنشاء مراكز إبداعية مثل 'إثراء'، مع تعزيز مكانة المنطقة كمركز لوجستي عالمي يربط المملكة بدول الخليج."
+                        : "Vision 2030 focuses on developing Al-Ahsa Oasis, Uqair tourism, and cultural hubs like 'Ithra', while enhancing its role as a global logistics center."}
                     </p>
                 </section>
 
@@ -122,13 +122,13 @@ const AlJouf = ({ darkMode, language, t }) => {
                     <h2 style={h2Style(t.dir)}>{language === "ar" ? "• الموقع الجغرافي" : "• Geographical Location"}</h2>
                     <p style={pStyle}>
                         {language === "ar"
-                        ? "تقع منطقة الجوف في شمال غرب المملكة العربية السعودية، وتُعد بوابة الشمال العريقة، وتتميز بخصوبة أرضها ووفرة مياهها الجوفية."
-                        : "Located in northwestern Saudi Arabia, Al-Jouf is the ancient gateway to the north, known for its fertile land."}
+                        ? "تمتد المنطقة الشرقية على طول الساحل الغربي للخليج العربي، وهي أكبر مناطق المملكة مساحةً، وتمثل البوابة التجارية والاستراتيجية لدول الخليج."
+                        : "Stretching along the Arabian Gulf, it is the largest region in Saudi Arabia and the strategic gateway to the Gulf states."}
                     </p>
                     <div style={{ height: "400px", borderRadius: "15px", overflow: "hidden", marginTop: "20px", border: "1px solid #ddd" }}>
                         <iframe 
                             title="Map" width="100%" height="100%" frameBorder="0" 
-                            src="http://googleusercontent.com/maps.google.com/4"
+                            src="http://googleusercontent.com/maps.google.com/7"
                             allowFullScreen>
                         </iframe>
                     </div>
@@ -197,4 +197,4 @@ const closeBtnStyle = {
     borderRadius: "50%", border: "none", background: "#00000080", color: "#fff", cursor: "pointer"
 };
 
-export default AlJouf;
+export default EasternProvince;
