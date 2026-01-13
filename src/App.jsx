@@ -1,20 +1,25 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home/Home";
+import Home from "./pages/1-Home/Home";
+import QassimPage from "./pages/AL-Qassim/Qassim";
 import "./App.css";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState("ar");
 
+  // تأثير تغيير لون الخلفية للـ body بالكامل عند تبديل الوضع الليلي
   useEffect(() => {
     if (darkMode) {
       document.body.style.background = "#2a2520";
-      document.getElementById('root').style.background = "rgba(42, 37, 32, 0.95)";
+      if(document.getElementById('root')) 
+        document.getElementById('root').style.background = "rgba(42, 37, 32, 0.95)";
     } else {
       document.body.style.background = "#c5a98a";
-      document.getElementById('root').style.background = "rgba(238, 214, 184, 0.85)";
+      if(document.getElementById('root'))
+        document.getElementById('root').style.background = "rgba(238, 214, 184, 0.85)";
     }
   }, [darkMode]);
 
@@ -48,16 +53,26 @@ export default function App() {
   const t = translations[language];
 
   return (
-    <>
-      <Navbar 
-        darkMode={darkMode} 
-        setDarkMode={setDarkMode}
-        language={language}
-        setLanguage={setLanguage}
-        t={t}
-      />
-      <Home darkMode={darkMode} t={t} />
-      <Footer darkMode={darkMode} />
-    </>
+    <Router>
+      <div className={darkMode ? "dark-app" : "light-app"}>
+        <Navbar 
+          darkMode={darkMode} 
+          setDarkMode={setDarkMode}
+          language={language}
+          setLanguage={setLanguage}
+          t={t}
+        />
+        
+        <Routes>
+          {/* الصفحة الرئيسية */}
+          <Route path="/" element={<Home darkMode={darkMode} t={t} />} />
+          
+          {/* صفحة القصيم */}
+          <Route path="/qassim" element={<QassimPage darkMode={darkMode} language={language} t={t} />} />
+        </Routes>
+
+        <Footer darkMode={darkMode} />
+      </div>
+    </Router>
   );
 }
