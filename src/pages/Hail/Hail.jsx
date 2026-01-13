@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // استبدل هذا المسار بصورة لبانر حائل في مشروعك
 import hailBanner from "./HailPics/ChatGPT Image 13 يناير 2026، 12_58_20 ص.png"; 
 import jupah from "./HailPics/جبة.jpg"; 
-import castlerAerf from "./HailPics/جبة.jpg"; 
+import castlerAerf from "./HailPics/قلعة .jpg"; 
 
 
 const Hail = ({ darkMode, language, t }) => {
