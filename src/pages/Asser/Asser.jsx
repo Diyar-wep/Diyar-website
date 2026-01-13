@@ -139,6 +139,38 @@ const Asir = ({ darkMode, language, t }) => {
                             : "Through the 'Peaks and Traditions' strategy, Vision 2030 aims to transform Asir into a global year-round tourist destination, developing mega-projects like Soudah Development and Abha Airport expansion."}
                     </p>
                 </section>
+
+                {/* الموقع الجغرافي - Geographical Location */}
+<section style={sectionBoxStyle(darkMode)}>
+    <h2 style={h2Style(t.dir)}>
+        • {language === "ar" ? "الموقع الجغرافي" : "Geographical Location"}
+    </h2>
+    <p style={pStyle}>
+        {language === "ar"
+            ? "تقع منطقة عسير في جنوب غرب المملكة العربية السعودية، وتتميز بتنوع تضاريسي فريد يجمع بين السهول الساحلية (تهامة) والقمم الجبلية العالية (السراة) التي تضم أعلى قمة في المملكة."
+            : "Asir region is located in southwestern Saudi Arabia, featuring a unique diverse terrain that combines coastal plains (Tihama) and high mountain peaks (Al-Sarawat), including the highest peak in the Kingdom."}
+    </p>
+    <div style={{ 
+        height: "400px", 
+        borderRadius: "20px", 
+        overflow: "hidden", 
+        marginTop: "20px", 
+        border: darkMode ? "1px solid #444" : "1px solid #ddd",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+    }}>
+        <iframe 
+            title="Asir Map" 
+            width="100%" 
+            height="100%" 
+            frameBorder="0" 
+            style={{ border: 0 }}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119744.156555545!2d42.45524671406251!3d18.216398900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e4f45145b2b2a1%3A0x96f6a73c09b027d1!2sAbha%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1700000000000"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
             </main>
 
             {/* Modal */}

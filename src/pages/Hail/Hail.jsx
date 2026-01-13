@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // استبدل هذا المسار بصورة لبانر حائل في مشروعك
 import hailBanner from "./HailPics/ChatGPT Image 13 يناير 2026، 12_58_20 ص.png"; 
 import jupah from "./HailPics/جبة.jpg"; 
-import castlerAerf from "./HailPics/جبة.jpg"; 
+import castlerAerf from "./HailPics/قلعة.jpg"; 
 
 
 const Hail = ({ darkMode, language, t }) => {
@@ -139,6 +139,39 @@ const Hail = ({ darkMode, language, t }) => {
                             : "Vision 2030 aims to transform Hail into a global tourist and cultural destination, focusing on UNESCO heritage sites, sports tourism (Hail Rally), and supporting modern agricultural projects."}
                     </p>
                 </section>
+
+                {/* الموقع الجغرافي - Geographical Location */}
+<section style={sectionBoxStyle(darkMode)}>
+    <h2 style={h2Style(t.dir)}>
+        • {language === "ar" ? "الموقع الجغرافي" : "Geographical Location"}
+    </h2>
+    <p style={pStyle}>
+        {language === "ar"
+            ? "تقع منطقة حائل في شمال نجد بقلب الجزء الشمالي الغربي للمملكة، وتشتهر بجبالها الشامخة (أجا وسلمى). تعد حائل مركزاً استراتيجياً هاماً، حيث كانت تاريخياً مفترق طرق للقوافل التجارية والحجيج المتجهين نحو مكة المكرمة والمدينة المنورة."
+            : "Located in northern Najd in the heart of north-western Saudi Arabia, Hail is famous for its majestic twin mountain ranges (Aja and Salma). Historically, it served as a strategic crossroads for trade caravans and pilgrims heading to Makkah and Madinah."}
+    </p>
+    <div style={{ 
+        height: "400px", 
+        borderRadius: "20px", 
+        overflow: "hidden", 
+        marginTop: "20px", 
+        border: darkMode ? "1px solid #444" : "1px solid #ddd",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+    }}>
+        <iframe 
+            title="Hail Map" 
+            width="100%" 
+            height="100%" 
+            frameBorder="0" 
+            style={{ border: 0 }}
+            src="http://googleusercontent.com/maps.google.com/3"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
             </main>
 
             {/* Modal */}

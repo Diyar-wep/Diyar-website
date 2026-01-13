@@ -133,6 +133,38 @@ const Qassim = ({ darkMode, language, t }) => {
                             : "Vision 2030 has helped transform Qassim into a destination for agritourism and rural tourism, supporting food industries and developing heritage sites into sustainable cultural centers."}
                     </p>
                 </section>
+
+                {/* الموقع الجغرافي - Geographical Location */}
+                <section style={sectionBoxStyle(darkMode)}>
+                    <h2 style={h2Style(t.dir)}>
+                        • {language === "ar" ? "الموقع الجغرافي" : "Geographical Location"}
+                    </h2>
+                    <p style={pStyle}>
+                        {language === "ar"
+                            ? "تقع منطقة القصيم في وسط المملكة العربية السعودية ضمن إقليم نجد، وتعتبر 'سلة غذاء المملكة' بفضل وفرة مياهها الجوفية وتربتها الخصبة. يمر عبرها وادي الرمة، أطول وادي في الجزيرة العربية، مما يمنحها موقعاً زراعياً واستراتيجياً فريداً."
+                            : "Qassim region is located in the heart of Saudi Arabia within the Najd province. Known as the 'Kingdom's Food Basket' due to its abundant groundwater and fertile soil, it is crossed by Wadi Al-Rummah, the longest valley in the Arabian Peninsula, giving it a unique agricultural and strategic location."}
+                    </p>
+                    <div style={{ 
+                        height: "400px", 
+                        borderRadius: "20px", 
+                        overflow: "hidden", 
+                        marginTop: "20px", 
+                        border: darkMode ? "1px solid #444" : "1px solid #ddd",
+                        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+                    }}>
+                        <iframe 
+                            title="Qassim Map" 
+                            width="100%" 
+                            height="100%" 
+                            frameBorder="0" 
+                            style={{ border: 0 }}
+                            src="http://googleusercontent.com/maps.google.com/4"
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </section>
             </main>
 
             {/* نافذة الكارد المنبثقة (Modal) */}

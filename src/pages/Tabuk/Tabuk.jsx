@@ -138,6 +138,38 @@ const Tabuk = ({ darkMode, language, t }) => {
                             : "Tabuk is the cornerstone of major Vision projects, hosting 'NEOM' (the city of the future), the 'Red Sea Project', and 'Amaala'. These projects redefine the region as a global hub for innovation, ecotourism, and renewable energy."}
                     </p>
                 </section>
+
+                {/* الموقع الجغرافي - Geographical Location */}
+                <section style={sectionBoxStyle(darkMode)}>
+                    <h2 style={h2Style(t.dir)}>
+                        • {language === "ar" ? "الموقع الجغرافي" : "Geographical Location"}
+                    </h2>
+                    <p style={pStyle}>
+                        {language === "ar"
+                            ? "تقع منطقة تبوك في الشمال الغربي من المملكة العربية السعودية، وتعد بوابة جغرافية تربط المملكة بالدول المجاورة. تتميز بساحل طويل على البحر الأحمر وخليج العقبة، وتضم تضاريس متنوعة من جبال لوز الثلجية وصحراء حسمى الحمراء."
+                            : "Tabuk region is located in the northwestern part of Saudi Arabia, serving as a gateway connecting the Kingdom to neighboring countries. It features a long coastline along the Red Sea and the Gulf of Aqaba, with diverse terrains ranging from the snowy Jabal al-Lawz to the red sands of Hisma."}
+                    </p>
+                    <div style={{ 
+                        height: "400px", 
+                        borderRadius: "20px", 
+                        overflow: "hidden", 
+                        marginTop: "20px", 
+                        border: darkMode ? "1px solid #444" : "1px solid #ddd",
+                        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+                    }}>
+                        <iframe 
+                            title="Tabuk Map" 
+                            width="100%" 
+                            height="100%" 
+                            frameBorder="0" 
+                            style={{ border: 0 }}
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.452669865863!2d36.54013217614041!3d28.38350797580393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15a9ec2646603a73%3A0x6a2c286435649b94!2sTabuk%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1715800000000!5m2!1sen!2sus"
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </section>
             </main>
 
             {/* Modal */}
