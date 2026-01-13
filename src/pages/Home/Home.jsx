@@ -1,13 +1,12 @@
 import "./Home.css";
 
-export default function Home() {
+export default function Home({ darkMode, t }) {
   return (
-    <div className="home">
+    <div className={`home ${darkMode ? 'dark-mode' : ''}`} style={{ direction: t.dir }}>
       {/* HERO */}
       <section id="home" className="section hero">
-        <h1 className="hero__title">هنا بنحط صوره</h1>
-        <p className="hero__desc">دِيار , إكتشف دِيارك</p>
-
+        <h1 className="hero__title">{t.heroTitle}</h1>
+        <p className="hero__desc">{t.heroDesc}</p>
         <div className="hero__links">
           <a 
             href="#about"
@@ -19,7 +18,7 @@ export default function Home() {
               }
             }}
           >
-            الخط الزمني
+            {t.timeline}
           </a>
           <a 
             href="#features"
@@ -31,7 +30,7 @@ export default function Home() {
               }
             }}
           >
-            الخريطة
+            {t.map}
           </a>
           <a 
             href="#contact"
@@ -40,22 +39,22 @@ export default function Home() {
               window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }}
           >
-            تواصل معنا
+            {t.contact}
           </a>
         </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" className="section">
-        <h2 className="section__title">الخط الزمني</h2>
+        <h2 className="section__title">{t.timelineSection}</h2>
       </section>
 
       {/* FEATURES */}
       <section id="features" className="section">
-        <h2 className="section__title">الخريطة</h2>
+        <h2 className="section__title">{t.mapSection}</h2>
         <ul className="features">
           <li className="features__item">
-              هنا بنحط الخريطة التفاعلية
+            {t.mapContent}
           </li>
         </ul>
       </section>
