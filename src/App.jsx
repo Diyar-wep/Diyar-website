@@ -1,13 +1,13 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
+import React from 'react';
+import Home from './pages/Home';
+import { ThemeLanguageProvider } from './context/ThemeLanguageContext';
 
-export default function App() {
+function App() {
   return (
-    <>
-      <Navbar />
+    <ThemeLanguageProvider>
       <Home />
-      <Footer />
-    </>
+    </ThemeLanguageProvider>
   );
 }
+
+export default App;
