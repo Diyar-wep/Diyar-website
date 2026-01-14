@@ -164,7 +164,7 @@ const Hail = ({ darkMode, language, t }) => {
             height="100%" 
             frameBorder="0" 
             style={{ border: 0 }}
-            src="http://googleusercontent.com/maps.google.com/3"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226443.08214097013!2d41.510024710432006!3d27.52607903993689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x157646e696d0faa3%3A0xa823a286278a8880!2sHail!5e0!3m2!1sen!2ssa!4v1768384315257!5m2!1sen!2ssa"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade">

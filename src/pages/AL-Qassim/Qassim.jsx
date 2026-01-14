@@ -158,7 +158,7 @@ const Qassim = ({ darkMode, language, t }) => {
                             height="100%" 
                             frameBorder="0" 
                             style={{ border: 0 }}
-                            src="http://googleusercontent.com/maps.google.com/4"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1830324.6988939776!2d41.82910130192446!3d26.363618514452146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x157f59ad6fe2be3b%3A0xe1fb621d3b0d00aa!2sAl%20Qassim%20Province!5e0!3m2!1sen!2ssa!4v1768384362832!5m2!1sen!2ssa"
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade">

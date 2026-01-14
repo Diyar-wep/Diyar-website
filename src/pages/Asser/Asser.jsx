@@ -164,7 +164,7 @@ const Asir = ({ darkMode, language, t }) => {
             height="100%" 
             frameBorder="0" 
             style={{ border: 0 }}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119744.156555545!2d42.45524671406251!3d18.216398900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e4f45145b2b2a1%3A0x96f6a73c09b027d1!2sAbha%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1700000000000"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930532.622290793!2d41.50814650360661!3d19.082567303711464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e0170a439633013%3A0x9b1f03b6118c1c1b!2sAseer%20Province!5e0!3m2!1sen!2ssa!4v1768384416126!5m2!1sen!2ssa"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade">

@@ -163,8 +163,7 @@ const Tabuk = ({ darkMode, language, t }) => {
                             height="100%" 
                             frameBorder="0" 
                             style={{ border: 0 }}
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.452669865863!2d36.54013217614041!3d28.38350797580393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15a9ec2646603a73%3A0x6a2c286435649b94!2sTabuk%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1715800000000!5m2!1sen!2sus"
-                            allowFullScreen
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112309.66068874947!2d36.483501594416026!3d28.39882531987388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15a9ad0594132365%3A0x6f40e3c6b6139acf!2sTabuk!5e0!3m2!1sen!2ssa!4v1768384390116!5m2!1sen!2ssa"
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
