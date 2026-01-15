@@ -1,37 +1,99 @@
 import React, { useState } from "react";
+import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-const Madinah = ({ darkMode, language, t }) => {
-    const [selectedItem, setSelectedItem] = useState(null);
+// استيراد الصور بناءً على المجلد MedinaPics الموضح في ملفاتك
+import MadinaBanner from "./MedinaPics/MadinaBanner.png";
+import AlBaqi from "./MedinaPics/al_baqi.jpg";
+import GreenDome from "./MedinaPics/green_dome.jpg";
+import MountUhud from "./MedinaPics/جبل أحد.jpg";
+import QubaMosque from "./MedinaPics/مسجد قباء.jpg";
+import NabawiUmbrellas from "./MedinaPics/مظلات المسجد النبوي.jpeg";
 
-    const landmarksData = {
-        prophetMosque: { 
-            title: language === "ar" ? "المسجد النبوي الشريف" : "The Prophet's Mosque", 
-            desc: language === "ar"
-            ? "ثاني أقدس المساجد، يضم الروضة الشريفة وقبر النبي ﷺ، وهو مركز الإشعاع الحضاري الأول في الإسلام."
-            : "The second holiest mosque, housing the Rawdah and the Prophet's tomb, the first center of Islamic civilization.", 
-            img: "MedinaPics/القبة الخضراء.jpg" // ضع هنا صورة للمسجد النبوي والقبة الخضراء
+const Medina = () => {
+    const { darkMode, language } = useThemeLanguage();
+    const [activeLandmark, setActiveLandmark] = useState(0);
+
+    const translations = {
+        ar: {
+            dir: 'rtl',
+            title: "المدينة المنورة",
+            subtitle: "طيبة الطيبة ومأرز الإيمان",
+            originTitle: "تاريخ الهجرة",
+            originDesc: "المدينة المنورة هي أول عاصمة في تاريخ الإسلام، وثاني أقدس البقاع. احتضنت النبي محمد ﷺ وصحابته الكرام بعد الهجرة، ومنها انطلق نور الإسلام لتملأ الآفاق بالعدل والنور.",
+            civTitle: "إرث نبوي",
+            civDesc: "تجمع المدينة بين الروحانية العالية والمعالم التاريخية المرتبطة بالسيرة النبوية. شهدت أرضها نزول الكثير من الآيات القرآنية، وتضم المسجد النبوي الشريف الذي يمثل قلباً نابضاً للمدينة.",
+            landmarksTitle: "شواهد النبوة",
+            traditionsTitle: "أخلاق أهل المدينة",
+            traditionsDesc: "يشتهر أهل المدينة المنورة باللين وحسن الجوار وكرم الضيافة المتوارث من عهد الأنصار. ترتبط عاداتهم بالتمور الفاخرة (خاصة العجوة) واستقبال الزوار والزائرين بحفاوة بالغة.",
+            foodTitle: "مذاق مديني",
+            visionTitle: "رؤية المستقبل 2030",
+            visionDesc: "تهدف الرؤية إلى إثراء تجربة الزوار الدينية والثقافية، وتطوير المواقع التاريخية وتوسعة ساحات المسجد النبوي، بالإضافة إلى تعزيز مكانة المدينة كوجهة عالمية للمعرفة والثقافة الإسلامية.",
+            geoTitle: "الموقع الجغرافي",
+            geoDesc: "تقع المدينة المنورة في غرب المملكة العربية السعودية، وتحيط بها الجبال والحرات البركانية، وتشتهر بتربتها الخصبة التي تنتج أجود أنواع التمور في العالم.",
         },
-        qubaMosque: { 
-            title: language === "ar" ? "مسجد قباء" : "Quba Mosque", 
-            desc: language === "ar"
-            ? "أول مسجد بُني في الإسلام، شارك النبي ﷺ في بنائه بنفسه عند وصوله للمدينة مهاجراً."
-            : "The first mosque built in Islam; the Prophet (PBUH) personally participated in its construction.", 
-            img: "MedinaPics/مسجد قباء.jpg" // ضع هنا صورة لمسجد قباء
-        },
-        uhudMountain: { 
-            title: language === "ar" ? "جبل أحد" : "Mount Uhud", 
-            desc: language === "ar"
-            ? "جبل تاريخي شهد غزوة أحد، ويضم مقبرة شهداء أحد، وقال عنه النبي ﷺ: 'جبل يحبنا ونحبه'."
-            : "A historical mountain that witnessed the Battle of Uhud and houses the martyrs' cemetery.", 
-            img: "MedinaPics/جبل أحد.jpg" // ضع هنا صورة لجبل أحد ومقبرة الشهداء
-        },
-        baqi: { 
-            title: language === "ar" ? "مقبرة البقيع" : "Al-Baqi Cemetery", 
-            desc: language === "ar"
-            ? "أقدم وأهم مقابر المسلمين في المدينة، تضم رفات الآلاف من الصحابة الكرام وآل البيت عليهم السلام."
-            : "The oldest and main cemetery in Madinah, containing the remains of thousands of companions and AHL al-Bayt.", 
-            img: "MedinaPics/البقيع.jpg" // ضع هنا صورة لبقيع الغرقد
+        en: {
+            dir: 'ltr',
+            title: "Medina",
+            subtitle: "The Radiant City & The Home of Faith",
+            originTitle: "The History of Hijrah",
+            originDesc: "Medina is the first capital in Islamic history and the second holiest site. It welcomed Prophet Muhammad (PBUH) and his companions after the migration, and from here, the message of Islam spread to the world.",
+            civTitle: "Prophetic Legacy",
+            civDesc: "Medina combines high spirituality with historical landmarks linked to the Prophet's biography. Its land witnessed the revelation of many Quranic verses, and it houses the Prophet's Mosque.",
+            landmarksTitle: "Prophetic Landmarks",
+            traditionsTitle: "Ethics of Medina People",
+            traditionsDesc: "The people of Medina are famous for their kindness, good neighborliness, and hospitality inherited from the Ansar. Their customs are linked to luxury dates (especially Ajwa) and welcoming visitors warmly.",
+            foodTitle: "Medina Taste",
+            visionTitle: "Vision 2030",
+            visionDesc: "The vision aims to enrich the religious and cultural experience of visitors, develop historical sites, expand the Prophet's Mosque courtyards, and enhance Medina's status as a global destination for Islamic culture.",
+            geoTitle: "Geographical Location",
+            geoDesc: "Located in western Saudi Arabia, Medina is surrounded by mountains and volcanic fields, and is famous for its fertile soil that produces the world's finest dates.",
         }
+    };
+
+    const t = translations[language] || translations.ar;
+
+    // مصفوفة المعالم المحدثة لتطابق صور المجلد الخاص بك
+    const landmarks = [
+        { 
+            id: 0,
+            title: language === "ar" ? "القبة الخضراء" : "The Green Dome", 
+            desc: language === "ar" ? "المعلم الأبرز في المسجد النبوي الشريف، حيث تقع تحتها الحجرة النبوية الشريفة التي تضم قبر النبي ﷺ وصاحبيه." : "The most prominent landmark in the Prophet's Mosque, beneath which lies the Prophetic Chamber containing the tomb of the Prophet (PBUH).",
+            img: GreenDome 
+        },
+        { 
+            id: 1,
+            title: language === "ar" ? "مظلات المسجد النبوي" : "Nabawi Mosque Umbrellas", 
+            desc: language === "ar" ? "تحفة هندسية توفر الظل والراحة لملايين المصلين في ساحات الحرم، وتتميز بتصميمها الفريد الذي يفتح ويغلق آلياً." : "An engineering masterpiece providing shade and comfort to millions in the mosque's courtyards, featuring a unique automated design.",
+            img: NabawiUmbrellas 
+        },
+        { 
+            id: 2,
+            title: language === "ar" ? "مسجد قباء" : "Quba Mosque", 
+            desc: language === "ar" ? "أول مسجد أسس في الإسلام، شارك النبي ﷺ في بنائه عند وصوله إلى المدينة، وله فضل عظيم حيث تعد الصلاة فيه كعمرة." : "The first mosque ever built in Islam. The Prophet (PBUH) participated in its construction, and praying there carries the reward of an Umrah.",
+            img: QubaMosque 
+        },
+        { 
+            id: 3,
+            title: language === "ar" ? "جبل أحد" : "Mount Uhud", 
+            desc: language === "ar" ? "جبل يحبنا ونحبه، شهد معركة أحد الشهيرة ويضم مقبرة سيد الشهداء حمزة بن عبدالمطلب وصحابة النبي الكرام." : "A mountain that 'loves us and we love it'; it witnessed the historic Battle of Uhud and houses the martyrs' cemetery.",
+            img: MountUhud 
+        },
+        { 
+            id: 4,
+            title: language === "ar" ? "بقيع الغرقد" : "Al-Baqi", 
+            desc: language === "ar" ? "المقبرة الرئيسية لأهل المدينة منذ عهد النبي ﷺ، تضم رفات الآلاف من الصحابة وآل البيت الكرام." : "The main cemetery for the people of Medina since the Prophet's era, containing the graves of thousands of companions and household members.",
+            img: AlBaqi 
+        }
+    ];
+
+    const glassStyle = {
+        background: "var(--timeline-card-bg)",
+        border: "1px solid var(--timeline-card-border)",
+        borderRadius: "24px",
+        padding: "35px",
+        marginBottom: "30px",
+        boxShadow: "0 10px 30px var(--map-shadow)",
+        transition: "all 0.3s ease"
     };
 
     return (
@@ -39,162 +101,117 @@ const Madinah = ({ darkMode, language, t }) => {
             direction: t.dir,
             textAlign: t.dir === "rtl" ? "right" : "left",
             minHeight: "100vh",
-            backgroundColor: darkMode ? "#1a1a1a" : "#fdfaf5",
-            color: darkMode ? "#fff" : "#2d3436",
-            transition: "all 0.3s ease",
-            paddingBottom: "50px"
+            backgroundColor: "var(--bg-primary)",
+            color: "var(--text-main)",
+            fontFamily: "'Cairo', 'Segoe UI', Tahoma, sans-serif",
+            transition: "all 0.4s ease"
         }}>
-
-            <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
-                {/* ضع هنا صورة بانورامية للمدينة المنورة أو المسجد النبوي */}
-                <img src="MedinaPics/MadinaBanner.png" alt="Madinah" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <h1 style={{ color: "white", fontSize: "3rem", fontWeight: "bold" }}>
-                        {language === "ar" ? "المدينة المنورة" : "Al-Madinah Al-Munawwarah"}
+            <header style={{ position: "relative", height: "55vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img 
+                    src={MadinaBanner} 
+                    alt="Medina" 
+                    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} 
+                />
+                <div style={{ 
+                    position: "absolute", inset: 0, 
+                    background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))", 
+                    zIndex: 2 
+                }} />
+                <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 20px" }}>
+                    <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: "800", color: "#fff", marginBottom: "10px", textShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
+                        {t.title}
                     </h1>
+                    <p style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", color: "rgba(255,255,255,0.9)", fontWeight: "500" }}>
+                        {t.subtitle}
+                    </p>
                 </div>
             </header>
 
-            <main style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}>
+            <main style={{ maxWidth: "1100px", margin: "-50px auto 0", position: "relative", zIndex: 10, padding: "0 20px 80px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.originTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.originDesc}</p>
+                    </section>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• نشأة المنطقة" : "• Region Origin"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar" 
-                        ? "عُرفت قديماً باسم 'يثرب'، ويرجع تاريخها لـ 1600 سنة قبل الهجرة. سكنها العماليق ثم اليهود وقبائل الأوس والخزرج، وتحولت لـ 'المدينة المنورة' بعد هجرة النبي ﷺ عام 622م لتصبح أول عاصمة للدولة الإسلامية."
-                        : "Formerly known as 'Yathrib', dating back 1600 years before Hijra. It became 'Al-Madinah' after the Prophet's migration in 622 AD, serving as the first capital of Islam."}
-                    </p>
-                </section>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.civTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.civDesc}</p>
+                    </section>
+                </div>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• أهم الحضارات" : "• Key Civilizations"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "شهدت تعاقب حضارة العماليق واليهود، ثم عصر الأنصار (الأوس والخزرج). ومع الهجرة النبوية، انطلقت منها الحضارة الإسلامية الكبرى التي شعت بنورها على العالم أجمع."
-                        : "Witnessed the Amalekites and Jewish civilizations, followed by the Ansar era. With the Prophet's Hijra, it became the beacon of the Great Islamic civilization."}
-                    </p>
-                </section>
-
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• أهم الآثار التاريخية وأقدمها" : "• Ancient Landmarks"}</h2>
-                    <div style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
-                        {Object.keys(landmarksData).map((key, index) => (
-                            <button key={key} onClick={() => setSelectedItem(landmarksData[key])} style={itemBtnStyle(darkMode, index)}>
-                                {landmarksData[key].title}
-                            </button>
-                        ))}
-                    </div>
-                </section>
-
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• عادات وتقاليد مدينية" : "• Madinah Traditions"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "يتميز أهل المدينة بعادة 'سابع المولود' وتوزيع المنفوش، وثقافة إكرام الزوار المتجذرة. كما يشتهرون بالمدائح النبوية والأناشيد التي تعكس حبهم للنبي ﷺ وحفاوة استقبال ضيوف الرحمن."
-                        : "Famous for 'Sab'e' (7th-day newborn celebration) and deeply rooted hospitality. Known for prophetic praises (Madih) and religious chants."}
-                    </p>
-                </section>
-
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• المأكولات الشعبية" : "• Traditional Cuisine"}</h2>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                        <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "الرز الكابلي:" : "Kabli Rice:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "طبق فخم يُحضر باللحم وقشر البرتقال والزعفران والبهارات العطرية." : "A luxurious rice dish prepared with meat, orange zest, saffron, and aromatic spices."}</p>
+                <section style={{ ...glassStyle, padding: "40px" }}>
+                    <h2 style={{ textAlign: "center", fontSize: "2.2rem", fontWeight: "800", marginBottom: "40px", color: "var(--text-main)" }}>{t.landmarksTitle}</h2>
+                    <div style={{ display: "flex", flexDirection: t.dir === "rtl" ? "row" : "row-reverse", gap: "30px", flexWrap: "wrap" }}>
+                        <div style={{ flex: "1", minWidth: "280px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                            {landmarks.map((item, idx) => (
+                                <div key={item.id} onClick={() => setActiveLandmark(idx)} style={{
+                                    padding: "22px", borderRadius: "18px", cursor: "pointer", transition: "all 0.4s ease",
+                                    background: activeLandmark === idx ? "var(--accent-color)" : "var(--bg-primary)",
+                                    color: activeLandmark === idx ? "var(--button-text)" : "var(--text-main)",
+                                    border: "1px solid var(--timeline-card-border)"
+                                }}>
+                                    <h3 style={{ fontSize: "1.15rem", fontWeight: "700" }}>{item.title}</h3>
+                                </div>
+                            ))}
                         </div>
-                        <div>
-                            <strong style={{ color: "#8a9b3a" }}>{language === "ar" ? "الشابورة المدينية:" : "Madinah Shaboora:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "نوع من الخبز الجاف المحمص يُؤكل مع الشاي، ويُعد رمزاً للإفطار المديني." : "Toasted dry bread often eaten with tea, a symbol of Madinah breakfast."}</p>
+                        <div style={{ flex: "2", minWidth: "320px", position: "relative", borderRadius: "24px", overflow: "hidden", height: "420px", boxShadow: "0 20px 40px var(--map-shadow)" }}>
+                            <img src={landmarks[activeLandmark].img} alt={landmarks[activeLandmark].title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }} />
+                            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "35px", background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)", color: "#fff" }}>
+                                <h3 style={{ fontSize: "1.8rem", fontWeight: "800", marginBottom: "10px" }}>{landmarks[activeLandmark].title}</h3>
+                                <p style={{ fontSize: "1.05rem", opacity: 0.95, lineHeight: "1.6" }}>{landmarks[activeLandmark].desc}</p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <section style={{ ...sectionBoxStyle(darkMode), borderRight: "6px solid #8a9b3a" }}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• تأثير رؤية 2030" : "• Vision 2030 Impact"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "تعمل الرؤية عبر مشروع 'رؤى المدينة' وتأهيل أكثر من 100 موقع تاريخي على استقبال 30 مليون معتمر، مع توفير منظومة نقل ذكية كقطار الحرمين السريع والتحول الرقمي للخدمات."
-                        : "Vision 2030 aims to host 30 million pilgrims through the 'Rua Al-Madinah' project and the rehabilitation of 100+ historical sites."}
-                    </p>
-                </section>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.traditionsTitle}</h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.traditionsDesc}</p>
+                    </section>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.foodTitle}</h2>
+                        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                            {["الرز البخاري", "التميس", "الشريك المديني", "النعناع"].map(food => (
+                                <span key={food} style={{ padding: "10px 22px", borderRadius: "50px", background: "var(--accent-color)", color: "var(--button-text)", fontWeight: "700", fontSize: "0.95rem" }}>
+                                    {language === "ar" ? food : food}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
+                </div>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• الموقع الجغرافي" : "• Geographical Location"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "تقع المدينة المنورة في غرب المملكة العربية السعودية، وتحيط بها الجبال والحرات البركانية من عدة جهات، وتُعد واحة خصبة اشتهرت بنخيلها ومياهها."
-                        : "Located in western Saudi Arabia, surrounded by mountains and volcanic fields, it is a fertile oasis famous for palm trees."}
-                    </p>
-                    <div style={{ height: "400px", borderRadius: "15px", overflow: "hidden", marginTop: "20px", border: "1px solid #ddd" }}>
-                        <iframe 
-                            title="Map" width="100%" height="100%" frameBorder="0" 
-                            src="http://googleusercontent.com/maps.google.com/6"
-                            allowFullScreen>
-                        </iframe>
+                <section style={glassStyle}>
+                    <h2 style={{ fontSize: "1.6rem", fontWeight: "800", marginBottom: "20px" }}>{t.geoTitle}</h2>
+                    <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
+                    <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
+                        <iframe title="Medina Map" width="100%" height="100%" frameBorder="0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d116246.33169302633!2d39.52621062024103!3d24.467210452361667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbe5197d220d5%3A0x2e5453522479d7f7!2z2KfZhNmF2K_ZitmG2Kkg2KfZhNmF2YbZiNix2Kk!5e0!3m2!1sar!2ssa!4v1705290000000!5m2!1sar!2ssa"
+                            style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
+                            allowFullScreen
+                        ></iframe>
                     </div>
                 </section>
-
             </main>
 
-            {selectedItem && (
-                <div style={modalOverlayStyle} onClick={() => setSelectedItem(null)}>
-                    <div style={modalCardStyle(darkMode)} onClick={e => e.stopPropagation()}>
-                        <button style={closeBtnStyle} onClick={() => setSelectedItem(null)}>✕</button>
-                        <img src={selectedItem.img} alt={selectedItem.title} style={{ width: "100%", height: "250px", objectFit: "cover" }} />
-                        <div style={{ padding: "20px" }}>
-                            <h2 style={{ color: "#8a9b3a" }}>{selectedItem.title}</h2>
-                            <p style={{ marginTop: "10px", lineHeight: "1.6" }}>{selectedItem.desc}</p>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <style>{`
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                main section {
+                    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                }
+            `}</style>
         </div>
     );
 };
 
-const sectionBoxStyle = (darkMode) => ({
-    background: darkMode ? "rgba(255,255,255,0.07)" : "#ffffff",
-    padding: "30px",
-    borderRadius: "20px",
-    marginBottom: "30px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
-});
-
-const h2Style = (dir) => ({
-    color: "#8a9b3a",
-    marginBottom: "20px",
-    fontSize: "1.6rem",
-    borderLeft: dir === "ltr" ? "4px solid #8a9b3a" : "none",
-    borderRight: dir === "rtl" ? "4px solid #8a9b3a" : "none",
-    padding: "0 15px"
-});
-
-const pStyle = { fontSize: "1.05rem", lineHeight: "1.8", opacity: 0.9 };
-
-const itemBtnStyle = (darkMode, index) => ({
-    padding: "12px 25px",
-    backgroundColor: darkMode ? "#333" : "#f9f9f9",
-    color: darkMode ? "#fff" : "#333",
-    border: "2px solid #8a9b3a",
-    borderRadius: "30px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    transition: "0.3s",
-});
-
-const modalOverlayStyle = {
-    position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.8)",
-    display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000, backdropFilter: "blur(4px)"
-};
-
-const modalCardStyle = (darkMode) => ({
-    backgroundColor: darkMode ? "#222" : "#fff", width: "90%", maxWidth: "500px",
-    borderRadius: "20px", overflow: "hidden", position: "relative"
-});
-
-const closeBtnStyle = {
-    position: "absolute", top: "10px", right: "10px", width: "35px", height: "35px",
-    borderRadius: "50%", border: "none", background: "#00000080", color: "#fff", cursor: "pointer"
-};
-
-export default Madinah;
+export default Medina;
