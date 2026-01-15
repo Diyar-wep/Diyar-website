@@ -1,15 +1,5 @@
 import React, { useEffect, useRef } from "react";
 
-// 1. استيراد الصور يدوياً لضمان ظهورها
-import period1Img from "./TimelinePic/period1Img.png";
-import saudi1Img from "./TimelinePic/saudi1Img.png";
-import saudi2Img from "./TimelinePic/saudi2Img.png";
-import unificationImg from "./TimelinePic/unificationImg.jpg";
-import modernImg from "./TimelinePic/modernImg.jpeg";
-import haramImg from "./TimelinePic/haram.jpg";
-import heritageImg from "./TimelinePic/heritageImg.jpeg";
-import visionImg from "./TimelinePic/visionImg.png";
-
 export default function Timeline({ darkMode, language }) {
   const itemsRef = useRef([]);
 
@@ -20,7 +10,7 @@ export default function Timeline({ darkMode, language }) {
           if (entry.isIntersecting) entry.target.classList.add("show");
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     itemsRef.current.forEach((el) => el && observer.observe(el));
@@ -28,102 +18,132 @@ export default function Timeline({ darkMode, language }) {
   }, []);
 
   const data = [
+    // 1. فجر التاريخ وعصور الأنبياء
     {
-      title: { ar: "ما قبل قيام الدولة السعودية الأولى", en: "Before the First Saudi State" },
-      year: null,
-      img: period1Img, // نستخدم المتغير المستورد هنا
-      content: {
-        ar: "امتد تاريخ شبه الجزيرة العربية لآلاف السنين، حيث شهدت المنطقة قيام حضارات قديمة مثل دلمون والثموديين والأنباط.",
-        en: "The history of the Arabian Peninsula spans thousands of years, witnessing ancient civilizations like Dilmun, Thamud, and Nabataeans."
-      },
+      year: { ar: "1.3 مليون سنة - 9000 ق.م", en: "1.3M Years - 9000 BC" },
+      title: { ar: "حضارة الشويحطية والمقر", en: "Shuwayhitiyah & Al-Maqar" },
+      content: { 
+        ar: "تمثل البدايات الأولى للاستقرار البشري؛ حيث كشفت آثار المقر عن مجتمع متطور مارس الزراعة واستئناس الخيل قبل 9000 سنة، مما غيّر خارطة تاريخ الفروسية العالمي.", 
+        en: "The earliest human settlements; Al-Maqar revealed an advanced society that practiced agriculture and horse domestication 9,000 years ago, redefining global equestrian history." 
+      }
     },
     {
-      title: { ar: "الدولة السعودية الأولى", en: "The First Saudi State" },
-      year: "1744",
-      img: saudi1Img,
-      content: {
-        ar: "بقيام الدولة السعودية الأولى، بدأت ملامح كيان سياسي قائم على الوحدة والاستقرار.",
-        en: "With the establishment of the First Saudi State, a political entity based on unity and stability emerged."
-      },
+      year: { ar: "عصور قديمة", en: "Ancient Era" },
+      title: { ar: "قوم عاد (الأحقاف)", en: "People of 'Ad" },
+      content: { 
+        ar: "سكنوا جنوب الجزيرة واشتهروا ببناء 'إرم ذات العماد'. اعتمدت قوتهم الاقتصادية على السيطرة على طرق تجارة اللبان والبخور العالمية.", 
+        en: "Inhabited the South, famous for building 'Iram of the Pillars.' Their economic power came from controlling global frankincense and incense trade routes." 
+      }
     },
     {
-      title: { ar: "الدولة السعودية الثانية", en: "The Second Saudi State" },
-      year: "1824",
-      img: saudi2Img,
-      content: {
-        ar: "جاءت الدولة السعودية الثانية لتؤكد استمرارية الحكم وترسيخ مفهوم الاستقرار رغم التحديات.",
-        en: "The Second Saudi State confirmed the continuity of rule and stability despite challenges."
-      },
+      year: { ar: "عصور قديمة", en: "Ancient Era" },
+      title: { ar: "قوم ثمود (الحجر)", en: "People of Thamud" },
+      content: { 
+        ar: "اتخذوا من العلا موطناً لهم، وتميزوا ببراعة هندسية فريدة في نحت الجبال وتحويلها إلى بيوت وقصور فارهة لا تزال قائمة كشاهد على عظمتهم.", 
+        en: "Settled in AlUla, renowned for unique engineering brilliance in carving mountains into luxurious homes and palaces that stand to this day." 
+      }
+    },
+
+    // 2. الممالك العربية الوسيطة
+    {
+      year: { ar: "القرن 6 - 2 ق.م", en: "6th - 2nd Century BC" },
+      title: { ar: "مملكة ديدان ولحيان", en: "Dedan & Lihyan Kingdoms" },
+      content: { 
+        ar: "قوة اقتصادية سيطرت على 'طريق البخور' من واحة العلا. طورت نظام حكم ملكي وكتابة خاصة، وتركت تماثيل ضخمة تعكس نفوذها الثقافي.", 
+        en: "An economic power controlling the 'Incense Route' from AlUla. They developed a monarchy, a unique script, and left behind colossal statues." 
+      }
     },
     {
-      title: { ar: "توحيد المملكة", en: "Unification of the Kingdom" },
-      year: "1932",
-      img: unificationImg,
-      content: {
-        ar: "وحّد الملك عبدالعزيز مناطق المملكة تحت راية واحدة، مؤسسًا دولة حديثة تقوم على الأمن والوحدة.",
-        en: "King Abdulaziz unified the regions of the Kingdom, establishing a modern state."
-      },
+      year: { ar: "القرن 1 ق.م - 106 م", en: "100 BC - 106 AD" },
+      title: { ar: "مملكة الأنباط", en: "The Nabataean Kingdom" },
+      content: { 
+        ar: "جعلوا من 'الحجر' عاصمتهم الجنوبية، وبرعوا في هندسة الري وجمع المياه في الصحراء، ونحتوا واجهات صخرية تعد اليوم من عجائب التراث العالمي.", 
+        en: "Established 'Hegra' as their southern capital, excelled in desert irrigation and water harvesting, and carved world-famous rock facades." 
+      }
     },
     {
-      title: { ar: "بناء الدولة الحديثة", en: "Building the Modern State" },
-      year: null,
-      img: modernImg,
-      content: {
-        ar: "شهدت المملكة تطورًا في التعليم، والأمن، والأنظمة، والبنية التحتية.",
-        en: "The Kingdom witnessed major development in education, security, and infrastructure."
-      },
+      year: { ar: "القرن 5 ق.م", en: "5th Century BC" },
+      title: { ar: "مملكة جرهاء", en: "Gerrha Kingdom" },
+      content: { 
+        ar: "وصفها اليونان بأنها 'أغنى مدن العرب'. تاجر أهلها بالذهب واللؤلؤ، وكانت بيوتهم مزينة بالأحجار الكريمة مما جعلها مطمعاً للقوى الكبرى.", 
+        en: "Described by Greeks as the 'richest Arab city.' Their houses were adorned with gems, and they dominated the trade of gold and pearls." 
+      }
+    },
+
+    // 3. العصر الإسلامي
+    {
+      year: { ar: "622 م - 661 م", en: "622 AD - 661 AD" },
+      title: { ar: "العهد النبوي والراشد", en: "Prophetic & Rashidun Era" },
+      content: { 
+        ar: "تحولت المدينة المنورة لعاصمة سياسية وروحية للعالم، حيث توحدت قبائل الجزيرة العربية وانطلقت منها الفتوحات التي غيرت وجه التاريخ.", 
+        en: "Medina became the world's political and spiritual capital, unifying Arabian tribes and launching conquests that changed world history." 
+      }
     },
     {
-      title: { ar: "خدمة الحرمين الشريفين", en: "Serving the Two Holy Mosques" },
-      year: null,
-      img: haramImg,
-      content: {
-        ar: "اهتمت المملكة بخدمة الحرمين الشريفين عبر التوسعات والتنظيم المستمر.",
-        en: "The Kingdom focused on serving the Two Holy Mosques through continuous expansions."
-      },
+      year: { ar: "661 م - 1258 م", en: "Umayyad & Abbasid Eras" },
+      title: { ar: "الدولة الأموية والعباسية", en: "Umayyad & Abbasid States" },
+      content: { 
+        ar: "ظلت أرض المملكة مركزاً روحياً؛ واهتم الخلفاء بطرق الحج، وأبرزها 'درب زبيدة' الهندسي العملاق الذي امتد من الكوفة إلى مكة.", 
+        en: "The region remained a spiritual hub; Caliphs built major pilgrimage routes, most notably the 'Darb Zubaidah' engineering marvel." 
+      }
     },
     {
-      title: { ar: "الهوية الوطنية والتراث", en: "National Identity and Heritage" },
-      year: null,
-      img: heritageImg,
-      content: {
-        ar: "تزايد الاهتمام بتوثيق التراث وحماية الآثار وإبراز ثقافة المناطق.",
-        en: "Increased focus on documenting heritage and protecting antiquities."
-      },
+      year: { ar: "العصور الوسطى", en: "Middle Ages" },
+      title: { ar: "الدول المحلية (العيونية والجبرية)", en: "Uyunid & Jabrid States" },
+      content: { 
+        ar: "ممالك محلية في شرق الجزيرة حافظت على الهوية العربية والإسلامية وحمت المنطقة من القوى الخارجية في فترات ضعف الخلافة المركزية.", 
+        en: "Local eastern kingdoms that preserved Arab-Islamic identity and protected the region during periods of central Caliphate weakness." 
+      }
+    },
+
+    // 4. التواجد العثماني
+    {
+      year: { ar: "1517 م - 1918 م", en: "1517 AD - 1918 AD" },
+      title: { ar: "التواجد العثماني وسكة الحجاز", en: "Ottoman Era & Hejaz Railway" },
+      content: { 
+        ar: "بسط العثمانيون نفوذهم لحماية الحرمين، ومن أبرز مشاريعهم 'سكة حديد الحجاز' التي ربطت دمشق بالمدينة لتسهيل نقل الحجاج.", 
+        en: "Ottomans extended influence to protect the Holy Mosques. A key project was the Hejaz Railway, linking Damascus to Medina." 
+      }
+    },
+
+    // 5. الدولة السعودية
+    {
+      year: { ar: "1727 م", en: "1727 AD" },
+      title: { ar: "الدولة السعودية الأولى", en: "First Saudi State" },
+      content: { 
+        ar: "تأسست في الدرعية على يد الإمام محمد بن سعود، ونجحت في توحيد نجد ومعظم أجزاء الجزيرة العربية تحت راية الأمن والوحدة.", 
+        en: "Founded in Diriyah by Imam Muhammad bin Saud, successfully unifying Najd and most of the Peninsula under security and unity." 
+      }
     },
     {
-      title: { ar: "رؤية السعودية 2030", en: "Saudi Vision 2030" },
-      year: "2030",
-      img: visionImg,
-      content: {
-        ar: "تمثل رؤية 2030 امتدادًا للتاريخ، تجمع بين الأصالة والتنمية، لبناء مستقبل مستدام.",
-        en: "Vision 2030 combines authenticity and development for a sustainable future."
-      },
+      year: { ar: "1824 م", en: "1824 AD" },
+      title: { ar: "الدولة السعودية الثانية", en: "Second Saudi State" },
+      content: { 
+        ar: "استعاد فيها الإمام تركي بن عبد الله السيادة السعودية واتخذ من الرياض عاصمة جديدة للدولة.", 
+        en: "Imam Turki bin Abdullah restored Saudi sovereignty and established Riyadh as the new capital." 
+      }
     },
+    {
+      year: { ar: "1932 م", en: "1932 AD" },
+      title: { ar: "توحيد المملكة العربية السعودية", en: "Unification of KSA" },
+      content: { 
+        ar: "ملحمة التوحيد بقيادة الملك عبد العزيز، الذي استعاد الرياض ووحد كافة أرجاء البلاد، لتبدأ رحلة النهضة السعودية الحديثة.", 
+        en: "The unification epic led by King Abdulaziz, who retook Riyadh and unified the nation, launching the modern Saudi renaissance." 
+      }
+    }
   ];
 
   return (
     <>
       <style>{css}</style>
-      <div 
-        className={`timeline-wrapper ${darkMode ? "dark-theme" : "light-theme"}`} 
-        dir={language === "ar" ? "rtl" : "ltr"}
-      >
+      <div className={`timeline-wrapper ${darkMode ? "dark-theme" : "light-theme"}`} dir={language === "ar" ? "rtl" : "ltr"}>
         <div className="line" />
-
         {data.map((item, index) => {
           const isLeft = index % 2 === 0;
           return (
-            <div
-              key={index}
-              ref={(el) => (itemsRef.current[index] = el)}
-              className={`row ${isLeft ? "left" : "right"} hidden`}
-            >
+            <div key={index} ref={(el) => (itemsRef.current[index] = el)} className={`row ${isLeft ? "left" : "right"} hidden`}>
               <div className="card">
-                <div className="card-image">
-                  <img src={item.img} alt={item.title[language]} />
-                  {item.year && <span className="year-badge">{item.year}</span>}
-                </div>
+                <div className="year-tag">{item.year[language]}</div>
                 <h3>{item.title[language]}</h3>
                 <p>{item.content[language]}</p>
               </div>
@@ -137,40 +157,51 @@ export default function Timeline({ darkMode, language }) {
 }
 
 const css = `
-.timeline-wrapper { position: relative; width: 100%; padding: 80px 0; overflow-x: hidden; }
+.timeline-wrapper { position: relative; width: 100%; padding: 40px 0; overflow-x: hidden; }
 
-/* الألوان العكسية المطلوبة */
+/* إعدادات اللايت مود */
+.light-theme { --line-color: #251e19; --dot-color: #dcc596; }
 .light-theme .card { background-color: #251e19; color: #F6E9DA; }
-.light-theme .card h3 { color: #F6E9DA; }
-.light-theme .card p { color: #dcc596; }
+.light-theme .year-tag { color: #dcc596; border-bottom: 1px solid #dcc596; }
 
-.dark-theme .card { background-color: #F6E9DA; color: #251e19; }
-.dark-theme .card h3 { color: #251e19; }
-.dark-theme .card p { color: #4A352C; }
+/* إعدادات الدارك مود */
+.dark-theme { --line-color: #dcc596; --dot-color: #4A352C; }
+.dark-theme .card { background-color: #F6E9DA; color: #251e19; border: 1px solid #dcc596; }
+.dark-theme .year-tag { color: #4A352C; border-bottom: 1px solid #4A352C; }
 
-.line { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: var(--timeline-line); transform: translateX(-50%); }
-.row { position: relative; width: 100%; display: flex; margin-bottom: 100px; align-items: center; }
+.line { 
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; 
+  background: var(--line-color); 
+  transform: translateX(-50%); 
+  opacity: 0.3; 
+  transition: background 0.3s ease;
+}
 
-[dir="rtl"] .row.left { justify-content: flex-end; padding-right: calc(50% + 40px); padding-left: 0; }
-[dir="rtl"] .row.right { justify-content: flex-start; padding-left: calc(50% + 40px); padding-right: 0; }
-[dir="ltr"] .row.left { justify-content: flex-start; padding-left: calc(50% + 40px); padding-right: 0; }
-[dir="ltr"] .row.right { justify-content: flex-end; padding-right: calc(50% + 40px); padding-left: 0; }
+.row { position: relative; width: 100%; display: flex; margin-bottom: 40px; align-items: center; }
 
-.dot { position: absolute; left: 50%; transform: translateX(-50%); width: 18px; height: 18px; background: var(--timeline-dot); border: 3px solid var(--timeline-line); border-radius: 50%; z-index: 3; }
-.card { width: 100%; max-width: 480px; border-radius: 22px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: 0.3s; }
-.card-image { position: relative; height: 220px; width: 100%; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+[dir="rtl"] .row.left { justify-content: flex-end; padding-right: calc(50% + 40px); }
+[dir="rtl"] .row.right { justify-content: flex-start; padding-left: calc(50% + 40px); }
+[dir="ltr"] .row.left { justify-content: flex-start; padding-left: calc(50% + 40px); }
+[dir="ltr"] .row.right { justify-content: flex-end; padding-right: calc(50% + 40px); }
 
-.year-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-color); color: var(--button-text); padding: 6px 18px; border-radius: 999px; font-weight: bold; font-size: 14px; }
-.card h3 { padding: 20px 20px 8px; font-size: 1.3rem; }
-.card p { padding: 0 20px 24px; font-size: 0.95rem; line-height: 1.8; }
+.dot { 
+  position: absolute; left: 50%; transform: translateX(-50%); width: 14px; height: 14px; 
+  background: var(--dot-color); 
+  border: 2px solid var(--line-color);
+  border-radius: 50%; z-index: 3; 
+  transition: all 0.3s ease;
+}
 
-.hidden { opacity: 0; transform: translateY(50px); }
-.show { opacity: 1; transform: translateY(0); transition: 0.8s ease-out; }
+.card { width: 100%; max-width: 450px; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.year-tag { font-weight: bold; font-size: 0.95rem; margin-bottom: 10px; display: inline-block; padding-bottom: 2px; }
+.card h3 { margin-bottom: 10px; font-size: 1.25rem; font-weight: bold; }
+.card p { font-size: 1rem; line-height: 1.7; margin: 0; }
+
+.hidden { opacity: 0; transform: translateY(30px); }
+.show { opacity: 1; transform: translateY(0); transition: 0.6s ease-out; }
 
 @media (max-width: 768px) {
-  .line, .dot { left: 30px; }
-  .row { padding: 0 20px 0 60px !important; justify-content: flex-start !important; }
-  .card { max-width: 100%; }
+  .line, .dot { left: 20px; }
+  .row { padding: 0 20px 0 50px !important; justify-content: flex-start !important; }
 }
 `;

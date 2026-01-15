@@ -35,7 +35,7 @@ function AppContent() {
       footerText: 'ديار — مشروع هاكاثون نيوتك',
       heroTitle: 'ديار',
       heroDesc: 'منصة تفاعلية توثق التاريخ الجغرافي والثقافي للمملكة العربية السعودية عبر العصور.',
-      timelineSection: 'الخط الزمني للمملكة',
+      timelineSection: 'الخط الزمني للمملكة وماقبلها',
       mapSection: 'خريطة المملكة التفاعلية',
       mapContent: 'اضغط على أي منطقة في الخريطة لاستكشاف تاريخها ومعالمها.'
     },
@@ -50,7 +50,7 @@ function AppContent() {
       footerText: 'Diyar — Hackathon Project',
       heroTitle: 'Diyar',
       heroDesc: 'An interactive platform documenting the geographical and cultural history of Saudi Arabia.',
-      timelineSection: 'Kingdom Timeline',
+      timelineSection: 'Timeline of the Kingdom and before',
       mapSection: 'Interactive Saudi Map',
       mapContent: 'Click on any region to explore its history and landmarks.'
     }
