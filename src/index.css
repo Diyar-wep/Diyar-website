@@ -1,68 +1,265 @@
+/* إعداد المتغيرات الشاملة (Theme Variables) */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* وضع النهار (Light Mode) */
+  --bg-primary: #F7F3ED;            
+  --text-main: #2d2424;            
+  --text-secondary: #6B5B52;       
+  --text-muted: rgba(45, 36, 36, 0.6);
+  --accent-color: #7A6A4F;         
+  --button-text: #FFFFFF;
+  --nav-footer-bg: #4A352C;        
+  --nav-footer-text: #FFFFFF;
+  --nav-footer-border: rgba(74, 53, 44, 0.4);
+  --icon-btn-bg: rgba(255, 255, 255, 0.2);
+  
+  --map-base: #C1B092;
+  --map-hover: #CDBFAE;
+  --map-shadow: #E6D5B8;
+  
+  --timeline-line: #B8956A;
+  --timeline-dot: #4A352C;
+  --timeline-card-bg: #FFFFFF;
+  --timeline-card-border: #D4C4B0;
+  
+  --scrollbar-thumb: #8A7562;
+  --scrollbar-track: #ffece3;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.dark-mode {
+  /* وضع الليل (Dark Mode) */
+  --bg-primary: #251e19;            
+  --text-main: #f5f5f4;            
+  --text-secondary: #d4c5b8;
+  --text-muted: rgba(245, 245, 244, 0.7);
+  --accent-color: #bda78d;         
+  --button-text: #1c1917;
+  --nav-footer-bg: #CDBFAE;        
+  --nav-footer-text: #2d2424;
+  --nav-footer-border: rgba(205, 191, 174, 0.3);
+  --icon-btn-bg: rgba(255, 255, 255, 0.1); 
+  
+  --map-base: #8B6F47;
+  --map-hover: #3d3430;
+  --map-shadow: rgb(46, 37, 32);
+  
+  --timeline-line: #8B6F47;
+  --timeline-dot: #CDBFAE;
+  --timeline-card-bg: #2a2420;
+  --timeline-card-border: #3d3430;
+  
+  --scrollbar-thumb: #8B6F47;
+  --scrollbar-track: #1c1917;
 }
 
-body {
+/* التنسيقات الأساسية */
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  width: 100%;
   min-height: 100vh;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  line-height: 1.5;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* تخصيص السكرول بار */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 5px; }
+
+/* التحكم في اتجاه الصفحة */
+.home-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  direction: ltr; /* الافتراضي لليسار */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* الكلاس الذي سيقلب الصفحة لليمين في حال كانت العربية مفعلة */
+.rtl-layout {
+  direction: rtl !important;
+}
+
+.hero {
+  padding: 120px 24px 80px;
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+  animation: modalFade 0.8s ease-out;
+}
+
+.hero-desc {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 800px;
+  margin: 0 auto 48px;
+  color: var(--text-secondary);
+}
+
+/* حاوية الأزرار - الترتيب يعتمد الآن على direction الصفحة */
+.hero-links-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main-btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--accent-color);
+  color: var(--text-main);
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.main-btn:hover {
+  background: var(--accent-color);
+  color: var(--button-text);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* الخريطة والتايم لاين */
+.map-holder-large {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--map-shadow);
+  border-radius: 30px;
+  padding: 40px 20px;
+}
+
+.region {
+  fill: var(--map-base);
+  stroke: var(--bg-primary);
+  stroke-width: 1.2;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.region:hover {
+  fill: var(--map-hover);
+  filter: drop-shadow(0 0 5px var(--accent-color));
+}
+
+.timeline-item {
+  background: var(--timeline-card-bg);
+  border: 1px solid var(--timeline-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: 0.4s ease;
+}
+
+.timeline-item:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+}
+
+@keyframes modalFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero-links-container {
+    flex-direction: column;
   }
-  a:hover {
-    color: #747bff;
+  .main-btn { 
+    width: 100%; 
+    text-align: center; 
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* كلاسات تحديد موضع الشعارات */
+.pos-left { left: 50px; right: auto; }
+.pos-right { right: 50px; left: auto; }
+
+.diyar-container, .neotech-container {
+  position: absolute;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.diyar-container { top: 0px; }
+.neotech-container { top: -9px; }
+
+.logo-diyar, .logo-neotech {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .diyar-container, .neotech-container {
+    position: relative;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+/* --- تنسيق البانر المركزي --- */
+.hero {
+  padding-top: 120px !important; 
+}
+
+.hero-banner-container {
+  width: 100%;
+  max-width: 1000px; 
+  margin: -50px auto 30px; 
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-banner-img {
+  width: 100%;
+  max-height: 510px; 
+  object-fit: cover; 
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hero-banner-container {
+    margin-top: 20px;
+    max-width: 95%;
+  }
+  .hero-banner-img {
+    max-height: 300px;
   }
 }

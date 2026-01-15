@@ -1,59 +1,10 @@
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: rgba(238, 214, 184, 0.85);
-  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #c5a98a;
-  overflow-x: hidden;
-  transition: background 0.3s ease;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-}
-
-::selection {
-  background: rgba(90, 74, 58, 0.3);
-  color: #5a4a3a;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #b89d82;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8a7562;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #7a6552;
-}
-
-@keyframes modalFade {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* لا تضف أي background-color هنا */

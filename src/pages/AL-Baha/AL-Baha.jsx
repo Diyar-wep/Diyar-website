@@ -1,30 +1,85 @@
+
 import React, { useState } from "react";
+import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-const AlBaha = ({ darkMode, language, t }) => {
-    const [selectedItem, setSelectedItem] = useState(null);
+// استيراد الصور برمجياً لضمان ظهورها من مجلد src
+import AlbahaBanner from "./AL-BahaPics/AlbahaBanner.png";
+import DhiAlAinVillage from "./AL-BahaPics/Dhi Al-Ain Village.png";
+import TheElephantRoad from "./AL-BahaPics/The Elephant Road.png";
+import BakhroushCastle from "./AL-BahaPics/Bakhroush Castle.png";
 
-    const landmarksData = {
-        theeAin: { 
-            title: language === "ar" ? "قرية ذي عين الأثرية" : "Thee Ain Heritage Village", 
-            desc: language === "ar"
-            ? "يعود تاريخها إلى نهاية القرن العاشر الهجري، وتتميز بمبانيها الحجرية البيضاء الفريدة ومزارع الموز والريحان."
-            : "Dates back to the 10th century AH, famous for its unique white stone buildings and lush plantations.", 
-            img: "AL-BahaPics/Dhi Al-Ain Village.png" // ضع هنا رابط صورة لقرية ذي عين الأثرية
+const AlBaha = () => {
+    const { darkMode, language } = useThemeLanguage();
+    const [activeLandmark, setActiveLandmark] = useState(0);
+
+    const translations = {
+        ar: {
+            dir: 'rtl',
+            title: "منطقة الباحة",
+            subtitle: "لؤلؤة المرتفعات وسويسرا الجزيرة العربية",
+            originTitle: "عراقة النشأة",
+            originDesc: "تعد الباحة 'لؤلؤة المرتفعات'، سكنتها قبائل غامد وزهران منذ القدم. تأسست إدارياً في عام 1383هـ، وتعتبر اليوم من أهم الوجهات السياحية في المملكة نظير طبيعتها الجبلية وتاريخها العريق وتضاريسها الخلابة.",
+            civTitle: "إرث الحضارات",
+            civDesc: "شهدت الباحة استيطاناً بشرياً منذ عصور قديمة، وبرزت كحصن طبيعي منيع. اشتهرت بحصونها وقلاعها التي تحكي قصص الصمود، وكانت محطة هامة في طرق القوافل القديمة بين جنوب الجزيرة وشمالها.",
+            landmarksTitle: "شواهد التاريخ",
+            traditionsTitle: "أصالة العادات",
+            traditionsDesc: "تتميز الباحة بالترابط القبلي والاجتماعي الوثيق. من أبرز عاداتها 'العرضة الجنوبية' وفنون 'اللعب' و'المسحباني'. يشتهر أهلها بكرم الضيافة في 'المجالس' والاحتفاء بالضيف بأجود أنواع العسل والسمن.",
+            foodTitle: "المذاق الجنوبي",
+            visionTitle: "رؤية المملكة 2030",
+            visionDesc: "تهدف الرؤية إلى تحويل الباحة إلى وجهة سياحية عالمية مستدامة، وتطوير الغطاء النباتي والمتنزهات الوطنية، ودعم الزراعة العضوية والمهرجانات التراثية لتعزيز الاقتصاد المحلي.",
+            geoTitle: "الموقع الجغرافي",
+            geoDesc: "تقع الباحة جنوب غرب المملكة العربية السعودية، وتتميز بتضاريسها المتنوعة بين جبال السراة الشاهقة وسهول تهامة المنخفضة، مما يمنحها مناخاً فريداً طوال العام.",
         },
-        elephantPath: { 
-            title: language === "ar" ? "طريق الفيل" : "The Elephant Path", 
-            desc: language === "ar"
-            ? "المسار التاريخي الذي سلكه أبرهة الحبشي، يتميز برصفه الحجري العريض الذي يصل عرضه لـ 4 أمتار."
-            : "The historical path taken by Abraha, characterized by its 4-meter wide stone paving.", 
-            img: "AL-BahaPics/The Elephant Road.png" // ضع هنا رابط صورة لطريق الفيل التاريخي
-        },
-        bakhroushFort: { 
-            title: language === "ar" ? "قلعة بخروش بن علاس" : "Bakhroush bin Allas Fort", 
-            desc: language === "ar"
-            ? "قلعة تحصينية شهدت مقاومة القائد بخروش ضد العثمانيين عام 1221هـ، وتعد رمزاً للصمود."
-            : "A fortification that witnessed the resistance of leader Bakhroush against the Ottomans in 1221 AH.", 
-            img: "AL-BahaPics/Bakhroush Castle.png" // ضع هنا رابط صورة لقلعة بخروش
+        en: {
+            dir: 'ltr',
+            title: "Al-Baha Region",
+            subtitle: "The Pearl of the Highlands",
+            originTitle: "Ancient Origins",
+            originDesc: "Known as the 'Pearl of the Highlands', Al-Baha has been inhabited by Ghamid and Zahran tribes for centuries. It was administratively established in 1383 AH and is now a top tourist destination.",
+            civTitle: "Legacy of Civilizations",
+            civDesc: "Al-Baha has seen human settlement since ancient times, emerging as a natural fortress. Famous for its forts and castles, it was a vital stop on ancient caravan routes.",
+            landmarksTitle: "Historical Witnesses",
+            traditionsTitle: "Authentic Traditions",
+            traditionsDesc: "Al-Baha is characterized by strong tribal bonds. Traditions include 'Southern Ardha' and folk arts. Its people are known for hospitality, serving the finest honey and ghee.",
+            foodTitle: "Southern Taste",
+            visionTitle: "Vision 2030",
+            visionDesc: "The vision aims to transform Al-Baha into a sustainable global tourist destination, develop vegetation and national parks, and support organic farming.",
+            geoTitle: "Geographical Location",
+            geoDesc: "Located in southwestern Saudi Arabia, featuring diverse terrains between the high Sarawat mountains and Tihama plains.",
         }
+    };
+
+    const t = translations[language] || translations.ar;
+
+    const landmarks = [
+        { 
+            id: 0,
+            title: language === "ar" ? "قرية ذي عين الأثرية" : "Thee Ain Heritage Village", 
+            desc: language === "ar" ? "قرية مبنية من الحجارة البيضاء على قمة جبل من المرمر، يعود تاريخها لأكثر من 400 عام، وتشتهر بزراعة الموز والريحان." : "A 400-year-old village built of white stones on a marble mountain, famous for its banana and basil plantations.",
+            img: DhiAlAinVillage 
+        },
+        { 
+            id: 1,
+            title: language === "ar" ? "طريق الفيل" : "The Elephant Path", 
+            desc: language === "ar" ? "جزء من الطريق التاريخي الذي سلكه أبرهة الحبشي، يمر عبر جبال الباحة ويتميز برصفه الحجري المتقن الذي صمد لقرون." : "Part of the historical route taken by Abraha, featuring sophisticated stone paving that has endured for centuries.",
+            img: TheElephantRoad 
+        },
+        { 
+            id: 2,
+            title: language === "ar" ? "قلعة بخروش بن علاس" : "Bakhroush bin Allas Fort", 
+            desc: language === "ar" ? "تنسب للقائد بخروش بن علاس وتعتبر حصناً عسكرياً تاريخياً شهد معارك ضارية ضد القوات العثمانية." : "Named after leader Bakhroush bin Allas, this fort was a strategic military stronghold during historical wars.",
+            img: BakhroushCastle 
+        }
+    ];
+
+    const glassStyle = {
+        background: "var(--timeline-card-bg)",
+        border: "1px solid var(--timeline-card-border)",
+        borderRadius: "24px",
+        padding: "35px",
+        marginBottom: "30px",
+        boxShadow: "0 10px 30px var(--map-shadow)",
+        transition: "all 0.3s ease"
     };
 
     return (
@@ -32,163 +87,159 @@ const AlBaha = ({ darkMode, language, t }) => {
             direction: t.dir,
             textAlign: t.dir === "rtl" ? "right" : "left",
             minHeight: "100vh",
-            backgroundColor: darkMode ? "#121212" : "#f4f7f1",
-            color: darkMode ? "#e0e0e0" : "#2d3436",
-            transition: "all 0.3s ease",
-            paddingBottom: "50px",
-            fontFamily: "sans-serif"
+            backgroundColor: "var(--bg-primary)",
+            color: "var(--text-main)",
+            fontFamily: "'Cairo', 'Segoe UI', Tahoma, sans-serif",
+            transition: "all 0.4s ease"
         }}>
-
-            <header style={{ position: "relative", height: "45vh", overflow: "hidden" }}>
-                {/* ضع في src أدناه رابط صورة بانورامية لجبال الباحة أو ضباب الباحة */}
-                <img src="AL-BahaPics/AlbahaBanner.png" alt="Al-Baha" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <h1 style={{ color: "white", fontSize: "3.5rem", fontWeight: "bold", textShadow: "2px 2px 10px rgba(0,0,0,0.5)" }}>
-                        {language === "ar" ? "منطقة الباحة" : "Al-Baha Region"}
+            <header style={{ position: "relative", height: "55vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img 
+                    src={AlbahaBanner} 
+                    alt="Al-Baha" 
+                    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} 
+                />
+                <div style={{ 
+                    position: "absolute", inset: 0, 
+                    background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))", 
+                    zIndex: 2 
+                }} />
+                <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 20px" }}>
+                    <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: "800", color: "#fff", marginBottom: "10px", textShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
+                        {t.title}
                     </h1>
+                    <p style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", color: "rgba(255,255,255,0.9)", fontWeight: "500" }}>
+                        {t.subtitle}
+                    </p>
                 </div>
             </header>
 
-            <main style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}>
+            <main style={{ maxWidth: "1100px", margin: "-50px auto 0", position: "relative", zIndex: 10, padding: "0 20px 80px" }}>
+                
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.originTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.originDesc}</p>
+                    </section>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• نشأة المنطقة" : "• Region Origin"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar" 
-                        ? "تُعد الباحة من أقدم المناطق المأهولة في شبه الجزيرة العربية منذ العصور الحجرية. تأسست كمنطقة إدارية عام 1383 هـ، وكانت تاريخياً حلقة وصل استراتيجية لطرق القوافل والحجيج المتجهة نحو مكة المكرمة."
-                        : "Al-Baha is one of the oldest inhabited regions since the Stone Age. Established as an administrative region in 1383 AH, it served as a strategic link for caravan routes to Makkah."}
-                    </p>
-                </section>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.civTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.civDesc}</p>
+                    </section>
+                </div>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• أهم الحضارات" : "• Key Civilizations"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "احتضنت المنطقة حضارات قديمة تعود لـ 2000 عام قبل الميلاد في مواقع مثل 'بني كبير'، وشهدت كثافة سكانية عالية في عصور ما قبل الإسلام تجلت في هندسة المدرجات الجبلية والآبار العميقة."
-                        : "Home to ancient civilizations dating back to 2000 BC in sites like 'Bani Kabir', showing advanced mountain terracing and deep wells."}
-                    </p>
-                </section>
+                <section style={{ ...glassStyle, padding: "40px" }}>
+                    <h2 style={{ textAlign: "center", fontSize: "2.2rem", fontWeight: "800", marginBottom: "40px", color: "var(--text-main)" }}>
+                        {t.landmarksTitle}
+                    </h2>
+                    
+                    <div style={{ display: "flex", flexDirection: t.dir === "rtl" ? "row" : "row-reverse", gap: "30px", flexWrap: "wrap" }}>
+                        <div style={{ flex: "1", minWidth: "280px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                            {landmarks.map((item, idx) => (
+                                <div 
+                                    key={item.id}
+                                    onClick={() => setActiveLandmark(idx)}
+                                    style={{
+                                        padding: "22px",
+                                        borderRadius: "18px",
+                                        cursor: "pointer",
+                                        transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                                        background: activeLandmark === idx ? "var(--accent-color)" : "var(--bg-primary)",
+                                        color: activeLandmark === idx ? "var(--button-text)" : "var(--text-main)",
+                                        transform: activeLandmark === idx ? (t.dir === "rtl" ? "translateX(-10px)" : "translateX(10px)") : "none",
+                                        border: "1px solid var(--timeline-card-border)",
+                                        boxShadow: activeLandmark === idx ? "0 10px 20px rgba(0,0,0,0.1)" : "none"
+                                    }}
+                                >
+                                    <h3 style={{ fontSize: "1.15rem", fontWeight: "700" }}>{item.title}</h3>
+                                </div>
+                            ))}
+                        </div>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• المعالم التاريخية" : "• Historical Landmarks"}</h2>
-                    <div style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
-                        {Object.keys(landmarksData).map((key, index) => (
-                            <button key={key} onClick={() => setSelectedItem(landmarksData[key])} style={itemBtnStyle(darkMode, index)}>
-                                {landmarksData[key].title}
-                            </button>
-                        ))}
+                        <div style={{ flex: "2", minWidth: "320px", position: "relative", borderRadius: "24px", overflow: "hidden", height: "420px", boxShadow: "0 20px 40px var(--map-shadow)" }}>
+                            <img 
+                                src={landmarks[activeLandmark].img} 
+                                alt={landmarks[activeLandmark].title}
+                                style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }}
+                                onError={(e) => { 
+                                    e.target.src = "https://via.placeholder.com/800x450?text=Al-Baha+Heritage"; 
+                                }}
+                            />
+                            <div style={{ 
+                                position: "absolute", bottom: 0, left: 0, right: 0, 
+                                padding: "35px", background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
+                                color: "#fff"
+                            }}>
+                                <h3 style={{ fontSize: "1.8rem", fontWeight: "800", marginBottom: "10px" }}>{landmarks[activeLandmark].title}</h3>
+                                <p style={{ fontSize: "1.05rem", opacity: 0.95, lineHeight: "1.6", fontWeight: "400" }}>{landmarks[activeLandmark].desc}</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• العادات والتقاليد" : "• Traditions"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "تشتهر الباحة بالفنون الشعبية كالعرضة الجنوبية واللعب والمسحباني. وتتميز بمراسم الزواج التي تبدأ بعد العصر، وكرم الضيافة الذي يعكس أصالة أهل الجبال."
-                        : "Famous for folk arts like Southern Ardha and L'ab. Traditions include unique wedding ceremonies and exceptional mountain hospitality."}
-                    </p>
-                </section>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.traditionsTitle}</h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.traditionsDesc}</p>
+                    </section>
 
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• المأكولات الشعبية" : "• Traditional Cuisine"}</h2>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                        <div>
-                            <strong style={{ color: "#2e7d32" }}>{language === "ar" ? "الدغابيس:" : "Daghabees:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "أقراص من عجينة البر تُطهى في مرق اللحم الغني." : "Whole wheat dough discs cooked in a rich meat broth."}</p>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.foodTitle}</h2>
+                        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                            {["الدغابيس", "الخبزة المقناة", "العصيدة", "المرق"].map(food => (
+                                <span key={food} style={{ 
+                                    padding: "10px 22px", 
+                                    borderRadius: "50px", 
+                                    background: "var(--accent-color)", 
+                                    color: "var(--button-text)", 
+                                    fontWeight: "700",
+                                    fontSize: "0.95rem",
+                                    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+                                }}>
+                                    {language === "ar" ? food : food}
+                                </span>
+                            ))}
                         </div>
-                        <div>
-                            <strong style={{ color: "#2e7d32" }}>{language === "ar" ? "الخبزة المقناة:" : "Khubza Maqnah:"}</strong>
-                            <p style={pStyle}>{language === "ar" ? "خبز ضخم يُطهى على صخرة ساخنة ويُغطى بالجمر." : "Huge bread baked on a hot stone covered with embers."}</p>
-                        </div>
-                    </div>
+                    </section>
+                </div>
+
+                <section style={{ ...glassStyle, borderLeft: t.dir === "ltr" ? "8px solid var(--accent-color)" : "none", borderRight: t.dir === "rtl" ? "8px solid var(--accent-color)" : "none" }}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.8rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
+                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
                 </section>
 
-                <section style={{ ...sectionBoxStyle(darkMode), borderRight: "6px solid #2e7d32" }}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• رؤية المملكة 2030" : "• Vision 2030 Impact"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "تركز الرؤية على تحويل الباحة لوجهة سياحية عالمية عبر تطوير السياحة البيئية، وترميم القرى التراثية كـ 'ذي عين'، ودعم زراعة الرمان وإنتاج العسل الفاخر."
-                        : "Vision 2030 aims to transform Al-Baha into a global eco-tourism destination, renovating heritage villages and supporting local honey and pomegranate production."}
-                    </p>
-                </section>
-
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>{language === "ar" ? "• الموقع الجغرافي" : "• Geographical Location"}</h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                        ? "تقع منطقة الباحة في الجنوب الغربي من المملكة العربية السعودية، وتتربع على قمم جبال السروات، مما يمنحها مناخاً معتدلاً وطبيعة خلابة."
-                        : "Located in the southwestern Saudi Arabia, perched atop the Sarawat Mountains with a temperate climate."}
-                    </p>
-                    <div style={{ height: "400px", borderRadius: "15px", overflow: "hidden", marginTop: "20px", border: "1px solid #ddd" }}>
+                <section style={glassStyle}>
+                    <h2 style={{ fontSize: "1.6rem", fontWeight: "800", marginBottom: "20px" }}>{t.geoTitle}</h2>
+                    <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
+                    <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
                         <iframe 
-                            title="Map" width="100%" height="100%" frameBorder="0" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119334.84656461944!2d41.38558452187654!3d20.012885994460593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e5059635777717%3A0x8825a07c3905e36a!2z2KfZhNio2KfYrdip!5e0!3m2!1sar!2ssa!4v1705100000000"
-                            allowFullScreen>
-                        </iframe>
+                            title="Al-Baha Map" 
+                            width="100%" height="100%" frameBorder="0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119472.164848035!2d41.37895318683501!3d20.022137599052062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e5399cc12547b5%3A0x334812674e2a8740!2sAl%20Bahah%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1700000000000"
+                            allowFullScreen
+                            style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
+                        ></iframe>
                     </div>
                 </section>
 
             </main>
 
-            {selectedItem && (
-                <div style={modalOverlayStyle} onClick={() => setSelectedItem(null)}>
-                    <div style={modalCardStyle(darkMode)} onClick={e => e.stopPropagation()}>
-                        <button style={closeBtnStyle} onClick={() => setSelectedItem(null)}>✕</button>
-                        <img src={selectedItem.img} alt={selectedItem.title} style={{ width: "100%", height: "250px", objectFit: "cover" }} />
-                        <div style={{ padding: "20px" }}>
-                            <h2 style={{ color: "#2e7d32" }}>{selectedItem.title}</h2>
-                            <p style={{ marginTop: "10px", lineHeight: "1.6" }}>{selectedItem.desc}</p>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <style>{`
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                main section {
+                    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                }
+            `}</style>
         </div>
     );
-};
-
-const sectionBoxStyle = (darkMode) => ({
-    background: darkMode ? "#1e1e1e" : "#ffffff",
-    padding: "30px",
-    borderRadius: "20px",
-    marginBottom: "30px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
-});
-
-const h2Style = (dir) => ({
-    color: "#2e7d32",
-    marginBottom: "20px",
-    fontSize: "1.6rem",
-    borderLeft: dir === "ltr" ? "4px solid #2e7d32" : "none",
-    borderRight: dir === "rtl" ? "4px solid #2e7d32" : "none",
-    padding: "0 15px"
-});
-
-const pStyle = { fontSize: "1.05rem", lineHeight: "1.8", opacity: 0.9 };
-
-const itemBtnStyle = (darkMode, index) => ({
-    padding: "12px 25px",
-    backgroundColor: darkMode ? "#2a2a2a" : "#f0f4f0",
-    color: darkMode ? "#fff" : "#2e7d32",
-    border: "2px solid #2e7d32",
-    borderRadius: "30px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    transition: "0.3s",
-});
-
-const modalOverlayStyle = {
-    position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.8)",
-    display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000, backdropFilter: "blur(4px)"
-};
-
-const modalCardStyle = (darkMode) => ({
-    backgroundColor: darkMode ? "#222" : "#fff", width: "90%", maxWidth: "500px",
-    borderRadius: "20px", overflow: "hidden", position: "relative"
-});
-
-const closeBtnStyle = {
-    position: "absolute", top: "10px", right: "10px", width: "35px", height: "35px",
-    borderRadius: "50%", border: "none", background: "#00000080", color: "#fff", cursor: "pointer"
 };
 
 export default AlBaha;

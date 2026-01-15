@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // استبدل هذا المسار بصورة لبانر تبوك في مشروعك
-import tabukBanner from "./TabukPics/ChatGPT Image 13 يناير 2026، 01_00_52 ص.png"; 
-import TabukCastle from "./TabukPics/TabCatsle.jpeg"
-import Shuaeib from "./TabukPics/شعيب.webp"
+import tabukBanner from "./TabPics/ChatGPT Image 13 يناير 2026، 01_00_52 ص.png"; 
+import TabukCastle from "./TabPics/TabCatsle.jpeg"
+import Shuaeib from "./TabPics/شعيب.webp"
 
 const Tabuk = ({ darkMode, language, t }) => {
     const [selectedItem, setSelectedItem] = useState(null);
