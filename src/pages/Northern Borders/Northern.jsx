@@ -1,77 +1,67 @@
 import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-// استيراد الصور برمجياً بناءً على المسارات الواردة في ملف المستخدم (pasted_content_8.txt)
-import asirBanner from "./AsirPics/f177ac7b-6865-4daa-8eba-e55042e469c2-md.jpeg"; 
-import rgalamaa from "./AsirPics/196610339984845401.jfif"; 
-import jurshPic from "./AsirPics/846461_1368202303.jpg"; 
+// ملاحظة: يجب استبدال هذه المسارات بمسارات الصور الفعلية لديك
+import northernBordersBanner from "./NorthernPics/Northbanner.png"; 
+import DarbZubaida from "./NorthernPics/DarbZubaida.jpeg";
+import LinahVillage from "./NorthernPics/LinahVillage.webp";
 
-const Asir = () => {
+const NorthernBorders = () => {
     const { darkMode, language } = useThemeLanguage();
     const [activeLandmark, setActiveLandmark] = useState(0);
 
     const translations = {
         ar: {
             dir: 'rtl',
-            title: "منطقة عسير",
-            subtitle: "ملتقى القمم والشيم وجمال الطبيعة الخلابة",
+            title: "منطقة الحدود الشمالية",
+            subtitle: "مأوى الصقور وبوابة الشمال وعاصمة التعدين",
             originTitle: "نشأة المنطقة",
-            originDesc: "تقع عسير في الركن الجنوبي الغربي من المملكة، واستمدت اسمها من عسرة تضاريسها الجبلية. تميزت عبر العصور بكونها حلقة وصل تجارية هامة بفضل وفرة أمطارها وخصوبة أرضها.",
+            originDesc: "تقع منطقة الحدود الشمالية في شمال المملكة العربية السعودية، وتحدها دولتا العراق والأردن. تأسست إدارياً في عام 1992م، وتعتبر منطقة استراتيجية هامة نظراً لموقعها الحدودي وتنوعها الجغرافي الذي يجمع بين السهول والوديان والهضاب.",
             civTitle: "أهم الحضارات",
-            civDesc: "استوطنت عسير حضارات عريقة منها الحضارة الحميرية والسبئية، وشهدت ازدهاراً كبيراً في العصور الإسلامية كطريق للحجاج والتجارة بين اليمن ومكة المكرمة.",
+            civDesc: "شهدت المنطقة استيطاناً بشرياً منذ عصور ما قبل التاريخ، حيث وُجدت فيها نقوش صفائية ورسوم صخرية قديمة في أودية مثل وادي الغرابة. كما برزت أهميتها التاريخية في العصر الإسلامي بمرور 'درب زبيدة' الشهير، وهو طريق الحج الكوفي الذي يضم محطات تاريخية وبركاً مائية عريقة.",
             landmarksTitle: "أهم الآثار التاريخية",
-            traditionsTitle: "عادات وتقاليد عسير",
-            traditionsDesc: "يشتهر أهل عسير بفن 'القط العسيري' المسجل في اليونسكو، وهو فن تزيين المنازل بالألوان. كما تتميز المنطقة بالرقصات الشعبية مثل 'العرضة والخطوة' وإكرام الضيف.",
-            foodTitle: "مأكولات عسيرية",
-            foods: ["الحنيذ", "العريكة", "المبثوث"],
+            traditionsTitle: "عادات وتقاليد الشمال",
+            traditionsDesc: "يشتهر أهل الحدود الشمالية بالكرم الحاتمي الأصيل المرتبط بحياة البادية. وتعد 'الصقارة' وتربية الصقور من أبرز الهوايات المتجذرة، بالإضافة إلى الفنون الشعبية العريقة مثل 'الدحة' التي تعبر عن القوة والشهامة في مجالسهم.",
+            foodTitle: "مأكولات شمالية",
+            foods: ["المنسف", "الجريش", "الثريد", "المطازيز"],
             visionTitle: "تأثير رؤية 2030",
-            visionDesc: "من خلال استراتيجية 'قمم وشيم'، تهدف رؤية 2030 لتحويل عسير إلى وجهة سياحية عالمية طوال العام، وتطوير مشاريع عملاقة مثل شركة السودة وتطوير مطار أبها لربط المنطقة بالعالم.",
+            visionDesc: "تشهد المنطقة نهضة تنموية كبرى ضمن رؤية 2030، خاصة في قطاع التعدين من خلال مدينة 'وعد الشمال' الصناعية في طريف، وتطوير المواقع التراثية مثل قرية لينة ودرب زبيدة لتصبح وجهات سياحية وثقافية عالمية.",
             geoTitle: "الموقع الجغرافي",
-            geoDesc: "تقع منطقة عسير في جنوب غرب المملكة العربية السعودية، وتتميز بتنوع تضاريسي فريد يجمع بين السهول الساحلية (تهامة) والقمم الجبلية العالية (السراة) التي تضم أعلى قمة في المملكة.",
-            landmark1Title: "قرية رجال ألمع",
-            landmark1Desc: "تعد من أهم القرى التراثية في المملكة، وتتميز بحصونها الحجرية الشاهقة وتصميمها المعماري الفريد الذي يمتد لأكثر من 900 عام.",
-            landmark2Title: "موقع جرش الأثري",
-            landmark2Desc: "موقع أثري يقع في محافظة أحد رفيدة، يضم بقايا حضارات قديمة تعود إلى عصور ما قبل الإسلام، ويشتهر بصناعاته الجلدية والزراعية قديماً."
+            geoDesc: "تقع المنطقة في أقصى شمال المملكة، وتتميز بتضاريس متنوعة تشمل الأودية والشعاب والسهول الفسيحة. مناخها قاري يتميز بالبرودة الشديدة شتاءً والاعتدال صيفاً، مما يجعلها مقصداً لهواة الرحلات البرية.",
+            landmark1Title: "درب زبيدة التاريخي",
+            landmark1Desc: "طريق الحج الكوفي الذي أنشأته السيدة زبيدة زوجة الخليفة هارون الرشيد، ويضم في منطقة الحدود الشمالية العديد من البرك والمحطات الأثرية التي كانت تخدم الحجاج والمسافرين.",
+            landmark2Title: "قرية لينة التاريخية",
+            landmark2Desc: "من أقدم القرى في المنطقة، وتشتهر بآبارها التاريخية التي يقال إنها حفرت في عهد النبي سليمان عليه السلام، وتضم سوقاً تراثياً قديماً كان مركزاً تجارياً هاماً بين نجد والعراق."
         },
         en: {
             dir: 'ltr',
-            title: "Asir Region",
-            subtitle: "Where Peaks Meet Traditions and Natural Beauty",
+            title: "Northern Borders Region",
+            subtitle: "The Falcon's Haven and Saudi Arabia's Mining Capital",
             originTitle: "Region Origin",
-            originDesc: "Asir is located in the southwestern corner of KSA, taking its name from its rugged (Asir) mountain terrain. Throughout history, it served as a vital trade link due to its abundant rainfall and fertile land.",
+            originDesc: "Located in the far north of Saudi Arabia, bordering Iraq and Jordan. Administratively established in 1992, it is a strategic region known for its diverse geography, including plains, valleys, and plateaus.",
             civTitle: "Major Civilizations",
-            civDesc: "Ancient civilizations such as the Himyarite and Sabaean settled in Asir. It flourished during the Islamic eras as a key route for pilgrims and trade between Yemen and Makkah.",
+            civDesc: "The region has seen human settlement since prehistoric times, evidenced by Safaitic inscriptions and ancient rock art. Its historical significance peaked during the Islamic era with 'Darb Zubaida', the famous Kufic pilgrimage route.",
             landmarksTitle: "Historical Landmarks",
             traditionsTitle: "Customs and Traditions",
-            traditionsDesc: "Asir is famous for 'Al-Qatt Al-Asiri' (UNESCO registered art), the art of decorating homes with vibrant colors. The region is also known for folk dances like 'Al-Khatwa' and great hospitality.",
-            foodTitle: "Asiri Cuisine",
-            foods: ["Haneeth", "Areeka", "Mabthooth"],
+            traditionsDesc: "The people of the Northern Borders are renowned for their authentic hospitality. Falconry is a deeply rooted hobby, alongside traditional folk arts like 'Al-Dahha', which symbolizes strength and chivalry.",
+            foodTitle: "Northern Cuisine",
+            foods: ["Mansaf", "Jareesh", "Tharid", "Matazeez"],
             visionTitle: "Vision 2030 Impact",
-            visionDesc: "Through the 'Peaks and Traditions' strategy, Vision 2030 aims to transform Asir into a global year-round tourist destination, developing mega-projects like Soudah Development and Abha Airport expansion.",
+            visionDesc: "The region is undergoing a major transformation under Vision 2030, particularly in the mining sector with 'Wa'ad Al-Shamaal' city in Turaif, and the development of heritage sites like Linah Village and Darb Zubaida.",
             geoTitle: "Geographical Location",
-            geoDesc: "Asir region is located in southwestern Saudi Arabia, featuring a unique diverse terrain that combines coastal plains (Tihama) and high mountain peaks (Al-Sarawat), including the highest peak in the Kingdom.",
-            landmark1Title: "Rijal Almaa Village",
-            landmark1Desc: "One of the most important heritage villages in KSA, famous for its towering stone forts and unique architectural design dating back over 900 years.",
-            landmark2Title: "Jurash Archaeological Site",
-            landmark2Desc: "An archaeological site in Ahad Rafidah, containing remains of ancient pre-Islamic civilizations, famous for its leather and agricultural industries."
+            geoDesc: "Situated at the northernmost part of the Kingdom, it features diverse terrains like valleys and vast plains. Its continental climate is very cold in winter and moderate in summer, attracting desert enthusiasts.",
+            landmark1Title: "Darb Zubaida",
+            landmark1Desc: "The historic Kufic pilgrimage route established by Lady Zubaida, wife of Caliph Harun al-Rashid. It features numerous ancient pools and stations that served pilgrims for centuries.",
+            landmark2Title: "Linah Historical Village",
+            landmark2Desc: "One of the oldest villages in the region, famous for its ancient wells and a traditional market that served as a major commercial hub between Najd and Iraq."
         }
     };
 
     const t = translations[language] || translations.ar;
 
     const landmarks = [
-        { 
-            id: 0,
-            title: t.landmark1Title, 
-            desc: t.landmark1Desc,
-            img: rgalamaa 
-        },
-        { 
-            id: 1,
-            title: t.landmark2Title, 
-            desc: t.landmark2Desc,
-            img: jurshPic 
-        }
+        { id: 0, title: t.landmark1Title, desc: t.landmark1Desc, img: DarbZubaida },
+        { id: 1, title: t.landmark2Title, desc: t.landmark2Desc, img: LinahVillage }
     ];
 
     const glassStyle = {
@@ -82,6 +72,18 @@ const Asir = () => {
         marginBottom: "30px",
         boxShadow: "0 10px 30px var(--map-shadow)",
         transition: "all 0.3s ease"
+    };
+
+    // ستايل الخريطة للوضع الداكن
+    const mapContainerStyle = {
+        width: "100%",
+        height: "450px",
+        borderRadius: "20px",
+        overflow: "hidden",
+        marginTop: "20px",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+        filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)" : "none",
+        transition: "filter 0.4s ease"
     };
 
     return (
@@ -96,10 +98,10 @@ const Asir = () => {
         }}>
             <header style={{ position: "relative", height: "55vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <img 
-                    src={asirBanner} 
+                    src={northernBordersBanner} 
                     alt={t.title} 
                     style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} 
-                    onError={(e) => { e.target.src = "https://via.placeholder.com/1920x1080?text=Asir+Region"; }}
+                    onError={(e) => { e.target.src = "https://via.placeholder.com/1920x1080?text=Northern+Borders+Region"; }}
                 />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))", zIndex: 2 }} />
                 <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 20px" }}>
@@ -165,7 +167,7 @@ const Asir = () => {
                                 src={landmarks[activeLandmark].img} 
                                 alt={landmarks[activeLandmark].title}
                                 style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }}
-                                onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Asir+Landmark"; }}
+                                onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Northern+Borders+Landmark"; }}
                             />
                             <div style={{ 
                                 position: "absolute", bottom: 0, left: 0, right: 0, 
@@ -205,38 +207,29 @@ const Asir = () => {
                     </section>
                 </div>
 
-                <section style={{ ...glassStyle, borderLeft: t.dir === "ltr" ? "8px solid var(--accent-color)" : "none", borderRight: t.dir === "rtl" ? "8px solid var(--accent-color)" : "none" }}>
-                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.8rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
-                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
+                <section style={glassStyle}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
+                    <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
                 </section>
 
                 <section style={glassStyle}>
-                    <h2 style={{ fontSize: "1.6rem", fontWeight: "800", marginBottom: "20px" }}>{t.geoTitle}</h2>
-                    <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
-                    <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.geoTitle}</h2>
+                    <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
+                    <div style={mapContainerStyle}>
                         <iframe 
-                            title="Asir Map" 
-                            width="100%" height="100%" frameBorder="0" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930532.622290793!2d41.50814650360661!3d19.082567303711464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e0170a439633013%3A0x9b1f03b6118c1c1b!2sAseer%20Province!5e0!3m2!1sen!2ssa!4v1768384416126!5m2!1sen!2ssa"
-                            allowFullScreen
-                            style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
+                            src="https://www.google.com/maps?q=Northern+Borders+Region+Saudi+Arabia&z=6&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style={{ border: 0 }} 
+                            allowFullScreen="" 
+                            loading="lazy"
                         ></iframe>
                     </div>
                 </section>
 
             </main>
-
-            <style>{`
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(30px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                main section {
-                    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                }
-            `}</style>
         </div>
     );
 };
 
-export default Asir;
+export default NorthernBorders;

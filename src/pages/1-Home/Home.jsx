@@ -26,7 +26,6 @@ export default function Home({ darkMode, t }) {
 
   if (!t) return <div className="loading-screen">Loading...</div>;
 
-  // تحديد ما إذا كانت اللغة الحالية هي العربية
   const isRTL = t.dir === "rtl";
 
   return (
@@ -58,7 +57,6 @@ export default function Home({ darkMode, t }) {
         
         <p className="hero-desc">{t.heroDesc}</p>
         
-        {/* حاوية الأزرار */}
         <div className="hero-links-container">
           <a href="#about" className="main-btn" onClick={(e) => scrollToSection(e, "about")}>
             {t.timeline}
@@ -72,14 +70,16 @@ export default function Home({ darkMode, t }) {
         </div>
       </section>
 
-      {/* باقي الأقسام */}
+      {/* SECTION TIMELINE */}
       <section id="about" className="section-container">
         <h2 className="section-heading">{t.timelineSection}</h2>
-        <div className="content-width">
-            <Timeline />
+        <div className="content-width" style={{ width: '100%' }}>
+            {/* تم تمرير الـ Props هنا لضمان عمل اللغة والوضع الداكن */}
+            <Timeline darkMode={darkMode} language={isRTL ? "ar" : "en"} />
         </div>
       </section>
 
+      {/* SECTION MAP */}
       <section id="features" className="section-container">
         <h2 className="section-heading" style={{ marginBottom: '2px' }}>{t.mapSection}</h2>
         <p className="map-hint" style={{ marginTop: '2px', marginBottom: '10px' }}>{t.mapContent}</p>

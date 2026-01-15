@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-// استيراد الصور برمجياً (هذه هي الطريقة الصحيحة للصور داخل مجلد src)
+// استيراد الصور برمجياً لضمان ظهورها من مجلد src
 import QassimBanner from "./QasPics/ChatGPT Image 13 يناير 2026، 01_10_43 ص.png";
 import BinAqeelPalace from "./QasPics/قصر بن عقيّلPNG.png";
 import AlMusawkafMarket from "./QasPics/souq-almusawkaf-in-qassim-1_crop-760x570.webp";
@@ -24,6 +24,7 @@ const Qassim = () => {
             traditionsTitle: "أصالة العادات",
             traditionsDesc: "تتميز القصيم بالترابط الاجتماعي الوثيق، وتشتهر بمهرجانات التمور العالمية. من أبرز عاداتها 'المجالس' المفتوحة وكرم الضيافة الأصيل، بالإضافة إلى الفنون الشعبية مثل العرضة والسامري.",
             foodTitle: "مذاق التراث",
+            foods: ["الكليجا", "المرقوق", "المطازيز", "الحنيني"],
             visionTitle: "رؤية المستقبل 2030",
             visionDesc: "تهدف الرؤية إلى تعزيز القصيم كمركز عالمي لصناعة وتصدير التمور، وتطوير السياحة الزراعية والتراثية، ودعم المشاريع اللوجستية التي تستفيد من موقع المنطقة المتوسط.",
             geoTitle: "الموقع الجغرافي",
@@ -41,6 +42,7 @@ const Qassim = () => {
             traditionsTitle: "Authentic Traditions",
             traditionsDesc: "Al-Qassim is characterized by strong social bonds and world-class date festivals. Traditions include open 'Majalis', authentic hospitality, and folk arts like Ardha and Samri.",
             foodTitle: "Taste of Heritage",
+            foods: ["Kleicha", "Margoog", "Matazeez", "Hininy"],
             visionTitle: "Vision 2030",
             visionDesc: "The vision aims to enhance Al-Qassim as a global center for the date industry, develop agro-tourism and heritage, and support logistics projects.",
             geoTitle: "Geographical Location",
@@ -166,7 +168,7 @@ const Qassim = () => {
                                 alt={landmarks[activeLandmark].title}
                                 style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }}
                                 onError={(e) => { 
-                                    e.target.src = "https://via.placeholder.com/800x450?text=Image+Not+Found+Check+Paths"; 
+                                    e.target.src = "https://via.placeholder.com/800x450?text=Qassim+Heritage"; 
                                 }}
                             />
                             <div style={{ 
@@ -190,7 +192,7 @@ const Qassim = () => {
                     <section style={glassStyle}>
                         <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.foodTitle}</h2>
                         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                            {["الكليجا", "المرقوق", "المطازيز", "الحنيني"].map(food => (
+                            {t.foods.map(food => (
                                 <span key={food} style={{ 
                                     padding: "10px 22px", 
                                     borderRadius: "50px", 
@@ -200,7 +202,7 @@ const Qassim = () => {
                                     fontSize: "0.95rem",
                                     boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
                                 }}>
-                                    {language === "ar" ? food : (food === "الكليجا" ? "Kleicha" : food)}
+                                    {food}
                                 </span>
                             ))}
                         </div>

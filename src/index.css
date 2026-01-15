@@ -1,20 +1,20 @@
 /* إعداد المتغيرات الشاملة (Theme Variables) */
 :root {
   /* وضع النهار (Light Mode) */
-  --bg-primary: #F7F3ED;            
+  --bg-primary: #F6E9DA;            
   --text-main: #2d2424;            
   --text-secondary: #6B5B52;       
   --text-muted: rgba(45, 36, 36, 0.6);
-  --accent-color: #7A6A4F;         
+  --accent-color: #613a2b;         
   --button-text: #FFFFFF;
   --nav-footer-bg: #4A352C;        
   --nav-footer-text: #FFFFFF;
   --nav-footer-border: rgba(74, 53, 44, 0.4);
   --icon-btn-bg: rgba(255, 255, 255, 0.2);
   
-  --map-base: #C1B092;
+  --map-base: #C49A6C;
   --map-hover: #CDBFAE;
-  --map-shadow: #E6D5B8;
+  --map-shadow: #E3C8A8;
   
   --timeline-line: #B8956A;
   --timeline-dot: #4A352C;
