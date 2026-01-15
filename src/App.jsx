@@ -81,7 +81,7 @@ function AppContent() {
           
           {/* مسارات المناطق بناءً على ملف الخريطة */}
           <Route path="/makkah" element={<MakkahPage darkMode={darkMode} t={t} />} />
-          <Route path="/madinah" element={<MadinahPage darkMode={darkMode} t={t} />} />
+          <Route path="/Medina" element={<MadinahPage darkMode={darkMode} t={t} />} />
           <Route path="/qassim" element={<QassimPage darkMode={darkMode} t={t} />} />
           <Route path="/eastern" element={<EasternPage darkMode={darkMode} t={t} />} />
           <Route path="/asir" element={<AsirPage darkMode={darkMode} t={t} />} />

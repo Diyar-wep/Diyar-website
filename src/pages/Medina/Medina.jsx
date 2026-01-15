@@ -193,7 +193,7 @@ const Medina = () => {
                     <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
                     <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
                         <iframe title="Medina Map" width="100%" height="100%" frameBorder="0" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d116246.33169302633!2d39.52621062024103!3d24.467210452361667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbe5197d220d5%3A0x2e5453522479d7f7!2z2KfZhNmF2K_ZitmG2Kkg2KfZhNmF2YbZiNix2Kk!5e0!3m2!1sar!2ssa!4v1705290000000!5m2!1sar!2ssa"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232410.14987832002!2d39.782024480179935!3d24.471295914182758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbe5197d220d5%3A0x2e54514fea3b08d9!2z2KfZhNmF2K_ZitmG2Kkg2KfZhNmF2YbZiNix2Kk!5e0!3m2!1sar!2ssa!4v1768449742921!5m2!1sar!2ssa"
                             style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
                             allowFullScreen
                         ></iframe>
