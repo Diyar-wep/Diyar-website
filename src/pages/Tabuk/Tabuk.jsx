@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد الصور بناءً على مسارات كود تبوك السابق
-import tabukBanner from "./TabPics/ChatGPT Image 13 يناير 2026، 01_00_52 ص.png"; 
+import tabukBanner from "./TabPics/TabukBanner.png"; 
 import TabukCastle from "./TabPics/TabCatsle.jpeg";
-import Shuaeib from "./TabPics/شعيب.webp";
+import Shuaeib from "./TabPics/Shuaib.webp";
 
 const Tabuk = () => {
     const { darkMode, language } = useThemeLanguage();

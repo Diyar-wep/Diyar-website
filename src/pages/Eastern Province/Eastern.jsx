@@ -3,10 +3,10 @@ import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد الصور بناءً على المسارات في كودك الأصلي
 import easternBanner from "./EasternPics/EastBanner.png"; 
-import jawatha from "./EasternPics/مسجد جواثا.jpg"; 
-import tarout from "./EasternPics/قلعة تاروj.webp"; 
-import qaraMount from "./EasternPics/جبل القارة.jpg"; 
-import uquir from "./EasternPics/مبنى ميناء العقير الأثري.jpg"; 
+import jawatha from "./EasternPics/Jawatha Mosque.jpg"; 
+import tarout from "./EasternPics/Taro Castle.webp"; 
+import qaraMount from "./EasternPics/Jabal al-Qara.jpg"; 
+import uquir from "./EasternPics/Al-Uqair Port Archaeological Building.jpg"; 
 
 const EasternProvince = () => {
     const { darkMode, language } = useThemeLanguage();

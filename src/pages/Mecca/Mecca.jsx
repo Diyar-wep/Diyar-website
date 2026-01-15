@@ -3,10 +3,10 @@ import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد الصور بناءً على المسارات المقدمة في كود مكة
 import makkahBanner from "./MeccaPics/Makkahbanner.png";
-import haramPic from "./MeccaPics/برج الساعه.jpg";
-import hiraPic from "./MeccaPics/غار حراء.png";
-import zubaydahPic from "./MeccaPics/عين زبيده.webp";
-import bayahPic from "./MeccaPics/مسجد البيعة.jpg";
+import haramPic from "./MeccaPics/clock-tower.jpg";
+import hiraPic from "./MeccaPics/cave-of-hira.png";
+import zubaydahPic from "./MeccaPics/ain-zubaydah.webp";
+import bayahPic from "./MeccaPics/masjid-al-bayah.jpg";
 
 const Makkah = () => {
     const { darkMode, language } = useThemeLanguage();

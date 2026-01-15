@@ -4,13 +4,13 @@ import Timeline from "../../components/Timeline";
 import SaudiMap from "../../components/SaudiMap";
 
 // استيراد الشعارات الجانبية
-import diyarDark from "../GeneralPics/LOGOS/ديار دارك مود.png";
-import diyarLight from "../GeneralPics/LOGOS/ديار لايت مود.png";
-import neoDark from "../GeneralPics/LOGOS/نيو تك دارك مود.png";
-import neoLight from "../GeneralPics/LOGOS/نيو تك لايت مود.png";
+import diyarDark from "../GeneralPics/LOGOS/Diyar Dark Mode.png";
+import diyarLight from "../GeneralPics/LOGOS/Diyar Light Mode.png";
+import neoDark from "../GeneralPics/LOGOS/New Tech Dark Mode.png";
+import neoLight from "../GeneralPics/LOGOS/New Tech Light Mode.png";
 
 // استيراد صور البانر (الوسط)
-import bannerImg from "../1-Home/ثيهفثي.png";
+import bannerImg from "../1-Home/HomepageBanner.png";
 
 export default function Home({ darkMode, t }) {
   const scrollToSection = (e, id) => {
