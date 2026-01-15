@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/1-Home/Home';
 import { ThemeLanguageProvider, useThemeLanguage } from './context/ThemeLanguageContext';
 
-// استيراد صفحات المناطق (تأكد من صحة المسارات في مشروعك)
+// استيراد صفحات المناطق
 import MakkahPage from './pages/Mecca/Mecca';
 import MadinahPage from './pages/Medina/Medina';
 import QassimPage from './pages/AL-Qassim/Qassim';
@@ -17,6 +17,8 @@ import JazanPage from './pages/Jazan/Jazan';
 import NajranPage from './pages/Najran/Najran';
 import BahaPage from './pages/AL-Baha/AL-Baha';
 import JawfPage from './pages/AL-Jawf/AL-Jawf';
+import RiyadhPage from './pages/Riyadh/Riyadh'; // تأكد أن الملف في هذا المسار
+import NorthernPage from './pages/Northern Borders/Northern';
 
 function AppContent() {
   const { darkMode, setDarkMode, language, setLanguage } = useThemeLanguage();
@@ -56,7 +58,6 @@ function AppContent() {
 
   const t = translations[language];
 
-  // مزامنة الوضع الداكن مع الجسم (Body) لضمان تلوين السكرول بار والخلفية الكلية
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');
@@ -76,10 +77,7 @@ function AppContent() {
       />
       <main>
         <Routes>
-          {/* الصفحة الرئيسية */}
           <Route path="/" element={<Home darkMode={darkMode} t={t} />} />
-          
-          {/* مسارات المناطق بناءً على ملف الخريطة */}
           <Route path="/makkah" element={<MakkahPage darkMode={darkMode} t={t} />} />
           <Route path="/madinah" element={<MadinahPage darkMode={darkMode} t={t} />} />
           <Route path="/qassim" element={<QassimPage darkMode={darkMode} t={t} />} />
@@ -91,6 +89,8 @@ function AppContent() {
           <Route path="/najran" element={<NajranPage darkMode={darkMode} t={t} />} />
           <Route path="/baha" element={<BahaPage darkMode={darkMode} t={t} />} />
           <Route path="/jawf" element={<JawfPage darkMode={darkMode} t={t} />} />
+          <Route path="/riyadh" element={<RiyadhPage darkMode={darkMode} t={t} />} /> {/* تم توحيد المسار ليكون بحروف صغيرة */}
+          <Route path="/northern" element={<NorthernPage darkMode={darkMode} t={t} />} />
         </Routes>
       </main>
       <Footer darkMode={darkMode} t={t} />

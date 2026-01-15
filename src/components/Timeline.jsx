@@ -1,93 +1,133 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
-const data = [
-  {
-    title: "ما قبل قيام الدولة السعودية الأولى",
-    period: "قبل 1744م",
-    content:
-      "حضارات قديمة مثل دلمون، الأنباط، وثمود، وممالك الجنوب. الجزيرة مركز طرق تجارة عالمية. بعد الإسلام أصبحت قلب الدولة الإسلامية ثم تراجع دورها السياسي مع بقاء الحجاز دينيًا ونجد والشرق تحت حكم محلي متفرق."
-  },
-  {
-    title: "الدولة السعودية الأولى",
-    period: "1744–1818م",
-    content:
-      "تأسست في الدرعية بتحالف سياسي ديني. نجحت في توحيد معظم نجد وأجزاء واسعة من الجزيرة. انتهت بعد الحملة العثمانية بقيادة محمد علي باشا."
-  },
-  {
-    title: "الدولة السعودية الثانية",
-    period: "1824–1891م",
-    content:
-      "قامت عاصمتها الرياض. أعادت الاستقرار والتوحيد الجزئي لنجد. انتهت بسبب الصراعات الداخلية وتدخل آل رشيد."
-  },
-  {
-    title: "الدولة السعودية الثالثة",
-    period: "1902–1932م",
-    content:
-      "بدأت باسترداد الرياض على يد الملك عبدالعزيز. توحيد تدريجي للجزيرة سياسيًا وعسكريًا. أُعلن قيام المملكة العربية السعودية عام 1932م."
-  },
-  {
-    title: "الحاضر",
-    period: "1932م – الآن",
-    content:
-      "بناء الدولة الحديثة، اكتشاف النفط، تطوير المؤسسات، تعزيز الدور الإقليمي والدولي، وتنويع الاقتصاد تدريجيًا."
-  },
-  {
-    title: "رؤية السعودية 2030",
-    period: "2016م – مستمر",
-    content:
-      "مشروع وطني للتحول الاقتصادي والاجتماعي. يركز على تنويع مصادر الدخل، تمكين الإنسان، تطوير السياحة والتقنية، والاستدامة، وبناء اقتصاد غير نفطي تنافسي عالميًا."
-  }
-];
+// 1. استيراد الصور يدوياً لضمان ظهورها
+import period1Img from "./TimelinePic/period1Img.png";
+import saudi1Img from "./TimelinePic/saudi1Img.png";
+import saudi2Img from "./TimelinePic/saudi2Img.png";
+import unificationImg from "./TimelinePic/unificationImg.jpg";
+import modernImg from "./TimelinePic/modernImg.jpeg";
+import haramImg from "./TimelinePic/haram.jpg";
+import heritageImg from "./TimelinePic/heritageImg.jpeg";
+import visionImg from "./TimelinePic/visionImg.png";
 
-export default function VerticalTimeline() {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function Timeline({ darkMode, language }) {
   const itemsRef = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
         });
       },
       { threshold: 0.2 }
     );
 
-    itemsRef.current.forEach(el => el && observer.observe(el));
+    itemsRef.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const data = [
+    {
+      title: { ar: "ما قبل قيام الدولة السعودية الأولى", en: "Before the First Saudi State" },
+      year: null,
+      img: period1Img, // نستخدم المتغير المستورد هنا
+      content: {
+        ar: "امتد تاريخ شبه الجزيرة العربية لآلاف السنين، حيث شهدت المنطقة قيام حضارات قديمة مثل دلمون والثموديين والأنباط.",
+        en: "The history of the Arabian Peninsula spans thousands of years, witnessing ancient civilizations like Dilmun, Thamud, and Nabataeans."
+      },
+    },
+    {
+      title: { ar: "الدولة السعودية الأولى", en: "The First Saudi State" },
+      year: "1744",
+      img: saudi1Img,
+      content: {
+        ar: "بقيام الدولة السعودية الأولى، بدأت ملامح كيان سياسي قائم على الوحدة والاستقرار.",
+        en: "With the establishment of the First Saudi State, a political entity based on unity and stability emerged."
+      },
+    },
+    {
+      title: { ar: "الدولة السعودية الثانية", en: "The Second Saudi State" },
+      year: "1824",
+      img: saudi2Img,
+      content: {
+        ar: "جاءت الدولة السعودية الثانية لتؤكد استمرارية الحكم وترسيخ مفهوم الاستقرار رغم التحديات.",
+        en: "The Second Saudi State confirmed the continuity of rule and stability despite challenges."
+      },
+    },
+    {
+      title: { ar: "توحيد المملكة", en: "Unification of the Kingdom" },
+      year: "1932",
+      img: unificationImg,
+      content: {
+        ar: "وحّد الملك عبدالعزيز مناطق المملكة تحت راية واحدة، مؤسسًا دولة حديثة تقوم على الأمن والوحدة.",
+        en: "King Abdulaziz unified the regions of the Kingdom, establishing a modern state."
+      },
+    },
+    {
+      title: { ar: "بناء الدولة الحديثة", en: "Building the Modern State" },
+      year: null,
+      img: modernImg,
+      content: {
+        ar: "شهدت المملكة تطورًا في التعليم، والأمن، والأنظمة، والبنية التحتية.",
+        en: "The Kingdom witnessed major development in education, security, and infrastructure."
+      },
+    },
+    {
+      title: { ar: "خدمة الحرمين الشريفين", en: "Serving the Two Holy Mosques" },
+      year: null,
+      img: haramImg,
+      content: {
+        ar: "اهتمت المملكة بخدمة الحرمين الشريفين عبر التوسعات والتنظيم المستمر.",
+        en: "The Kingdom focused on serving the Two Holy Mosques through continuous expansions."
+      },
+    },
+    {
+      title: { ar: "الهوية الوطنية والتراث", en: "National Identity and Heritage" },
+      year: null,
+      img: heritageImg,
+      content: {
+        ar: "تزايد الاهتمام بتوثيق التراث وحماية الآثار وإبراز ثقافة المناطق.",
+        en: "Increased focus on documenting heritage and protecting antiquities."
+      },
+    },
+    {
+      title: { ar: "رؤية السعودية 2030", en: "Saudi Vision 2030" },
+      year: "2030",
+      img: visionImg,
+      content: {
+        ar: "تمثل رؤية 2030 امتدادًا للتاريخ، تجمع بين الأصالة والتنمية، لبناء مستقبل مستدام.",
+        en: "Vision 2030 combines authenticity and development for a sustainable future."
+      },
+    },
+  ];
 
   return (
     <>
       <style>{css}</style>
-
-      <div dir="rtl" className="timeline-wrapper">
+      <div 
+        className={`timeline-wrapper ${darkMode ? "dark-theme" : "light-theme"}`} 
+        dir={language === "ar" ? "rtl" : "ltr"}
+      >
         <div className="line" />
 
         {data.map((item, index) => {
           const isLeft = index % 2 === 0;
-          const isActive = index === activeIndex;
-
           return (
             <div
               key={index}
-              ref={el => (itemsRef.current[index] = el)}
-              className={`row hidden ${isLeft ? "left" : "right"}`}
+              ref={(el) => (itemsRef.current[index] = el)}
+              className={`row ${isLeft ? "left" : "right"} hidden`}
             >
-              <div
-                className={`card ${isActive ? "active" : ""}`}
-                onClick={() => setActiveIndex(index)}
-              >
-                <span className="period">{item.period}</span>
-                <h4>{item.title}</h4>
-                <p>{item.content}</p>
+              <div className="card">
+                <div className="card-image">
+                  <img src={item.img} alt={item.title[language]} />
+                  {item.year && <span className="year-badge">{item.year}</span>}
+                </div>
+                <h3>{item.title[language]}</h3>
+                <p>{item.content[language]}</p>
               </div>
-
-              <div
-                className={`dot ${isActive ? "active-dot" : ""}`}
-              />
+              <div className="dot" />
             </div>
           );
         })}
@@ -97,105 +137,40 @@ export default function VerticalTimeline() {
 }
 
 const css = `
-.timeline-wrapper {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  padding: 60px 20px;
-  font-family: system-ui, sans-serif;
-}
+.timeline-wrapper { position: relative; width: 100%; padding: 80px 0; overflow-x: hidden; }
 
-.line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #d0d6dc;
-  transform: translateX(-50%);
-}
+/* الألوان العكسية المطلوبة */
+.light-theme .card { background-color: #251e19; color: #F6E9DA; }
+.light-theme .card h3 { color: #F6E9DA; }
+.light-theme .card p { color: #dcc596; }
 
-.row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 70px;
-  position: relative;
-}
+.dark-theme .card { background-color: #F6E9DA; color: #251e19; }
+.dark-theme .card h3 { color: #251e19; }
+.dark-theme .card p { color: #4A352C; }
 
-.row.left {
-  flex-direction: row-reverse;
-}
+.line { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: var(--timeline-line); transform: translateX(-50%); }
+.row { position: relative; width: 100%; display: flex; margin-bottom: 100px; align-items: center; }
 
-.row.right {
-  flex-direction: row;
-}
+[dir="rtl"] .row.left { justify-content: flex-end; padding-right: calc(50% + 40px); padding-left: 0; }
+[dir="rtl"] .row.right { justify-content: flex-start; padding-left: calc(50% + 40px); padding-right: 0; }
+[dir="ltr"] .row.left { justify-content: flex-start; padding-left: calc(50% + 40px); padding-right: 0; }
+[dir="ltr"] .row.right { justify-content: flex-end; padding-right: calc(50% + 40px); padding-left: 0; }
 
-.card {
-  width: 42%;
-  background: #fff;
-  padding: 18px 20px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  cursor: pointer;
-  line-height: 1.8;
-  transition: all 0.3s ease;
-}
+.dot { position: absolute; left: 50%; transform: translateX(-50%); width: 18px; height: 18px; background: var(--timeline-dot); border: 3px solid var(--timeline-line); border-radius: 50%; z-index: 3; }
+.card { width: 100%; max-width: 480px; border-radius: 22px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: 0.3s; }
+.card-image { position: relative; height: 220px; width: 100%; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.card.active {
-  border: 2px solid #0b5ed7;
-}
+.year-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-color); color: var(--button-text); padding: 6px 18px; border-radius: 999px; font-weight: bold; font-size: 14px; }
+.card h3 { padding: 20px 20px 8px; font-size: 1.3rem; }
+.card p { padding: 0 20px 24px; font-size: 0.95rem; line-height: 1.8; }
 
-.period {
-  font-size: 13px;
-  color: #666;
-}
+.hidden { opacity: 0; transform: translateY(50px); }
+.show { opacity: 1; transform: translateY(0); transition: 0.8s ease-out; }
 
-.dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #c0392b;
-  border: 4px solid #fff;
-  z-index: 2;
-  margin: 0 40px;
-  transition: transform 0.3s;
-}
-
-.active-dot {
-  background: #0b5ed7;
-  transform: scale(1.2);
-}
-
-/* scroll animation */
-.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.6s ease;
-}
-
-/* mobile stacked */
 @media (max-width: 768px) {
-  .line {
-    left: 20px;
-  }
-
-  .row,
-  .row.left,
-  .row.right {
-    flex-direction: row;
-  }
-
-  .dot {
-    margin: 0 16px 0 0;
-  }
-
-  .card {
-    width: 100%;
-  }
+  .line, .dot { left: 30px; }
+  .row { padding: 0 20px 0 60px !important; justify-content: flex-start !important; }
+  .card { max-width: 100%; }
 }
 `;

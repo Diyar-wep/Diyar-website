@@ -1,77 +1,73 @@
 import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-// استيراد الصور برمجياً بناءً على المسارات الواردة في ملف المستخدم (pasted_content_8.txt)
-import asirBanner from "./AsirPics/f177ac7b-6865-4daa-8eba-e55042e469c2-md.jpeg"; 
-import rgalamaa from "./AsirPics/196610339984845401.jfif"; 
-import jurshPic from "./AsirPics/846461_1368202303.jpg"; 
+// استيراد الصور بناءً على مسارات كود الرياض
+import riyadhBanner from "./RiyadhPics/riyadh_banner.png"; 
+import DiriyahCastle from "./RiyadhPics/diriyah.jpeg";
+import MasmakFortress from "./RiyadhPics/masmak.jpeg";
+import UshaiqerVillage from "./RiyadhPics/ushaiqer.jpeg";
 
-const Asir = () => {
+const Riyadh = () => {
     const { darkMode, language } = useThemeLanguage();
     const [activeLandmark, setActiveLandmark] = useState(0);
 
     const translations = {
         ar: {
             dir: 'rtl',
-            title: "منطقة عسير",
-            subtitle: "ملتقى القمم والشيم وجمال الطبيعة الخلابة",
+            title: "منطقة الرياض",
+            subtitle: "قلب المملكة النابض وعاصمة التاريخ والحضارة",
             originTitle: "نشأة المنطقة",
-            originDesc: "تقع عسير في الركن الجنوبي الغربي من المملكة، واستمدت اسمها من عسرة تضاريسها الجبلية. تميزت عبر العصور بكونها حلقة وصل تجارية هامة بفضل وفرة أمطارها وخصوبة أرضها.",
+            originDesc: "تقع منطقة الرياض في قلب المملكة العربية السعودية، وتعد من أقدم المناطق المأهولة في الجزيرة العربية. عُرفت قديماً باسم 'حجر اليمامة'، وكانت مركزاً تجارياً وسياسياً مهماً منذ عصور ما قبل الإسلام.",
             civTitle: "أهم الحضارات",
-            civDesc: "استوطنت عسير حضارات عريقة منها الحضارة الحميرية والسبئية، وشهدت ازدهاراً كبيراً في العصور الإسلامية كطريق للحجاج والتجارة بين اليمن ومكة المكرمة.",
+            civDesc: "شهدت المنطقة حضارات عريقة منذ العصر الحجري، وازدهرت فيها مملكة كندة وبنو حنيفة. في العصر الحديث، كانت الرياض نواة الدولة السعودية الأولى والثانية والثالثة، حيث استعادها الملك عبدالعزيز عام 1902م لتصبح عاصمة المملكة.",
             landmarksTitle: "أهم الآثار التاريخية",
-            traditionsTitle: "عادات وتقاليد عسير",
-            traditionsDesc: "يشتهر أهل عسير بفن 'القط العسيري' المسجل في اليونسكو، وهو فن تزيين المنازل بالألوان. كما تتميز المنطقة بالرقصات الشعبية مثل 'العرضة والخطوة' وإكرام الضيف.",
-            foodTitle: "مأكولات عسيرية",
-            foods: ["الحنيذ", "العريكة", "المبثوث"],
+            traditionsTitle: "عادات وتقاليد الرياض",
+            traditionsDesc: "يشتهر أهل الرياض بالكرم والضيافة الأصيلة، ومن أبرز عاداتهم مجالس القهوة العربية والعرضة النجدية التي تعد من أهم الفنون الشعبية. كما تشتهر المنطقة بالأسواق التراثية والحرف اليدوية التقليدية.",
+            foodTitle: "مأكولات نجدية",
+            foods: ["الكبسة", "المطازيز", "الجريش", "القرصان", "المرقوق"],
             visionTitle: "تأثير رؤية 2030",
-            visionDesc: "من خلال استراتيجية 'قمم وشيم'، تهدف رؤية 2030 لتحويل عسير إلى وجهة سياحية عالمية طوال العام، وتطوير مشاريع عملاقة مثل شركة السودة وتطوير مطار أبها لربط المنطقة بالعالم.",
+            visionDesc: "تمثل الرياض القلب النابض لرؤية 2030، حيث تحتضن مشاريع عملاقة مثل 'مشروع القدية' و'الرياض الخضراء' و'الرياض آرت'. هذه المشاريع تعيد تشكيل المدينة لتكون واحدة من أكبر عشر مدن اقتصادية في العالم.",
             geoTitle: "الموقع الجغرافي",
-            geoDesc: "تقع منطقة عسير في جنوب غرب المملكة العربية السعودية، وتتميز بتنوع تضاريسي فريد يجمع بين السهول الساحلية (تهامة) والقمم الجبلية العالية (السراة) التي تضم أعلى قمة في المملكة.",
-            landmark1Title: "قرية رجال ألمع",
-            landmark1Desc: "تعد من أهم القرى التراثية في المملكة، وتتميز بحصونها الحجرية الشاهقة وتصميمها المعماري الفريد الذي يمتد لأكثر من 900 عام.",
-            landmark2Title: "موقع جرش الأثري",
-            landmark2Desc: "موقع أثري يقع في محافظة أحد رفيدة، يضم بقايا حضارات قديمة تعود إلى عصور ما قبل الإسلام، ويشتهر بصناعاته الجلدية والزراعية قديماً."
+            geoDesc: "تقع منطقة الرياض في وسط المملكة على هضبة نجد، وتعد أكبر مناطق المملكة من حيث عدد السكان. تتميز بمناخ صحراوي قاري وتضاريس متنوعة تشمل الهضاب والأودية والكثبان الرملية.",
+            landmark1Title: "حي الطريف في الدرعية",
+            landmark1Desc: "موقع تراث عالمي مسجل في اليونسكو، يعد مهد الدولة السعودية الأولى. يحتوي على قصور ومساجد ومباني طينية تعود للقرن الثامن عشر، ويمثل نموذجاً فريداً للعمارة النجدية.",
+            landmark2Title: "قصر المصمك التاريخي",
+            landmark2Desc: "قلعة تاريخية بُنيت عام 1865م، شهدت استعادة الملك عبدالعزيز للرياض عام 1902م. يعد رمزاً لتوحيد المملكة ومن أهم المعالم التاريخية في العاصمة.",
+            landmark3Title: "قرية أشيقر التراثية",
+            landmark3Desc: "قرية تراثية تاريخية تقع شمال غرب الرياض، تشتهر بمبانيها الطينية العريقة وأسوارها وبواباتها التاريخية. تعد من أجمل القرى التراثية المحفوظة في المملكة."
         },
         en: {
             dir: 'ltr',
-            title: "Asir Region",
-            subtitle: "Where Peaks Meet Traditions and Natural Beauty",
+            title: "Riyadh Region",
+            subtitle: "The Beating Heart of the Kingdom and Capital of History",
             originTitle: "Region Origin",
-            originDesc: "Asir is located in the southwestern corner of KSA, taking its name from its rugged (Asir) mountain terrain. Throughout history, it served as a vital trade link due to its abundant rainfall and fertile land.",
+            originDesc: "Riyadh Region is located in the heart of Saudi Arabia and is one of the oldest inhabited areas in the Arabian Peninsula. Historically known as 'Hajr al-Yamamah', it was an important commercial and political center since pre-Islamic times.",
             civTitle: "Major Civilizations",
-            civDesc: "Ancient civilizations such as the Himyarite and Sabaean settled in Asir. It flourished during the Islamic eras as a key route for pilgrims and trade between Yemen and Makkah.",
+            civDesc: "The region witnessed ancient civilizations since the Stone Age, with the flourishing of the Kingdom of Kindah and Banu Hanifa. In modern times, Riyadh was the nucleus of the Saudi States, recaptured by King Abdulaziz in 1902.",
             landmarksTitle: "Historical Landmarks",
             traditionsTitle: "Customs and Traditions",
-            traditionsDesc: "Asir is famous for 'Al-Qatt Al-Asiri' (UNESCO registered art), the art of decorating homes with vibrant colors. The region is also known for folk dances like 'Al-Khatwa' and great hospitality.",
-            foodTitle: "Asiri Cuisine",
-            foods: ["Haneeth", "Areeka", "Mabthooth"],
+            traditionsDesc: "Riyadh's people are famous for authentic hospitality. Key traditions include Arabic coffee councils and Najdi Ardah, one of the most important folk arts.",
+            foodTitle: "Najdi Cuisine",
+            foods: ["Kabsa", "Matazeez", "Jareesh", "Qursan", "Marqooq"],
             visionTitle: "Vision 2030 Impact",
-            visionDesc: "Through the 'Peaks and Traditions' strategy, Vision 2030 aims to transform Asir into a global year-round tourist destination, developing mega-projects like Soudah Development and Abha Airport expansion.",
+            visionDesc: "Riyadh is the beating heart of Vision 2030, hosting mega projects like 'Qiddiya', 'Riyadh Green', and 'Riyadh Art'. These projects redefine the city as a global economic hub.",
             geoTitle: "Geographical Location",
-            geoDesc: "Asir region is located in southwestern Saudi Arabia, featuring a unique diverse terrain that combines coastal plains (Tihama) and high mountain peaks (Al-Sarawat), including the highest peak in the Kingdom.",
-            landmark1Title: "Rijal Almaa Village",
-            landmark1Desc: "One of the most important heritage villages in KSA, famous for its towering stone forts and unique architectural design dating back over 900 years.",
-            landmark2Title: "Jurash Archaeological Site",
-            landmark2Desc: "An archaeological site in Ahad Rafidah, containing remains of ancient pre-Islamic civilizations, famous for its leather and agricultural industries."
+            geoDesc: "Located in central Saudi Arabia on the Najd plateau, it is the Kingdom's most populous region. It features a continental desert climate and diverse terrains.",
+            landmark1Title: "At-Turaif District in Diriyah",
+            landmark1Desc: "A UNESCO World Heritage Site, the birthplace of the First Saudi State. Contains palaces and mud-brick buildings representing unique Najdi architecture.",
+            landmark2Title: "Masmak Fortress",
+            landmark2Desc: "A historic fort built in 1865, witnessed King Abdulaziz's recapture of Riyadh in 1902. It symbolizes the Kingdom's unification.",
+            landmark3Title: "Ushaiqer Heritage Village",
+            landmark3Desc: "A historic heritage village northwest of Riyadh, famous for its ancient mud buildings and historic gates."
         }
     };
 
     const t = translations[language] || translations.ar;
 
     const landmarks = [
-        { 
-            id: 0,
-            title: t.landmark1Title, 
-            desc: t.landmark1Desc,
-            img: rgalamaa 
-        },
-        { 
-            id: 1,
-            title: t.landmark2Title, 
-            desc: t.landmark2Desc,
-            img: jurshPic 
-        }
+        { id: 0, title: t.landmark1Title, desc: t.landmark1Desc, img: DiriyahCastle },
+        { id: 1, title: t.landmark2Title, desc: t.landmark2Desc, img: MasmakFortress },
+        { id: 2, title: t.landmark3Title, desc: t.landmark3Desc, img: UshaiqerVillage }
     ];
 
     const glassStyle = {
@@ -96,10 +92,10 @@ const Asir = () => {
         }}>
             <header style={{ position: "relative", height: "55vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <img 
-                    src={asirBanner} 
+                    src={riyadhBanner} 
                     alt={t.title} 
                     style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} 
-                    onError={(e) => { e.target.src = "https://via.placeholder.com/1920x1080?text=Asir+Region"; }}
+                    onError={(e) => { e.target.src = "https://via.placeholder.com/1920x1080?text=Riyadh+Region"; }}
                 />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))", zIndex: 2 }} />
                 <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 20px" }}>
@@ -165,7 +161,7 @@ const Asir = () => {
                                 src={landmarks[activeLandmark].img} 
                                 alt={landmarks[activeLandmark].title}
                                 style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }}
-                                onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Asir+Landmark"; }}
+                                onError={(e) => { e.target.src = "https://via.placeholder.com/800x450?text=Riyadh+Landmark"; }}
                             />
                             <div style={{ 
                                 position: "absolute", bottom: 0, left: 0, right: 0, 
@@ -205,38 +201,39 @@ const Asir = () => {
                     </section>
                 </div>
 
-                <section style={{ ...glassStyle, borderLeft: t.dir === "ltr" ? "8px solid var(--accent-color)" : "none", borderRight: t.dir === "rtl" ? "8px solid var(--accent-color)" : "none" }}>
-                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.8rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
-                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
+                {/* تأثير رؤية 2030 */}
+                <section style={glassStyle}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
+                    <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
                 </section>
 
+                {/* الموقع الجغرافي مع خريطة جوجل */}
                 <section style={glassStyle}>
-                    <h2 style={{ fontSize: "1.6rem", fontWeight: "800", marginBottom: "20px" }}>{t.geoTitle}</h2>
-                    <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
-                    <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.geoTitle}</h2>
+                    <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", marginBottom: "20px" }}>{t.geoDesc}</p>
+                    <div style={{ 
+                        width: "100%", 
+                        height: "400px", 
+                        borderRadius: "20px", 
+                        overflow: "hidden", 
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                        filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)" : "none",
+                        transition: "filter 0.4s ease"
+                    }}>
                         <iframe 
-                            title="Asir Map" 
-                            width="100%" height="100%" frameBorder="0" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930532.622290793!2d41.50814650360661!3d19.082567303711464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e0170a439633013%3A0x9b1f03b6118c1c1b!2sAseer%20Province!5e0!3m2!1sen!2ssa!4v1768384416126!5m2!1sen!2ssa"
-                            allowFullScreen
-                            style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
+                            src="https://www.google.com/maps?q=Riyadh+Region+Saudi+Arabia&z=6&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style={{ border: 0 }} 
+                            allowFullScreen="" 
+                            loading="lazy" 
+                            referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>
                     </div>
                 </section>
-
             </main>
-
-            <style>{`
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(30px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                main section {
-                    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                }
-            `}</style>
         </div>
     );
 };
 
-export default Asir;
+export default Riyadh;

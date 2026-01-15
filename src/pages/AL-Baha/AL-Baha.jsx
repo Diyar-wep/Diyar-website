@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
@@ -25,6 +24,7 @@ const AlBaha = () => {
             traditionsTitle: "أصالة العادات",
             traditionsDesc: "تتميز الباحة بالترابط القبلي والاجتماعي الوثيق. من أبرز عاداتها 'العرضة الجنوبية' وفنون 'اللعب' و'المسحباني'. يشتهر أهلها بكرم الضيافة في 'المجالس' والاحتفاء بالضيف بأجود أنواع العسل والسمن.",
             foodTitle: "المذاق الجنوبي",
+            foods: ["الدغابيس", "الخبزة المقناة", "العصيدة", "المرق"],
             visionTitle: "رؤية المملكة 2030",
             visionDesc: "تهدف الرؤية إلى تحويل الباحة إلى وجهة سياحية عالمية مستدامة، وتطوير الغطاء النباتي والمتنزهات الوطنية، ودعم الزراعة العضوية والمهرجانات التراثية لتعزيز الاقتصاد المحلي.",
             geoTitle: "الموقع الجغرافي",
@@ -42,6 +42,7 @@ const AlBaha = () => {
             traditionsTitle: "Authentic Traditions",
             traditionsDesc: "Al-Baha is characterized by strong tribal bonds. Traditions include 'Southern Ardha' and folk arts. Its people are known for hospitality, serving the finest honey and ghee.",
             foodTitle: "Southern Taste",
+            foods: ["Daghabees", "Khubza Maqnah", "Asida", "Broth"],
             visionTitle: "Vision 2030",
             visionDesc: "The vision aims to transform Al-Baha into a sustainable global tourist destination, develop vegetation and national parks, and support organic farming.",
             geoTitle: "Geographical Location",
@@ -191,7 +192,7 @@ const AlBaha = () => {
                     <section style={glassStyle}>
                         <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.foodTitle}</h2>
                         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                            {["الدغابيس", "الخبزة المقناة", "العصيدة", "المرق"].map(food => (
+                            {t.foods.map(food => (
                                 <span key={food} style={{ 
                                     padding: "10px 22px", 
                                     borderRadius: "50px", 
@@ -201,7 +202,7 @@ const AlBaha = () => {
                                     fontSize: "0.95rem",
                                     boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
                                 }}>
-                                    {language === "ar" ? food : food}
+                                    {food}
                                 </span>
                             ))}
                         </div>
