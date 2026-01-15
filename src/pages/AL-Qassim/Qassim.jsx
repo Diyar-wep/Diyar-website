@@ -1,28 +1,84 @@
 import React, { useState } from "react";
-// تأكد من صحة مسار الصورة في مشروعك
-import qassimBanner from "./QasPics/ChatGPT Image 13 يناير 2026، 01_10_43 ص.png";
-import AlshnanhTower from "./QasPics/برج الشنانةPNG.png"
-import Binaqeel from "./QasPics/قصر بن عقيّلPNG.png"
+import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
-const Qassim = ({ darkMode, language, t }) => {
-    const [selectedItem, setSelectedItem] = useState(null);
+// استيراد الصور برمجياً (هذه هي الطريقة الصحيحة للصور داخل مجلد src)
+import QassimBanner from "./QasPics/ChatGPT Image 13 يناير 2026، 01_10_43 ص.png";
+import BinAqeelPalace from "./QasPics/قصر بن عقيّلPNG.png";
+import AlMusawkafMarket from "./QasPics/souq-almusawkaf-in-qassim-1_crop-760x570.webp";
+import AlShenanaTower from "./QasPics/برج الشنانةPNG.png";
 
-    // بيانات الآثار التاريخية (تظهر في النافذة المنبثقة)
-    const landmarksData = {
-        shananah: { 
-            title: language === "ar" ? "برج الشنانة" : "Al-Shananah Tower", 
-            desc: language === "ar"
-            ? "شُيد في القرن الثاني عشر الهجري في محافظة الرس، ويعد شاهداً تاريخياً على الصمود والبراعة المعمارية الطينية."
-            : "Built in the 12th century AH in Ar Rass, it stands as a historical witness to resilience and mud-brick architectural ingenuity.", 
-            img: AlshnanhTower 
+const Qassim = () => {
+    const { darkMode, language } = useThemeLanguage();
+    const [activeLandmark, setActiveLandmark] = useState(0);
+
+    const translations = {
+        ar: {
+            dir: 'rtl',
+            title: "منطقة القصيم",
+            subtitle: "قلب نجد النابض وسلة غذاء المملكة",
+            originTitle: "عراقة النشأة",
+            originDesc: "تعتبر القصيم قلب نجد النابض، عرفت منذ القدم بخصوبة أرضها ووفرة مياهها. تأسست كإمارة إدارية في العهد السعودي، وتعد مدينة بريدة مقر إمارتها، وهي منطقة تاريخية ارتبطت بطرق التجارة والحج.",
+            civTitle: "إرث الحضارات",
+            civDesc: "شهدت القصيم استيطاناً بشرياً منذ عصور ما قبل الإسلام، وكانت موطناً لقبائل عربية عريقة. برزت في العصور الإسلامية كمحطة رئيسية على طريق الحج البصري، واشتهرت بأسواقها التجارية النشطة.",
+            landmarksTitle: "شواهد التاريخ",
+            traditionsTitle: "أصالة العادات",
+            traditionsDesc: "تتميز القصيم بالترابط الاجتماعي الوثيق، وتشتهر بمهرجانات التمور العالمية. من أبرز عاداتها 'المجالس' المفتوحة وكرم الضيافة الأصيل، بالإضافة إلى الفنون الشعبية مثل العرضة والسامري.",
+            foodTitle: "مذاق التراث",
+            visionTitle: "رؤية المستقبل 2030",
+            visionDesc: "تهدف الرؤية إلى تعزيز القصيم كمركز عالمي لصناعة وتصدير التمور، وتطوير السياحة الزراعية والتراثية، ودعم المشاريع اللوجستية التي تستفيد من موقع المنطقة المتوسط.",
+            geoTitle: "الموقع الجغرافي",
+            geoDesc: "تقع منطقة القصيم في وسط المملكة العربية السعودية، وتتميز بتضاريسها السهلية ووديانها الشهيرة مثل وادي الرمة.",
         },
-        fayda: { 
-            title: language === "ar" ? "قصر بن عقيّل" : "Bin Aqeel Palace", 
-            desc: language === "ar"
-            ? "من القصور التاريخية البارزة التي تعكس النمط العمراني القديم في المنطقة وأهميتها السياسية والاجتماعية."
-            : "One of the prominent historical palaces reflecting the ancient architectural style and the region's political and social importance.", 
-            img: Binaqeel 
+        en: {
+            dir: 'ltr',
+            title: "Al-Qassim Region",
+            subtitle: "The Heart of Najd & The Kingdom's Food Basket",
+            originTitle: "Ancient Origins",
+            originDesc: "Al-Qassim is the heart of Najd, known since ancient times for its fertile land and abundant water. Established as an administrative emirate in the Saudi era, with Buraydah as its capital.",
+            civTitle: "Legacy of Civilizations",
+            civDesc: "Al-Qassim has seen human settlement since pre-Islamic times. It emerged in the Islamic era as a major stop on the Basra Hajj route, famous for its active commercial markets.",
+            landmarksTitle: "Historical Witnesses",
+            traditionsTitle: "Authentic Traditions",
+            traditionsDesc: "Al-Qassim is characterized by strong social bonds and world-class date festivals. Traditions include open 'Majalis', authentic hospitality, and folk arts like Ardha and Samri.",
+            foodTitle: "Taste of Heritage",
+            visionTitle: "Vision 2030",
+            visionDesc: "The vision aims to enhance Al-Qassim as a global center for the date industry, develop agro-tourism and heritage, and support logistics projects.",
+            geoTitle: "Geographical Location",
+            geoDesc: "Located in central Saudi Arabia, Al-Qassim is characterized by its plains and famous valleys like Wadi Al-Rummah.",
         }
+    };
+
+    const t = translations[language] || translations.ar;
+
+    const landmarks = [
+        { 
+            id: 0,
+            title: language === "ar" ? "قصر بن عقيل" : "Bin Aqeel Palace", 
+            desc: language === "ar" ? "قصر تاريخي عريق في محافظة الرس، يعد من أبرز المعالم الطينية التي تجسد العمارة النجدية القديمة وتاريخ المنطقة الحافل." : "A historic palace in Ar Rass, one of the most prominent mud landmarks embodying ancient Najdi architecture and the region's rich history.",
+            img: BinAqeelPalace 
+        },
+        { 
+            id: 1,
+            title: language === "ar" ? "سوق المسوكف" : "Al-Musawkaf Market", 
+            desc: language === "ar" ? "سوق شعبي يحاكي العمارة النجدية القديمة، يفوح منه عبق الماضي والحرف اليدوية." : "A traditional market mimicking old Najdi architecture, filled with heritage and crafts.",
+            img: AlMusawkafMarket 
+        },
+        { 
+            id: 2,
+            title: language === "ar" ? "برج الشنانة" : "Al-Shenana Tower", 
+            desc: language === "ar" ? "صرح طيني صامد منذ قرون، يحكي قصص البطولات في قلب محافظة الرس." : "A mud structure standing for centuries, telling stories of heroism in Ar Rass.",
+            img: AlShenanaTower 
+        }
+    ];
+
+    const glassStyle = {
+        background: "var(--timeline-card-bg)",
+        border: "1px solid var(--timeline-card-border)",
+        borderRadius: "24px",
+        padding: "35px",
+        marginBottom: "30px",
+        boxShadow: "0 10px 30px var(--map-shadow)",
+        transition: "all 0.3s ease"
     };
 
     return (
@@ -30,250 +86,159 @@ const Qassim = ({ darkMode, language, t }) => {
             direction: t.dir,
             textAlign: t.dir === "rtl" ? "right" : "left",
             minHeight: "100vh",
-            backgroundColor: darkMode ? "#1a1a1a" : "#fdfaf5",
-            color: darkMode ? "#fff" : "#2d3436",
-            transition: "all 0.3s ease"
+            backgroundColor: "var(--bg-primary)",
+            color: "var(--text-main)",
+            fontFamily: "'Cairo', 'Segoe UI', Tahoma, sans-serif",
+            transition: "all 0.4s ease"
         }}>
-
-            {/* الهيدر والبانر */}
-            <header style={{ position: "relative", height: "50vh", overflow: "hidden" }}>
-                <img src={qassimBanner} alt="Qassim Banner"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                <div style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "rgba(0,0,0,0.4)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}>
-                    <h1 style={{
-                        color: "white",
-                        fontSize: "3.5rem",
-                        fontWeight: "bold",
-                        textShadow: "2px 4px 10px rgba(0,0,0,0.3)"
-                    }}>
-                        {language === "ar" ? "منطقة القصيم" : "Qassim Region"}
+            <header style={{ position: "relative", height: "55vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img 
+                    src={QassimBanner} 
+                    alt="Qassim" 
+                    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} 
+                />
+                <div style={{ 
+                    position: "absolute", inset: 0, 
+                    background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))", 
+                    zIndex: 2 
+                }} />
+                <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 20px" }}>
+                    <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: "800", color: "#fff", marginBottom: "10px", textShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
+                        {t.title}
                     </h1>
+                    <p style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", color: "rgba(255,255,255,0.9)", fontWeight: "500" }}>
+                        {t.subtitle}
+                    </p>
                 </div>
             </header>
 
-            <main style={{ maxWidth: 1000, margin: "0 auto", padding: "60px 20px" }}>
+            <main style={{ maxWidth: "1100px", margin: "-50px auto 0", position: "relative", zIndex: 10, padding: "0 20px 80px" }}>
+                
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.originTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.originDesc}</p>
+                    </section>
 
-                {/* 1. نشأة المنطقة */}
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "نشأة المنطقة" : "Region Origin"}
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px", display: "flex", alignItems: "center", gap: "12px" }}>
+                            <span style={{ width: "6px", height: "26px", background: "var(--accent-color)", borderRadius: "10px" }}></span>
+                            {t.civTitle}
+                        </h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)", fontSize: "1.05rem" }}>{t.civDesc}</p>
+                    </section>
+                </div>
+
+                <section style={{ ...glassStyle, padding: "40px" }}>
+                    <h2 style={{ textAlign: "center", fontSize: "2.2rem", fontWeight: "800", marginBottom: "40px", color: "var(--text-main)" }}>
+                        {t.landmarksTitle}
                     </h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                            ? "تقع القصيم في قلب المملكة العربية السعودية، وتشتهر بخصوبة أراضيها ووفرة مياهها الجوفية. نشأت كواحة زراعية وتجارية هامة وسط نجد، واكتسبت اسمها من 'القصيمة' وهي الأرض التي تنبت شجر الغضا."
-                            : "Located in the heart of Saudi Arabia, Qassim is famous for its fertile land and abundant groundwater. It emerged as an important agricultural and commercial oasis in Najd."}
-                    </p>
-                </section>
+                    
+                    <div style={{ display: "flex", flexDirection: t.dir === "rtl" ? "row" : "row-reverse", gap: "30px", flexWrap: "wrap" }}>
+                        <div style={{ flex: "1", minWidth: "280px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                            {landmarks.map((item, idx) => (
+                                <div 
+                                    key={item.id}
+                                    onClick={() => setActiveLandmark(idx)}
+                                    style={{
+                                        padding: "22px",
+                                        borderRadius: "18px",
+                                        cursor: "pointer",
+                                        transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                                        background: activeLandmark === idx ? "var(--accent-color)" : "var(--bg-primary)",
+                                        color: activeLandmark === idx ? "var(--button-text)" : "var(--text-main)",
+                                        transform: activeLandmark === idx ? (t.dir === "rtl" ? "translateX(-10px)" : "translateX(10px)") : "none",
+                                        border: "1px solid var(--timeline-card-border)",
+                                        boxShadow: activeLandmark === idx ? "0 10px 20px rgba(0,0,0,0.1)" : "none"
+                                    }}
+                                >
+                                    <h3 style={{ fontSize: "1.15rem", fontWeight: "700" }}>{item.title}</h3>
+                                </div>
+                            ))}
+                        </div>
 
-                {/* 2. أهم الحضارات التي استوطنت المنطقة */}
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "أهم الحضارات" : "Major Civilizations"}
-                    </h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                            ? "شهدت المنطقة استيطاناً بشرياً منذ عصور ما قبل التاريخ، وتعاقبت عليها قبائل العرب الكبرى. كما برزت في العصر الإسلامي كمحطة رئيسية على طريق الحج البصري الشهير."
-                            : "The region has seen human settlement since prehistoric times, inhabited by major Arabian tribes. It flourished in the Islamic era as a key stop on the famous Basra pilgrimage route."}
-                    </p>
-                </section>
-
-                {/* 3. أهم الآثار التاريخية وأقدمها */}
-                <section style={{ marginBottom: "50px" }}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "أهم الآثار التاريخية" : "Ancient Landmarks"}
-                    </h2>
-                    <div style={gridStyle}>
-                        <button onClick={() => setSelectedItem(landmarksData.shananah)} style={itemBtnStyle(darkMode, 0)}>
-                            {language === "ar" ? "برج الشنانة" : "Al-Shananah Tower"}
-                        </button>
-                        <button onClick={() => setSelectedItem(landmarksData.fayda)} style={itemBtnStyle(darkMode, 1)}>
-                            {language === "ar" ? "قصر بن عقيّل" : "Bin Aqeel Palace"}
-                        </button>
-                    </div>
-                </section>
-
-                {/* 4. عادات وتقاليد توارثتها أجيال المنطقة */}
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "عادات وتقاليد المنطقة" : "Customs and Traditions"}
-                    </h2>
-                    <div style={{ marginBottom: "20px" }}>
-                        <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>- {language === "ar" ? "عادات" : "Customs"}</h3>
-                        <p style={pStyle}>
-                            {language === "ar"
-                                ? "يُعرف أهل القصيم بالكرم والاشتغال بالتجارة والفلاحة. ومن أبرز عاداتهم 'المجالس المفتوحة' والاحتفاء بمواسم الحصاد مثل مهرجانات التمور الكبرى."
-                                : "The people of Qassim are known for hospitality, trade, and farming. Notable traditions include 'Open Councils' and celebrating harvest seasons like the major date festivals."}
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style={{ color: "#8a9b3a", marginBottom: "10px" }}>- {language === "ar" ? "مأكولات" : "Mäkulat (Food)"}</h3>
-                        <p style={pStyle}>
-                            {language === "ar"
-                                ? "تشتهر المنطقة بـ 'الكليجا' القصيمية، و'المطازيز'، و'المرقوق'، بالإضافة إلى أفخر أنواع التمور مثل 'السكري' الذي يعد سفيراً للمنطقة عالمياً."
-                                : "The region is famous for 'Kleja', 'Matazeez', and 'Margoog', in addition to the finest dates like 'Sukkari', the region's global ambassador."}
-                        </p>
-                    </div>
-                </section>
-
-                {/* 5. تأثير رؤية 2030 على المنطقة */}
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "تأثير رؤية 2030 على المنطقة" : "Vision 2030 Impact"}
-                    </h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                            ? "ساهمت الرؤية في تحويل القصيم إلى وجهة للسياحة الزراعية والريفية، ودعم الصناعات الغذائية التحويلية، بالإضافة إلى تطوير المواقع التراثية لتصبح مراكز ثقافية واقتصادية مستدامة."
-                            : "Vision 2030 has helped transform Qassim into a destination for agritourism and rural tourism, supporting food industries and developing heritage sites into sustainable cultural centers."}
-                    </p>
-                </section>
-
-                {/* الموقع الجغرافي - Geographical Location */}
-                <section style={sectionBoxStyle(darkMode)}>
-                    <h2 style={h2Style(t.dir)}>
-                        • {language === "ar" ? "الموقع الجغرافي" : "Geographical Location"}
-                    </h2>
-                    <p style={pStyle}>
-                        {language === "ar"
-                            ? "تقع منطقة القصيم في وسط المملكة العربية السعودية ضمن إقليم نجد، وتعتبر 'سلة غذاء المملكة' بفضل وفرة مياهها الجوفية وتربتها الخصبة. يمر عبرها وادي الرمة، أطول وادي في الجزيرة العربية، مما يمنحها موقعاً زراعياً واستراتيجياً فريداً."
-                            : "Qassim region is located in the heart of Saudi Arabia within the Najd province. Known as the 'Kingdom's Food Basket' due to its abundant groundwater and fertile soil, it is crossed by Wadi Al-Rummah, the longest valley in the Arabian Peninsula, giving it a unique agricultural and strategic location."}
-                    </p>
-                    <div style={{ 
-                        height: "400px", 
-                        borderRadius: "20px", 
-                        overflow: "hidden", 
-                        marginTop: "20px", 
-                        border: darkMode ? "1px solid #444" : "1px solid #ddd",
-                        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
-                    }}>
-                        <iframe 
-                            title="Qassim Map" 
-                            width="100%" 
-                            height="100%" 
-                            frameBorder="0" 
-                            style={{ border: 0 }}
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1830324.6988939776!2d41.82910130192446!3d26.363618514452146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x157f59ad6fe2be3b%3A0xe1fb621d3b0d00aa!2sAl%20Qassim%20Province!5e0!3m2!1sen!2ssa!4v1768384362832!5m2!1sen!2ssa"
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </section>
-            </main>
-
-            {/* نافذة الكارد المنبثقة (Modal) */}
-            {selectedItem && (
-                <div style={modalOverlayStyle} onClick={() => setSelectedItem(null)}>
-                    <div style={modalCardStyle(darkMode)} onClick={e => e.stopPropagation()}>
-                        <button style={closeBtnStyle} onClick={() => setSelectedItem(null)}>✕</button>
-                        <img src={selectedItem.img} alt={selectedItem.title} style={cardImgStyle} />
-                        <div style={{ padding: "25px" }}>
-                            <h2 style={{ color: "#8a9b3a", marginBottom: "10px" }}>{selectedItem.title}</h2>
-                            <p style={{ color: darkMode ? "#ccc" : "#444", lineHeight: "1.7" }}>{selectedItem.desc}</p>
+                        <div style={{ flex: "2", minWidth: "320px", position: "relative", borderRadius: "24px", overflow: "hidden", height: "420px", boxShadow: "0 20px 40px var(--map-shadow)" }}>
+                            <img 
+                                src={landmarks[activeLandmark].img} 
+                                alt={landmarks[activeLandmark].title}
+                                style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.6s ease-in-out" }}
+                                onError={(e) => { 
+                                    e.target.src = "https://via.placeholder.com/800x450?text=Image+Not+Found+Check+Paths"; 
+                                }}
+                            />
+                            <div style={{ 
+                                position: "absolute", bottom: 0, left: 0, right: 0, 
+                                padding: "35px", background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
+                                color: "#fff"
+                            }}>
+                                <h3 style={{ fontSize: "1.8rem", fontWeight: "800", marginBottom: "10px" }}>{landmarks[activeLandmark].title}</h3>
+                                <p style={{ fontSize: "1.05rem", opacity: 0.95, lineHeight: "1.6", fontWeight: "400" }}>{landmarks[activeLandmark].desc}</p>
+                            </div>
                         </div>
                     </div>
+                </section>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "25px" }}>
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.traditionsTitle}</h2>
+                        <p style={{ lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.traditionsDesc}</p>
+                    </section>
+
+                    <section style={glassStyle}>
+                        <h2 style={{ color: "var(--accent-color)", fontSize: "1.6rem", fontWeight: "800", marginBottom: "15px" }}>{t.foodTitle}</h2>
+                        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                            {["الكليجا", "المرقوق", "المطازيز", "الحنيني"].map(food => (
+                                <span key={food} style={{ 
+                                    padding: "10px 22px", 
+                                    borderRadius: "50px", 
+                                    background: "var(--accent-color)", 
+                                    color: "var(--button-text)", 
+                                    fontWeight: "700",
+                                    fontSize: "0.95rem",
+                                    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+                                }}>
+                                    {language === "ar" ? food : (food === "الكليجا" ? "Kleicha" : food)}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
                 </div>
-            )}
+
+                <section style={{ ...glassStyle, borderLeft: t.dir === "ltr" ? "8px solid var(--accent-color)" : "none", borderRight: t.dir === "rtl" ? "8px solid var(--accent-color)" : "none" }}>
+                    <h2 style={{ color: "var(--accent-color)", fontSize: "1.8rem", fontWeight: "800", marginBottom: "15px" }}>{t.visionTitle}</h2>
+                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "var(--text-secondary)" }}>{t.visionDesc}</p>
+                </section>
+
+                <section style={glassStyle}>
+                    <h2 style={{ fontSize: "1.6rem", fontWeight: "800", marginBottom: "20px" }}>{t.geoTitle}</h2>
+                    <p style={{ marginBottom: "25px", color: "var(--text-secondary)" }}>{t.geoDesc}</p>
+                    <div style={{ height: "450px", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--timeline-card-border)" }}>
+                        <iframe 
+                            title="Qassim Map" 
+                            width="100%" height="100%" frameBorder="0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1853735.123456789!2d42.5!3d26.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fdf6f7f7f7f7f7f%3A0x7f7f7f7f7f7f7f7f!2sAl%20Qassim%20Region!5e0!3m2!1sen!2ssa!4v1705100000000"
+                            allowFullScreen
+                            style={{ filter: darkMode ? "invert(90%) hue-rotate(180deg) brightness(0.8)" : "none" }}
+                        ></iframe>
+                    </div>
+                </section>
+
+            </main>
 
             <style>{`
-                @keyframes slideUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
-                @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                main section {
+                    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                }
             `}</style>
         </div>
     );
-};
-
-// الستايلات المساعدة
-const sectionBoxStyle = (darkMode) => ({
-    background: darkMode ? "rgba(255,255,255,0.05)" : "#fff",
-    padding: "35px",
-    borderRadius: "25px",
-    marginBottom: "40px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.03)"
-});
-
-const h2Style = (dir) => ({
-    color: "#8a9b3a",
-    marginBottom: "25px",
-    borderRight: dir === "rtl" ? "5px solid #8a9b3a" : "none",
-    borderLeft: dir === "ltr" ? "5px solid #8a9b3a" : "none",
-    padding: "0 15px",
-    fontSize: "1.8rem"
-});
-
-const pStyle = { fontSize: "1.1rem", lineHeight: "1.8", opacity: 0.9 };
-
-const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "15px"
-};
-
-const itemBtnStyle = (darkMode, index) => ({
-    padding: "18px",
-    backgroundColor: darkMode ? "#333" : "#fff",
-    color: darkMode ? "#fff" : "#333",
-    border: "1.5px solid #8a9b3a",
-    borderRadius: "15px",
-    fontSize: "1.1rem",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-    opacity: 0,
-    animation: `fadeUp 0.8s ease forwards`,
-    animationDelay: `${index * 0.15}s`
-});
-
-const modalOverlayStyle = {
-    position: "fixed",
-    inset: 0,
-    backgroundColor: "rgba(0,0,0,0.75)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 2000,
-    backdropFilter: "blur(5px)"
-};
-
-const modalCardStyle = (darkMode) => ({
-    backgroundColor: darkMode ? "#222" : "#fff",
-    width: "90%",
-    maxWidth: "650px",
-    borderRadius: "25px",
-    overflow: "hidden",
-    position: "relative",
-    animation: "slideUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) both"
-});
-
-const cardImgStyle = {
-    width: "100%",
-    height: "300px",
-    objectFit: "cover",
-    backgroundColor: "#333"
-};
-
-const closeBtnStyle = {
-    position: "absolute",
-    top: "15px",
-    right: "15px",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    background: "rgba(0,0,0,0.7)",
-    color: "#fff",
-    fontSize: "18px",
-    border: "none",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 10
 };
 
 export default Qassim;
