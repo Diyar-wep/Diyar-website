@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد صور حائل بناءً على الكود المزود
-import hailBanner from "./HailPics/ChatGPT Image 13 يناير 2026، 12_58_20 ص.png"; 
-import jupah from "./HailPics/جبة.jpg"; 
-import castlerAerf from "./HailPics/قلعة.jpg"; 
+import hailBanner from "./HailPics/HailBanner.png"; 
+import jupah from "./HailPics/jubah.jpg"; 
+import castlerAerf from "./HailPics/HailCastle.jpg"; 
 
 const Hail = () => {
     const { darkMode, language } = useThemeLanguage();

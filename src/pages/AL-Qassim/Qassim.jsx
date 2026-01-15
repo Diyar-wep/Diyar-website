@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد الصور برمجياً لضمان ظهورها من مجلد src
-import QassimBanner from "./QasPics/ChatGPT Image 13 يناير 2026، 01_10_43 ص.png";
-import BinAqeelPalace from "./QasPics/قصر بن عقيّلPNG.png";
+import QassimBanner from "./QasPics/QassimBanner.png";
+import BinAqeelPalace from "./QasPics/BinAqeelCastle.png";
 import AlMusawkafMarket from "./QasPics/souq-almusawkaf-in-qassim-1_crop-760x570.webp";
-import AlShenanaTower from "./QasPics/برج الشنانةPNG.png";
+import AlShenanaTower from "./QasPics/AlshnanahTower.png";
 
 const Qassim = () => {
     const { darkMode, language } = useThemeLanguage();

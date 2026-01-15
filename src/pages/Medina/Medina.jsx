@@ -3,10 +3,10 @@ import { useThemeLanguage } from "../../context/ThemeLanguageContext";
 
 // استيراد الصور بناءً على المسارات الواردة في كود المدينة
 import madinaBanner from "./MedinaPics/MadinaBanner.png";
-import greenDome from "./MedinaPics/القبة الخضراء.jpg";
-import quba from "./MedinaPics/مسجد قباء.jpg";
-import uhud from "./MedinaPics/جبل أحد.jpg";
-import baqi from "./MedinaPics/البقيع.jpg";
+import greenDome from "./MedinaPics/green-dome.jpg";
+import quba from "./MedinaPics/quba-mosque.jpg";
+import uhud from "./MedinaPics/mount-uhud.jpg";
+import baqi from "./MedinaPics/al-baqi.jpg";
 
 const Madinah = () => {
     const { darkMode, language } = useThemeLanguage();
