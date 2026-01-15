@@ -10,7 +10,7 @@ import neoDark from "../GeneralPics/LOGOS/نيو تك دارك مود.png";
 import neoLight from "../GeneralPics/LOGOS/نيو تك لايت مود.png";
 
 // استيراد صور البانر (الوسط)
-import bannerImg from "../GeneralPics/Banners/Banar.jpg";
+import bannerImg from "../1-Home/ثيهفثي.png";
 
 export default function Home({ darkMode, t }) {
   const scrollToSection = (e, id) => {
