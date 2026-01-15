@@ -32,7 +32,7 @@ function AppContent() {
       contact: 'تواصل معنا',
       phoneContact: 'للتواصل : 0549986806',
       copied: '✓ تم النسخ',
-      footerText: 'ديار — مشروع هاكاثون',
+      footerText: 'ديار — مشروع هاكاثون نيوتك',
       heroTitle: 'ديار',
       heroDesc: 'منصة تفاعلية توثق التاريخ الجغرافي والثقافي للمملكة العربية السعودية عبر العصور.',
       timelineSection: 'الخط الزمني للمملكة',
